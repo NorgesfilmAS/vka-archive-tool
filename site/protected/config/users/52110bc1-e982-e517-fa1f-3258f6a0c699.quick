@@ -1,0 +1,1 @@
+{"model":"Art","report":{"order":[],"fields":["id","title","masterFileSize","seconds"]},"select":[{"attribute":"agent","value":"to"}],"name":"Toxus Test Report"}

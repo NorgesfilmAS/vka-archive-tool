@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/svn/resourcespace/!svn/ver/2002/lib/phpmailer
+END
+class.phpmailer.php
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/resourcespace/!svn/ver/1126/lib/phpmailer/class.phpmailer.php
+END
+class.pop3.php
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/resourcespace/!svn/ver/2002/lib/phpmailer/class.pop3.php
+END
+README
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/svn/resourcespace/!svn/ver/1126/lib/phpmailer/README
+END
+class.smtp.php
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/resourcespace/!svn/ver/2002/lib/phpmailer/class.smtp.php
+END
+LICENSE
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/resourcespace/!svn/ver/1126/lib/phpmailer/LICENSE
+END
+class.html2text.php
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/resourcespace/!svn/ver/1126/lib/phpmailer/class.html2text.php
+END

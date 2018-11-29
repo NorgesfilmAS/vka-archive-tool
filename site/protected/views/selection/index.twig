@@ -1,0 +1,78 @@
+
+{% extends this.viewPath('angular') %}
+
+{% set layout='content' %}
+
+{% block scriptFiles %}
+	{{ this.registerScriptFile({
+			0: 'app.js',
+			1: 'controllers.js', 
+			2: 'models.js',
+			3: 'util.js',
+			4: 'dynamic-forms.js'
+		 }) 
+	}}
+	{{ this.registerPackage('angularJs.sanitize.min') }}
+{% endblock %}
+
+{% block bodyTag %}
+	{{ parent() }}
+	ng-controller="SelectController"
+{% endblock %}
+
+{% block itemMenuContent %}
+	<button ng-click="showDialog()" class="btn btn-info btn-sm" ><span class="glyphicon glyphicon-plus"></span> {{ Yii_t('app', 'New') }}</button> 
+	{{ parent() }}
+{% endblock %}
+
+{% block content %}		
+	<div >
+	{% include this.viewPath('flash') %}
+	{% include this.viewPath('caption') %}
+	{% raw %}		
+	<div class="alert alert-warning" ng-show="errorMessage">{{ errorMessage }}</div>	
+	{% endraw %}
+	<h4>{{ Yii_t('app', 'Available reports') }} </h4>
+	<div class="row">
+		{% for key, name in reports %}
+		<div class="col-xs-8 col-xs-offset-1">
+			<a href="#" ng-click="reportOpen('{{ name }}')">{{ name }}</a>
+		</div>
+		{% endfor %}
+	</div>
+
+	<div id="id-dialog-reportname" class="modal fade">
+		<form ng-submit="newReport()" class="form-horizontal" role="form">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">{{ Yii_t('button','btn-close') }}</span></button>
+						<h4 class="modal-title">{{ Yii_t('app','Create new selection/report') }}</h4>
+					</div>
+					<div class="modal-body">
+						{% raw %}
+						<div class="alert alert-warning" ng-show="errorMessage">{{ errorMessage }}</div>	
+						{% endraw %}
+						<div class="form-group">
+							<label for="id-filename" class="col-sm-4 control-label">{{ Yii_t('app','Report name') }}</label>
+							<div class="col-sm-8">
+								<input type="text" 
+											 class="form-control" 
+											 ng-model="store.reportFilename"
+											 id="id-filename" 
+											 placeholder="{{ Yii_t('app','Report name') }}" 
+											 required>
+							</div>
+						</div>						
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">{{Yii_t('button','btn-close') }}</button>
+						<button type="submit" class="btn btn-primary">{{ Yii_t('button','btn-create') }}</button>
+					</div>
+				</div><!-- /.modal-content -->
+			</div><!-- /.modal-dialog -->
+		</form>
+	</div><!-- /.modal -->	
+	{{ parent() }}
+	</div>
+{% endblock  %}

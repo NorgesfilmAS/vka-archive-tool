@@ -1,0 +1,1 @@
+{"model":"Art","report":{"order":[{"attribute":"title","label":"Title","order":"asc","fields":[]}],"fields":["title","masterFileSize"]},"select":[{"attribute":"title","value":"a -d"}],"name":"Toxus Check Files"}

@@ -1,0 +1,95 @@
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/resourcespace/!svn/ver/2105/lib/CodeMirror
+END
+compress.html
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/resourcespace/!svn/ver/2104/lib/CodeMirror/compress.html
+END
+bigtest.html
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/resourcespace/!svn/ver/2104/lib/CodeMirror/bigtest.html
+END
+unittests.html
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/resourcespace/!svn/ver/2104/lib/CodeMirror/unittests.html
+END
+sparqltest.html
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/resourcespace/!svn/ver/2104/lib/CodeMirror/sparqltest.html
+END
+htmltest.html
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/resourcespace/!svn/ver/2104/lib/CodeMirror/htmltest.html
+END
+mixedtest.html
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/resourcespace/!svn/ver/2104/lib/CodeMirror/mixedtest.html
+END
+faq.html
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn/resourcespace/!svn/ver/2104/lib/CodeMirror/faq.html
+END
+highlight.html
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/resourcespace/!svn/ver/2104/lib/CodeMirror/highlight.html
+END
+index.html
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/resourcespace/!svn/ver/2104/lib/CodeMirror/index.html
+END
+unittests.js
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/resourcespace/!svn/ver/2104/lib/CodeMirror/unittests.js
+END
+jstest.html
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/resourcespace/!svn/ver/2104/lib/CodeMirror/jstest.html
+END
+manual.html
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/resourcespace/!svn/ver/2104/lib/CodeMirror/manual.html
+END
+LICENSE
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/resourcespace/!svn/ver/2104/lib/CodeMirror/LICENSE
+END
+story.html
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/resourcespace/!svn/ver/2104/lib/CodeMirror/story.html
+END
+csstest.html
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/resourcespace/!svn/ver/2104/lib/CodeMirror/csstest.html
+END

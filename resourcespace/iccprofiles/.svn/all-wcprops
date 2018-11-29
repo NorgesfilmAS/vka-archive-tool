@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 44
+/svn/resourcespace/!svn/ver/2379/iccprofiles
+END
+sRGB_IEC61966-2-1_black_scaled.icc
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/resourcespace/!svn/ver/2379/iccprofiles/sRGB_IEC61966-2-1_black_scaled.icc
+END
+sRGB_IEC61966-2-1_no_black_scaling.icc
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/resourcespace/!svn/ver/2379/iccprofiles/sRGB_IEC61966-2-1_no_black_scaling.icc
+END

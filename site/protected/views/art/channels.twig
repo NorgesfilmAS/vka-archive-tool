@@ -1,0 +1,54 @@
+{#
+  show the master file and all related files
+	
+params:
+	this.model Art
+
+#}
+{% extends this.viewPath('main') %}
+
+{% block itemMenuToolbar %}
+{%endblock %}
+
+{% block content %}
+{% include this.viewPath('caption') %}
+
+{% if this.model.hasErrors() %}
+<div class="bs-content">
+	{# must first display any error connected to the main record #}		
+	<div class="row">
+		<div class="col-sm-10 col-sm-offset-2 alert alert-danger">			
+			{{ html.errorSummary(this.model)|raw }}
+		</div>
+	</div>
+</div>
+{% endif %}
+
+<div class="bs-content">
+	<div class="row ">
+	{% for art in this.model.channels %}
+		<div class="col-sm-4 a-url" data-url="{{ this.createUrl('art/view', {'id':art.id} )}}">
+			<div class="thumbnail btn-area panel-preview">
+				<img width="100%" {% if file_exists(art.previewImagePath) %}src="{{ art.previewImageUrl }}"{%else %}src="{{ this.createUrl('images/no.preview.jpg') }}"{% endif %} />								
+				<div class="pull-right btn-group in-image">
+				</div>
+				<div class="caption">
+					<h4>{{ art.title }}</h4>					
+				</div>					
+			</div>	
+		</div>
+  {% else %}
+    {{ Yii_t('app', 'Strange: There are no channels connected to this art work.') }} 
+	{% endfor %}	
+  </div>
+</div>
+{% endblock %}
+
+
+{% block onReady %}
+  $('.menu-channels').addClass('active');
+	{{ parent() }}
+{% endblock %}
+	
+	
+	

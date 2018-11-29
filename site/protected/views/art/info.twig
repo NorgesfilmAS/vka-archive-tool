@@ -1,0 +1,6 @@
+{#
+  information show on call art/info/1234
+ #}
+{{ this.model.title }} {% if this.model.year %}(<b>{{ this.model.year }}</b>){%endif %}<br/>
+{{ Yii_t('app','By') }}: {{ this.model.agent }}<br />
+

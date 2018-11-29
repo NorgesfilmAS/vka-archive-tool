@@ -1,0 +1,29 @@
+{#
+  Base page for moderation
+#}
+{% extends this.viewPath('main') %}
+
+{% block content %}
+	{% include this.viewPath('caption') %}
+<div class="row">
+	<div class="col-xs-9">	 
+<p>This module show the changes made to the description of the Artwork or Artists.
+	The changed information can be view by date and by the group the user belongs to.</p>
+<h3>Changes by Date</h3>
+<p>This selection only shows the days on which changes were made to the Archive Tool interface. By clicking on the data the changed Artwork
+or changed artist are shown.<br />
+You can click direct on the link image to go that Artwork / Artist of click on the name or title to see the changes made. When click
+in this information box on the link you will go directly to the view where changes where made.</p>
+<h3>Changes by Group</h3>
+<p>When click on this option all active groups are show. You can click on one of the group to see what changes where made by
+	that group. The days shown are the only days these changes where made.<br />
+The rest is equal to the usage on the per Date base</p>
+	</div>
+</div>
+{% endblock %}
+
+{% block onReady %}
+	
+  $('.menu-overview').addClass('active');
+	{{ parent() }}
+{% endblock %}

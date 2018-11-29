@@ -1,0 +1,130 @@
+{% extends this.viewPath('main') %}
+
+{% block itemMenuHeader %}
+<div class="search-spacer"></div>
+{% endblock %}
+
+{% block itemMenuFooter %}
+	{% include this.viewPath('search-layout') %}
+{% endblock %}
+
+
+
+{% block content %}
+	{% for agent in agents %}
+		{% if loop.first %}
+		<div class="bs-content row pnek-found-agent">
+			<div class="row bs-page-header no-padding " style="position:relative;" >
+					<div class="col-xs-2 id-marker2 id-marker text-center">
+						Artist
+					</div>
+					<div class="col-xs-2">&nbsp;</div>
+					<div class="col-xs-10 no-right-padding info-text"></div>
+			</div>						
+			<div class="row">
+		{% endif %}
+				<div class="col-xs-4">
+					<div class="search-agent-link">
+						<a href="{{ this.createUrl('agent/view', {'id':agent.id})}}">{{ agent.name }}</a>
+					</div>
+				</div>		
+			{% if loop.index0 % 3 == 2%}	
+			</div>	
+			<div class="row"> 
+			{% endif %}
+				
+		{% if loop.last %}
+			</div>	
+		</div>			
+		
+		{% endif %}	 
+	{% endfor %}		
+
+
+<div id="scroll" class="bs-content row">
+	<div class="row bs-page-header" style="position:relative; margin-top:20px; " >
+		<div class="col-xs-2 id-marker2 id-marker text-center">
+			Artwork
+		</div>
+		<div class="col-xs-2">&nbsp;</div>
+		<div class="col-xs-10 no-right-padding info-text"></div>
+	</div>			
+
+	{# depeding on the layout variable we have to load a different way of looking at the data #}
+	{% if layout == 'tiles' %}
+	
+		{% set rowIndex = 0 %}
+		{{ this.widget( 'zii.widgets.CListView', {
+				'id' :  'id-grid',
+				'dataProvider' : this.model.search,					
+				'itemView' : 'viewArtSmall',
+				'afterAjaxUpdate' : 'bindEvents',
+				'template' : '{items} {pager}',				
+				'pager' : {
+	          'class' : 'toxus.extensions.infiniteScroll.IasPager', 
+             'rowSelector' : '.art-row', 
+						 'itemsSelector' : '#id-grid',
+             'listViewId'  : 'id-grid', 
+             'header' : '',
+             'loaderText' : '<img src="'~App.baseUrl~'/images/loading.gif'~'"/ >',
+             'options' : {
+								'history' : false, 'triggerPageTreshold' : 21, 'trigger' :'Load more'	
+						}		
+         }
+			}, true) | raw }}	
+		{{ this.onReady("$.ias['defaults']['onRenderComplete'] =  function() {bindEvents();}" ) }}
+	{% else %} 
+		<div class="row grid-header">
+			<div class="col-xs-1 " data-sort="img"></div>
+			<div class="col-xs-1 text-right sort-key" data-sort="id">{{ Yii_t('app','id') }}</div>
+			<div class="col-xs-3 sort-key" data-sort="title">{{ Yii_t('app','title') }}</div>
+			<div class="col-xs-1 text-right sort-key" data-sort="year">{{ Yii_t('app','year') }}</div>
+			<div class="col-xs-3 sort-key" data-sort="artist">{{ Yii_t('app','artist') }}</div>
+			<div class="col-xs-1">{{ Yii_t('app','type') }}</div>
+			<div class="col-xs-1">{{ Yii_t('app','format') }}</div>
+			<div class="col-xs-1 text-right">{{ Yii_t('app','length') }}</div>
+		</div>
+		{{ this.widget( 'zii.widgets.CListView', {
+				'id' :  'id-grid',
+				'dataProvider' : this.model.search,					
+				'itemView' : 'viewArtList',
+				'afterAjaxUpdate' : 'bindEvents',
+				'template' : '{items} {pager}',
+				'pager' : {
+	           'class' : 'toxus.extensions.infiniteScroll.IasPager', 
+						 'pageSize' : 21,
+             'rowSelector' : '.art-row', 
+             'listViewId'  : 'id-grid', 
+             'header' : '',
+             'loaderText' : '<img src="'~App.baseUrl~'/images/loading.gif'~'"/ >',
+             'options' : {
+								'history' : false, 'triggerPageTreshold' : 21, 'trigger' :'Load more','thresholdMargin' : -200 
+						}		
+         }
+			}, true) | raw }}			
+		{{ this.onReady("
+	$.ias['defaults']['onRenderComplete'] =  function() {bindEvents();}
+	$('.sort-key').on('click', function() {
+		$('.id-sort').val($(this).data('sort'));
+		$('.id-search').submit();
+	})
+") }}	
+		
+	{% endif %}
+		
+<script type="text/javascript">
+	// console.log('We are');
+  function bindEvents(id, result)
+	{
+	//	console.log('binding');
+		$('.a-url').on('click', function() {
+			window.location = $(this).data('url');
+		});
+		{{ this.getReady('modal-dialog') |raw }}
+	}
+	//console.log('start binding');
+	bindEvents();	
+</script>	
+</div>		
+{% endblock %}
+

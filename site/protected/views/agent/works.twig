@@ -1,0 +1,117 @@
+{#
+  show the master file and all related files
+	
+params:
+	this.model
+  baseClass: the name of the controller 
+#}
+
+{% extends this.viewPath('main') %}
+
+{% block pageTitle %}
+	{{ App.params.appName |raw }} - Artist {% if this.model %}- {{ this.model.name }}{% endif %}
+{% endblock %}
+
+
+
+{% block content %}
+{% include this.viewPath('caption') %}
+
+{% if this.model.hasErrors() %}
+<div class="bs-content">
+	{# must first display any error connected to the main record #}		
+	<div class="row">
+		<div class="col-xs-10 col-xs-offset-1 alert alert-danger">			
+			{{ html.errorSummary(this.model)|raw }}
+		</div>
+	</div>
+</div>
+	{% endif %}	
+
+{# 
+ # and now for something completely different 
+ # this is the list of the alternate files (ResourceAltFiles)
+ #}
+{% if this.model.works | length > 0 %}
+ 	<div class="row overview">
+	{% for data in this.model.works %}
+		<div class="art-row art-spacer col-sm-4">	
+			<div class="tile-view">
+				<div class="preview-image">	
+				{# <img src="{% if file_exists(data.previewImagePath) %}{{ data.previewImageUrl }}{% else %}{{ this.createUrl('images/no.preview.jpg')}}{%endif%}" width="100%"/>	 #}
+				{% if data.isProcessing %}
+					<img id="img-art-{{data.id}}" width="100%" src="{{ App.baseUrl }}/images/processing.jpg" />			
+				{% else %}			
+					<img id="img-art-{{data.id}}" 
+							 width="100%" 
+							{% if data.tvRatioUrl %} 
+								class="menu-modal" 
+								data-url="{{ this.createUrl('art/preview', {'id' : data.id }) }}" 
+								src="{{ data.tvRatioUrl }}"
+								data-compact="1"
+							{%else %}
+								src="{{ App.baseUrl }}/images/no-preview.png"
+							{% endif %} 
+							data-missing-image="{{dataImagePath}}" />
+					{% if data.tvRatioUrl %}
+					<span class="play menu-modal" 
+									style="margin-top:0px;"
+									data-compact="1"
+									data-url="{{ this.createUrl('art/preview', {'id' : data.id }) }}" >
+					</span>
+					{% endif %}
+				{% endif %}
+				</div>	
+				<div class="preview-data line-div">
+					<div class="art">
+						<a href="{{ this.createUrl('art/view', {'id': data.id} ) }}" >{{ data.title }}</a>&nbsp;				
+					</div>
+					<div class="line-div"><div class="data-label">Year</div><div class="data-info">{{ data.year }}</div></div>	
+					<div class="line-div"><div class="data-label">Org. format</div>{{ data.format }}</div>	
+					<div class="line-div"><div class="data-label">Length</div>{{ data.length }}</div>	
+				</div>	
+			</div>
+		</div>
+		{% if loop.index0 % 3 == 2%}
+		</div>
+		<div class="row overview">
+		{% endif %}
+{#		
+		<div class="col-sm-4">
+			<div class="panel panel-default a-url panel-fix-height-xl" data-url="{{ this.createUrl('art/view', {'id' : work.id}) }}">
+				<div class="panel-heading">
+					<h3 class="panel-title">{{ work.title }}</h3>
+				</div>
+				<div class="panel-body">	
+					<dl class="dl-horizontal">
+						<dt>{{ Yii_t('app','year') }}</dt><dd>{{ work.year }}</dd>
+						<dt>{{ Yii_t('app','org. format') }}</dt><dd>{{ work.format }}</dd>
+						<dt>{{ Yii_t('app','length') }}</dt><dd>{{ work.length }}</dd>
+					</dl>
+					<img  width="100%" src="{% if file_exists(work.previewImagePath) %}{{ work.previewThumbUrl }}{% else %}{{ App.baseUrl }}/images/no.preview.jpg{%endif %}" />				
+				</div>	
+			</div>	
+		</div>	
+#}
+	{% endfor %}	
+</div>
+{% else %}
+		{#
+	<div class="row">
+		<div class="col-offset-10 col-lg-2 right"><a id="btn-alt-add" href="#" data-url="{{ this.createUrl(baseClass ~ '/alternative', {'id' : this.model.id, 'isMaster': 1}) }}"  class="btn btn-info menu-modal">Add alternative</a> </div>
+	</div>
+	#}
+{% endif %}
+{% endblock %}
+
+
+{% block onReady %}
+  $('.menu-works').addClass('active');
+	$('.id-preview').on('click', function(){ 
+		alert('the preview is temporary disabled');
+	});
+	{{ parent() }}
+{% endblock %}
+	
+	
+	

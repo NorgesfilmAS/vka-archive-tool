@@ -1,0 +1,21 @@
+#to: {{ user.email }}  
+#subject: Processing done for {{ art.title }}
+#body: 
+
+Dear {{ user.username }}
+
+The processing of the {% if is_alternative %} alternative file of {% endif %} Artwork {{ art.title }} has been done.
+
+{% if has_errors %}
+** THERE WERE ERROR PROCESSING THIS FILE.                       
+** For more information please look at the logging in the queue 
+** {{ this.createAbsoluteUrl('job/done') }}                     
+{% else %}
+You can see the work: {{ this.createAbsoluteUrl('art/files', {'id':art.id}) }}
+{% endif %}
+
+
+
+Best regards
+
+The Archive Tool interface

@@ -1,0 +1,77 @@
+10
+
+dir
+5188
+http://svn.resourcespace.org/svn/resourcespace/plugins/format_chooser
+http://svn.resourcespace.org/svn/resourcespace
+
+
+
+2013-11-12T09:08:05.906576Z
+5078
+adoerfler
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+c08608d7-6e46-0410-86ca-f2a6f1370df5
+
+format_chooser.yaml
+file
+
+
+
+
+2014-01-06T11:50:06.847418Z
+b7e4c689b8ebc1178c8338103d6452ec
+2013-10-23T10:04:39.830811Z
+4980
+adoerfler
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+219
+
+pages
+dir
+
+hooks
+dir
+
+include
+dir
+
+config
+dir
+
+languages
+dir
+

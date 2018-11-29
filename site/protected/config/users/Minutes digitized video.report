@@ -1,0 +1,1 @@
+{"model":"Art","report":{"order":[{"attribute":"resource_type","label":"type","order":"group","fields":[{"attribute":"seconds","label":"Total time","format":"time","type":"sum"}]}],"fields":[]},"select":[{"attribute":"resource_type","value":"3","compare":"="},{"attribute":"title","value":">v"}],"name":"Minutes digitized video"}

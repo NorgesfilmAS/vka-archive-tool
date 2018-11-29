@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/resourcespace/!svn/ver/5136/plugins/posixldapauth/hooks
+END
+diagnostic.php
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/resourcespace/!svn/ver/5136/plugins/posixldapauth/hooks/diagnostic.php
+END
+ldap_class.php
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/resourcespace/!svn/ver/4533/plugins/posixldapauth/hooks/ldap_class.php
+END
+all.php
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/resourcespace/!svn/ver/5135/plugins/posixldapauth/hooks/all.php
+END
+diag_config.php
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/resourcespace/!svn/ver/5136/plugins/posixldapauth/hooks/diag_config.php
+END
+diag_config_od.php
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/resourcespace/!svn/ver/5136/plugins/posixldapauth/hooks/diag_config_od.php
+END

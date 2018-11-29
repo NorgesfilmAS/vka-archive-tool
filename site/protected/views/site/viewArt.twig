@@ -1,0 +1,48 @@
+<div class="art-row row  search-item" >
+	{% include this.viewPath('caption') with {'model' : data } %}		
+	<div class="col-xs-8 a-url" data-url="{{ this.createUrl('art/view', {'id': data.id} ) }}">	
+		<div class="row">
+			<div class="col-xs-8">									
+				<dl class="dl-horizontal2">
+					<dt>{{ Yii_t('app','artist') }}</dt>
+					<dd>{{ data.agent }} </dd>
+					<dt>{{ Yii_t('app','type')}}</dt>
+					<dd>{{ data.type}} </dd>					
+					<dt>{{ Yii_t('app','length')}}</dt>
+					<dd>{{ data.length }} </dd>
+				</dl>
+			</div>					
+			<div class="col-xs-4">					
+				<dl class="dl-horizontal2">
+					<dt>{{ Yii_t('app','format')}}</dt>
+					<dd>{{ data.format | join(', ')}} </dd>
+					<dt>{{ Yii_t('app','collection')}}</dt>
+					<dd>{{ data.collection | join(', ')}} </dd>
+					<dt>{{ Yii_t('app','tags_gama') }}</dt>
+					<dd>{{ data.tags_gama | join(', ') }}</dd>
+					<dt>{{ Yii_t('app','alternative files')}}</dt>
+					<dd>{{ data.altFiles | length }} files</dd>					
+				</dl>								
+			</div>		
+		</div>		
+	</div>		
+	<div class="col-xs-4">
+	{% if data.isProcessing %}
+		<img id="img-art-{{data.id}}" width="100%" src="{{ App.baseUrl }}/images/processing.jpg" />			
+	{% else %}
+		<img id="img-art-{{data.id}}" 
+				 width="100%" 
+				{% if file_exists(data.previewImagePath) %} 
+					class="menu-modal" 
+					data-url="{{ this.createUrl('art/preview', {'id' : data.id }) }}" 
+					src="{{ data.previewImageUrl }}"
+					data-compact="1"
+				{%else %}
+					src="{{ App.baseUrl }}/images/no.preview.jpg"
+				{% endif %} 
+				data-missing-image="{{dataImagePath}}" />
+	{% endif %}	
+
+	</div>
+		
+</div>

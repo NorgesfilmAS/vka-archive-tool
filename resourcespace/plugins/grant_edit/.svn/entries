@@ -1,0 +1,77 @@
+10
+
+dir
+5188
+http://svn.resourcespace.org/svn/resourcespace/plugins/grant_edit
+http://svn.resourcespace.org/svn/resourcespace
+
+
+
+2013-12-04T09:50:59.922645Z
+5133
+nbraddy
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+c08608d7-6e46-0410-86ca-f2a6f1370df5
+
+grant_edit.yaml
+file
+
+
+
+
+2014-01-06T11:50:07.415448Z
+0a7ca73f64b93f1b09117a5406d22d46
+2013-11-25T08:37:31.762033Z
+5122
+nbraddy
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+194
+
+hooks
+dir
+
+config
+dir
+
+languages
+dir
+
+dbstruct
+dir
+
+pages
+dir
+

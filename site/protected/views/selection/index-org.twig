@@ -1,0 +1,194 @@
+{% extends this.viewPath('angular') %}
+
+
+{% set layout='content' %}
+
+{% block itemMenuHeader %}
+{#
+<div class="select-toolbar">
+	<button class="btn btn-xs"><span class="glyphicon glyphicon-plus"></span></button>
+	<button class="btn btn-xs"><span class="glyphicon glyphicon-save"></span></button>
+	<button class="btn btn-xs"><span class="glyphicon glyphicon-open"></span></button>
+
+	<button class="btn btn-xs type pull-right">selection of Art</button>
+</div>
+#}
+{% endblock %}
+
+{% block bodyTag %}
+	ng-controller="Controller"
+	{{ parent() }}
+{% endblock %}
+
+
+{% block itemMenuContent %}
+{% raw %}
+<div >
+	<h4>{{ store.reportFilename }}</h4>
+	<div class="row select-fields">
+		<div class="col-xs-6 menu" 
+				 ng-class="{active : navState=='select'}"
+				 ng-click="navState='select'"
+				 >
+			Selection
+		</div>
+	</div>
+	<form ng-submit="submit()">	
+		<div ng-show="navState=='select'">	
+			<div class="control-group" 
+					 ng-repeat="element in queryFields">
+				<div class="row select-field">
+					<h4>{{ element.label }}</h4>
+					<div class="controls" ng-switch="element.type">
+						<div ng-switch-when="text" >
+							<input type="text" 
+										 class="form-control" 
+										 ng-model="queryFields[$index].value" 
+										 ng-required="element.required" />
+						</div>	
+						<div ng-switch-when="dropdown"> 
+							<select class="form-control" 
+											ng-model="queryFields[$index].value" 
+											ng-required="element.required" >
+								<option value="{{ data.id }}" ng-repeat="data in element.data" ng-attr-selected="element.value==data.id" >{{ data.label }}</option>
+							</select>
+						</div>							
+						<div ng-switch-when="range">
+							<div class="control-group col-xs-5">
+								<input type="text" 
+											 class="form-control" 
+											 ng-model="queryFields[$index].value"/>
+							</div>
+							<div class="control-group col-xs-5">
+								<input type="text" 
+											 class="form-control" 
+											 ng-model="queryFields[$index].value"/>
+							</div>							
+						</div>
+					</div>
+				</div>			
+			</div>	
+		</div>
+		<div ng-show="navState=='order'" class="select-order">	
+			<div class="row" ng-hide="orderFields.length==0">
+				<div class="col-xs-12 no-padding">
+					<h3>
+				{% endraw %}
+				{{ Yii_t('app', 'The fields use to order / group the final result.') }}
+				{% raw %}
+					</h3>	
+				</div>	
+			</div>
+			<div class="row" ng-repeat="field in orderFields" >
+				<div class="col-xs-1" ng-click="orderRemove(field)"><span class="glyphicon glyphicon-minus-sign"></span></div>
+				<div class="col-xs-4">{{ orderLabel(field) }}</div>
+				<div class="col-xs-3" ng-click="orderSortNext(field)">{{ orderSort(field) }}</div>
+				<div class="col-xs-1 pull-right">
+					<span class="glyphicon glyphicon-chevron-up" 
+								ng-click="orderMoveUp(field)"
+								ng-hide="$first"></span>
+				</div>	
+				<div class="col-xs-1 pull-right">	
+					<span class="glyphicon glyphicon-chevron-down" 
+								ng-click="orderMoveDown(field)"
+								ng-hide="$last"></span>
+				</div>
+			</div>	
+
+			<div class="row " ng-hide="orderFields.length==allowedOrderFields.length">
+				<div class="col-xs-12 no-padding">
+					<h3>
+				{% endraw %}
+				{{ Yii_t('app', 'The fields available for ordering and grouping') }}
+				{% raw %}
+					</h3>	
+				</div>	
+			</div>
+			<div class="row" ng-repeat="field in allowedOrderFields" ng-hide="orderFields.indexOf(field.attribute) >=0 ">
+				<div class="col-xs-1">
+					<span class="glyphicon glyphicon-plus-sign add-field" 
+								ng-click="orderAdd($index)" ></span>
+				</div>
+				<div class="col-xs-10">{{ field.label }}</div>
+			</div>	
+
+		</div>	
+		<div class="row select-field">
+			<div class="controls">
+				<input type="submit" value="Select" />
+			</div>	
+		</div>	
+	</form>		
+		
+</div>
+{% endraw %}
+
+{% endblock %}
+
+{% block content %}	
+	{% raw %}
+	<div class='info-panel'>
+		<div class="panel panel-danger" ng-show="messageError">
+			<div class="panel-heading">
+				<h3 class="panel-title">Error</h3>
+			</div>
+			<div class="panel-body">
+			{{ messageError }}
+			</div>
+		</div>
+		<div class="panel panel-success fade" ng-class="{in: messageInfo}">
+			<div class="panel-heading" ng-hide="true">
+				<h3 class="panel-title">Success</h3>
+			</div>
+			<div class="panel-body">
+			{{ messageInfo }}
+			</div>
+		</div>
+	</div>	
+	{% endraw %}
+	
+	<div class="row select-fields">
+		<div class="col-xs-1 menu" 
+				 ng-class="{active : state=='design'}"
+				 ng-click="state='design'"
+				 >
+			Design
+		</div>
+		<div class="col-xs-1 menu" 
+				 ng-class="{active : state=='preview'}"
+				 ng-click="state='preview'">
+			Preview
+		</div>
+		<div class="col-xs-1 menu" 
+				 ng-class="{active : state=='store'}"
+				 ng-click="state='store'">
+			Store
+		</div>
+		
+	</div>
+
+	<div id="id-design" ng-show="state=='preview'">
+	{% include this.viewPath('preview', {'extension' : '.html'}) %}	
+	</div>
+
+	<div id="id-design" ng-show="state=='design'">
+	{% include this.viewPath('designer', {'extension' : '.html'}) %}	
+	</div>
+	
+	<div id="id-store" ng-show="state=='store'">
+	{% include this.viewPath('store', {'extension' : '.html'}) %}	
+	</div>
+	
+ {{ parent() }}
+{% endblock %}
+
+{% block scriptFiles %}
+	 {{ this.registerScriptFile({
+		0: 'app.js',
+		1: 'controllers.js', 
+		2: 'models.js',
+		3: 'util.js',
+		4: 'dynamic-forms.js'
+	 }) 
+}}
+{% endblock %}

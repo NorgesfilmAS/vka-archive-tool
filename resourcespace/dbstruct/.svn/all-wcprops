@@ -1,0 +1,437 @@
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svn/resourcespace/!svn/ver/5188/dbstruct
+END
+index_sysvars.txt
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/resourcespace/!svn/ver/22/dbstruct/index_sysvars.txt
+END
+data_site_text.txt
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/resourcespace/!svn/ver/4999/dbstruct/data_site_text.txt
+END
+index_preview_size.txt
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/resourcespace/!svn/ver/22/dbstruct/index_preview_size.txt
+END
+table_collection_savedsearch.txt
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/resourcespace/!svn/ver/4387/dbstruct/table_collection_savedsearch.txt
+END
+table_dynamic_tree_node.txt
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/resourcespace/!svn/ver/4244/dbstruct/table_dynamic_tree_node.txt
+END
+table_user_userlist.txt
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/resourcespace/!svn/ver/2749/dbstruct/table_user_userlist.txt
+END
+table_site_text.txt
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/resourcespace/!svn/ver/1053/dbstruct/table_site_text.txt
+END
+data_usergroup.txt
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/resourcespace/!svn/ver/2882/dbstruct/data_usergroup.txt
+END
+table_user.txt
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn/resourcespace/!svn/ver/2062/dbstruct/table_user.txt
+END
+index_collection_savedsearch.txt
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/resourcespace/!svn/ver/22/dbstruct/index_collection_savedsearch.txt
+END
+table_resource_related.txt
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/resourcespace/!svn/ver/22/dbstruct/table_resource_related.txt
+END
+table_resource.txt
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/resourcespace/!svn/ver/3633/dbstruct/table_resource.txt
+END
+index_dynamic_tree_node.txt
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/resourcespace/!svn/ver/4244/dbstruct/index_dynamic_tree_node.txt
+END
+index_site_text.txt
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/resourcespace/!svn/ver/1053/dbstruct/index_site_text.txt
+END
+table_collection.txt
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/resourcespace/!svn/ver/3748/dbstruct/table_collection.txt
+END
+table_resource_keyword.txt
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/resourcespace/!svn/ver/22/dbstruct/table_resource_keyword.txt
+END
+table_usergroup.txt
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/resourcespace/!svn/ver/2283/dbstruct/table_usergroup.txt
+END
+data_preview_size.txt
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/resourcespace/!svn/ver/5042/dbstruct/data_preview_size.txt
+END
+index_user.txt
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn/resourcespace/!svn/ver/4451/dbstruct/index_user.txt
+END
+table_collection_keyword.txt
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/resourcespace/!svn/ver/826/dbstruct/table_collection_keyword.txt
+END
+table_resource_custom_access.txt
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/resourcespace/!svn/ver/4434/dbstruct/table_resource_custom_access.txt
+END
+table_comment.txt
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/resourcespace/!svn/ver/4697/dbstruct/table_comment.txt
+END
+table_research_request.txt
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/resourcespace/!svn/ver/2738/dbstruct/table_research_request.txt
+END
+index_resource_related.txt
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/resourcespace/!svn/ver/22/dbstruct/index_resource_related.txt
+END
+index_resource.txt
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/resourcespace/!svn/ver/4265/dbstruct/index_resource.txt
+END
+table_ip_lockout.txt
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/resourcespace/!svn/ver/3286/dbstruct/table_ip_lockout.txt
+END
+table_resource_alt_files.txt
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/resourcespace/!svn/ver/2693/dbstruct/table_resource_alt_files.txt
+END
+index_usergroup.txt
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/resourcespace/!svn/ver/22/dbstruct/index_usergroup.txt
+END
+table_report.txt
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn/resourcespace/!svn/ver/22/dbstruct/table_report.txt
+END
+index_collection.txt
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/resourcespace/!svn/ver/5188/dbstruct/index_collection.txt
+END
+data_user_collection.txt
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/resourcespace/!svn/ver/339/dbstruct/data_user_collection.txt
+END
+index_resource_keyword.txt
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/resourcespace/!svn/ver/22/dbstruct/index_resource_keyword.txt
+END
+data_resource_type_field.txt
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/resourcespace/!svn/ver/4395/dbstruct/data_resource_type_field.txt
+END
+index_collection_keyword.txt
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/resourcespace/!svn/ver/826/dbstruct/index_collection_keyword.txt
+END
+table_resource_data.txt
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/resourcespace/!svn/ver/562/dbstruct/table_resource_data.txt
+END
+table_user_rating.txt
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/resourcespace/!svn/ver/1799/dbstruct/table_user_rating.txt
+END
+index_comment.txt
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/resourcespace/!svn/ver/4687/dbstruct/index_comment.txt
+END
+index_resource_custom_access.txt
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/resourcespace/!svn/ver/4434/dbstruct/index_resource_custom_access.txt
+END
+table_report_periodic_emails.txt
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/resourcespace/!svn/ver/4236/dbstruct/table_report_periodic_emails.txt
+END
+index_research_request.txt
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/resourcespace/!svn/ver/22/dbstruct/index_research_request.txt
+END
+table_keyword_related.txt
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/resourcespace/!svn/ver/478/dbstruct/table_keyword_related.txt
+END
+table_keyword.txt
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/resourcespace/!svn/ver/475/dbstruct/table_keyword.txt
+END
+table_resource_log.txt
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/resourcespace/!svn/ver/5147/dbstruct/table_resource_log.txt
+END
+index_ip_lockout.txt
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/resourcespace/!svn/ver/440/dbstruct/index_ip_lockout.txt
+END
+table_user_collection.txt
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/resourcespace/!svn/ver/309/dbstruct/table_user_collection.txt
+END
+index_report.txt
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn/resourcespace/!svn/ver/22/dbstruct/index_report.txt
+END
+table_resource_type_field.txt
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/resourcespace/!svn/ver/4356/dbstruct/table_resource_type_field.txt
+END
+table_collection_log.txt
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/resourcespace/!svn/ver/1008/dbstruct/table_collection_log.txt
+END
+table_daily_stat.txt
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/resourcespace/!svn/ver/211/dbstruct/table_daily_stat.txt
+END
+data_user.txt
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/resourcespace/!svn/ver/1597/dbstruct/data_user.txt
+END
+index_resource_data.txt
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/resourcespace/!svn/ver/1801/dbstruct/index_resource_data.txt
+END
+index_user_rating.txt
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/resourcespace/!svn/ver/1799/dbstruct/index_user_rating.txt
+END
+index_keyword.txt
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/resourcespace/!svn/ver/22/dbstruct/index_keyword.txt
+END
+index_resource_log.txt
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/resourcespace/!svn/ver/554/dbstruct/index_resource_log.txt
+END
+index_user_collection.txt
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/resourcespace/!svn/ver/5188/dbstruct/index_user_collection.txt
+END
+data_resource_type.txt
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/resourcespace/!svn/ver/2163/dbstruct/data_resource_type.txt
+END
+index_resource_type_field.txt
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/resourcespace/!svn/ver/2102/dbstruct/index_resource_type_field.txt
+END
+data_collection.txt
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/resourcespace/!svn/ver/3768/dbstruct/data_collection.txt
+END
+index_daily_stat.txt
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/resourcespace/!svn/ver/618/dbstruct/index_daily_stat.txt
+END
+table_resource_dimensions.txt
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/resourcespace/!svn/ver/2574/dbstruct/table_resource_dimensions.txt
+END
+table_plugins.txt
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/resourcespace/!svn/ver/3365/dbstruct/table_plugins.txt
+END
+table_resource_type.txt
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/resourcespace/!svn/ver/2163/dbstruct/table_resource_type.txt
+END
+table_request.txt
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/resourcespace/!svn/ver/3536/dbstruct/table_request.txt
+END
+data_report.txt
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/resourcespace/!svn/ver/3855/dbstruct/data_report.txt
+END
+table_external_access_keys.txt
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/resourcespace/!svn/ver/910/dbstruct/table_external_access_keys.txt
+END
+index_resource_dimensions.txt
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/resourcespace/!svn/ver/2133/dbstruct/index_resource_dimensions.txt
+END
+table_collection_resource.txt
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/resourcespace/!svn/ver/2538/dbstruct/table_collection_resource.txt
+END
+index_resource_type.txt
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/resourcespace/!svn/ver/22/dbstruct/index_resource_type.txt
+END
+table_sysvars.txt
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/resourcespace/!svn/ver/22/dbstruct/table_sysvars.txt
+END
+table_preview_size.txt
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/resourcespace/!svn/ver/2668/dbstruct/table_preview_size.txt
+END
+index_external_access_keys.txt
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/resourcespace/!svn/ver/22/dbstruct/index_external_access_keys.txt
+END
+index_collection_resource.txt
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/resourcespace/!svn/ver/22/dbstruct/index_collection_resource.txt
+END

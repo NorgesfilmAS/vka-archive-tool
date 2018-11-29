@@ -1,0 +1,1 @@
+{"model":"Art","report":{"order":[{"attribute":"agent","label":"Artist","order":"asc","fields":[]},{"attribute":"title","label":"Title","order":"asc","fields":[]},{"attribute":"year","label":"Year","order":"asc","fields":[]}],"fields":["agent","title","year","format","seconds"]},"select":[],"name":"www 100518"}

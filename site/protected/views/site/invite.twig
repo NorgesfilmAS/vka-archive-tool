@@ -1,0 +1,33 @@
+{# 
+	The invitation isn't found
+#}
+
+{% extends this.viewPath('main') %}
+
+{% block content %}
+
+<br/><br/><br/><br/><br/>
+<div class="col-sm-6 col-sm-offset-3 well well-large">
+	{% if error %}
+		{{ error }}
+	{% else %}
+		<div class="row">
+			<div class="col-sm-10 col-sm-offset-1">
+				<h4>{{ Yii_t('app','Welcome {name}', {'{name}':this.model.fullname}) }}</h4>
+				{% if this.model.hasErrors() %}
+						<div class="alert alert-block bg-warning">
+							{{ html.errorSummary(this.model)|raw }}
+						</div>
+				{% endif %}	
+			{{ Yii_t('app','in this page you can set your password. You username is ') }}<br/>
+			<div class="text-center"><strong>{{ this.model.username }}</strong></div>
+			<br /><br />
+			{% include this.viewPath('flash') %}	
+			{% include this.viewPath('_form') %}
+			{% include this.viewPath('_buttons') %}
+		</div>			
+		</div>		
+	{% endif %}
+</div>	
+
+{% endblock %}

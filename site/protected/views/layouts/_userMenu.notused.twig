@@ -1,0 +1,34 @@
+{#
+  the user menu
+#}
+{% macro menuSystemBuilder(menu, name, t) %}
+	{% for key, menuItem in menu %}	
+		{% if 'page' in menuItem|keys %}
+	<li class="parent">
+		<a href="javascript:void()" >{{ menuItem.label }}<i></i></a>
+		{{ t.form.page(menuItem.page) }}
+	</li>		
+		{% elseif 'items' in menuItem|keys %}	
+	<li class="dropdown">
+		<a href="#" data-toggle="dropdown" role="button" >{{ menuItem.label }}</a>
+		<ul class="dropdown-menu" role="menu">
+		{{ _self.menuSystemBuilder(menuItem.items) }}
+		</ul>
+	</li>		
+		{% else %}			
+			<li>
+			{% if menuItem.dialog %}					
+				{# <a data-target="#id-modal" class="menu-action" data-toggle="modal" href="{{ menuItem.url }}">{{ menuItem.label }}</a> #}
+				<a href="#" class="menu-modal" data-url="{{ menuItem.url}}">{{ menuItem.label }}</a>
+				{{ t.registerPackage('modal-dialog') }}
+				{# t.registerOnReady('$(".menu-modal").on("click", function() { $("#id-modal").modal("toggle"); $("#id-modal-body").load($(this).data("url"));})') #}				
+			{% else %}
+				{{ html.link(menuItem.label, menuItem.url, menuItem.linkOptions)|raw }} </li>
+			{% endif %}				
+		{% endif %}
+	{% endfor %}
+{% endmacro %}
+
+<ul class="{{ layout.class | default('accordmobile') }}">
+	{{ _self.menuSystemBuilder(menu, name, this) }}
+</ul>

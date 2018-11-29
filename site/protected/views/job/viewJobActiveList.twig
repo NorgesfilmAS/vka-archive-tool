@@ -1,0 +1,15 @@
+<div class="grid-row art-row row table-hover" >	
+	<div class="menu-modal"  data-url="{{ this.createUrl('job/update', {'id': data.id} ) }}">
+		<div class="col-xs-1 text-right">{{ data.resource_id }}</div>	
+		<div class="col-xs-4 grid-col-no-wrap">
+				{% if data.resource_id %}
+					{{ data.explain }}
+				{% elseif data.job_type_id == 5 %}
+			<span style="color: gray">(system: MD5 generate job)</span>	
+				{% endif %}
+		</div>	
+		<div class="col-xs-2 text-right">{{ data.priorityText }}</div>	
+		<div class="col-xs-3 grid-col-no-wrap">{{ data.creationDate }}</div>	
+	</div>
+	<div class="col-xs-2 grid-col-no-wrap menu-modal text-right" data-url="{{ this.createUrl('job/view', {'id': data.id})}}">{{ data.status }} <span class="glyphicon glyphicon-paperclip"></span></div>	
+</div>

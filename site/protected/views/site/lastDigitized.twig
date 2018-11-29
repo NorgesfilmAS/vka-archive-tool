@@ -1,0 +1,59 @@
+{% extends this.viewPath('main') %}
+
+{% block itemMenuHeader %}
+<div class="search-spacer"></div>
+{% endblock %}
+
+{% block itemMenuFooter %}
+	{% include this.viewPath('search-layout') %}
+{% endblock %}
+
+{% block content %}
+	
+<div id="scroll" class="bs-content row">
+	<div class="row bs-page-header" style="position:relative; margin-top:20px; " >
+		<div class="col-xs-2 id-marker2 id-marker text-center" style="width:180px;">
+			{{ Yii_t('app', 'Latest Videos') }}
+		</div>
+		<div class="col-xs-2">&nbsp;</div>
+		<div class="col-xs-10 no-right-padding info-text"></div>
+	</div>			
+
+	{# depeding on the layout variable we have to load a different way of looking at the data #}
+	{{ this.widget( 'zii.widgets.CListView', {
+			'id' :  'id-grid',
+			'dataProvider' : this.model.searchLastDigitized,					
+			'itemView' : 'viewArtSmall',
+			'afterAjaxUpdate' : 'bindEvents',
+			'template' : '{items} {pager}',				
+			'pager' : {
+					'class' : 'toxus.extensions.infiniteScroll.IasPager', 
+					 'rowSelector' : '.art-row', 
+					 'itemsSelector' : '#id-grid',
+					 'listViewId'  : 'id-grid', 
+					 'header' : '',
+					 'loaderText' : '<img src="'~App.baseUrl~'/images/loading.gif'~'"/ >',
+					 'options' : {
+							'history' : false, 'triggerPageTreshold' : 21, 'trigger' :'Load more'	
+					}		
+			 }
+		}, true) | raw }}	
+	{{ this.onReady("$.ias['defaults']['onRenderComplete'] =  function() {bindEvents();}" ) }}
+		
+	<script type="text/javascript">
+		 console.log('We are');
+		function bindEvents(id, result)
+		{
+			console.log('binding');
+			$('.a-url').on('click', function() {
+				window.location = $(this).data('url');
+			});
+			{{ this.getReady('modal-dialog') |raw }}
+		}
+		console.log('start binding');
+		bindEvents();	
+	</script>	
+</div>		
+{% endblock %}
+
+

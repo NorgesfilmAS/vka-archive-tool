@@ -1,0 +1,13 @@
+{#
+	the caption shown for every sub page
+  uses:
+    model
+ #}
+<div class="bs-content">
+	<div class="row bs-page-header no-padding no-bottom-padding">
+		<div class="col-sm-2 id-marker text-center">{{ model.id }}</div>
+		<div class="col-sm-10 no-right-padding info-text">{{ model.title }}
+			{% if model.isChannel %}<span class="small"> (channel)</span>{% endif %}{% if model.isMultiChannel %} <span class="small"> (multi channel)</span>{% endif %}
+		<span class="pull-right " >{{ model.agent }}{{ this.field(', ', model.year) | raw }}</span></div>
+	</div>
+</div>

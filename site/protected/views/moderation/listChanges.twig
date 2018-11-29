@@ -1,0 +1,31 @@
+{# 
+	List the change in this tranaction
+ #}
+
+{% for transaction in model %}
+<div class="transaction well well-sm"  >
+	<strong>{{ transaction.date | date('d/m/Y h:i') }}</strong>
+	<div class="pull-right">	
+		<a href="{{ this.createUrl(transaction.path,  {'id' :transaction.id}) }}">		
+			{{ yii.t('menu', transaction.path) }}			
+			<span class="glyphicon glyphicon-link"></span>			
+
+		</a>
+	</div>
+	<dl class="dl-vertically">
+		{% for step in transaction.items %}
+		<dt>
+			{{ Yii_t('app', step.fieldname) }}
+		</dt>
+		<dd>
+			{{ step.value }}
+		</dd>
+		{% else %}
+		{{ Yii_t('app', 'no undo steps found') }}
+		{% endfor %}
+	</dl>
+</div>
+{% else %}
+	{{ Yii_t('app', 'no transactions found') }}
+{% endfor %}
+

@@ -1,0 +1,91 @@
+{% extends this.viewPath('mainPage') %}
+
+{# 
+	The definition of the logging flags in ResourceSpace
+#}
+{% block content %}
+<div class="row">
+  <h2>Logging information in ResourceSpace</h2>
+</div>
+<div class="row">
+  <div class="col-sm-12">
+    <p>
+    In Resource Space logging is stored in the <strong>resource_log</strong> table. The fields date, resource and user are
+    self explaining. The resource_type_field is the field stored in the database, it's <strong>null</strong> if it's an
+      empty creation. Notes is used if an email is send to store the email address. The fields <strong>type</strong> and 
+      <strong>diff</strong> have special meanings.
+    </p>  
+    <h3>the type field</h3>
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-2">a</div>
+  <div class="col-sm-10">Access<br/>Not used by the PNEK interface</div>
+</div>
+
+<div class="row">
+  <div class="col-sm-2">b</div>
+  <div class="col-sm-10">A batch transform for a slideshow??</div>
+</div>
+
+<div class="row">
+  <div class="col-sm-2">c</div>
+  <div class="col-sm-10">Create a new resource<br />No other information is added</div>
+</div>
+
+<div class="row">
+  <div class="col-sm-2">d</div>
+  <div class="col-sm-10">Download a resource<br/>Not used</div>
+</div>
+
+<div class="row">
+  <div class="col-sm-2">e</div>
+  <div class="col-sm-10">Update information<br/>
+  Remembers the changes made to a field. The changes are stored in the diff field
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm-2">E</div>
+  <div class="col-sm-10">Send an email to the user.<br >In the Notes field the email address or username is stored.</div>
+</div>
+
+<div class="row">
+  <div class="col-sm-2">l</div>
+  <div class="col-sm-10">Found in the log but not in the source: Unknown log entry.</div>
+</div>
+
+
+<div class="row">
+  <div class="col-sm-2">m</div>
+  <div class="col-sm-10">Modified<br/>Not used by PNEK</div>
+</div>
+
+
+<div class="row">
+  <div class="col-sm-2">p</div>
+  <div class="col-sm-10">A purchase has been done</div>
+</div>
+
+<div class="row">
+  <div class="col-sm-2">r</div>
+  <div class="col-sm-10">The uploaded file is process with exif.</div>
+</div>
+
+<div class="row">
+  <div class="col-sm-2">t</div>
+  <div class="col-sm-10">A batch transform has been done.</div>
+</div>
+
+<div class="row">
+  <div class="col-sm-2">u</div>
+  <div class="col-sm-10">A batch upload is done</div>
+</div>
+
+<div class="row">
+  <div class="col-sm-2">x</div>
+  <div class="col-sm-10">A resource is removed from an collection.</div>
+</div>
+
+
+{% endblock %}

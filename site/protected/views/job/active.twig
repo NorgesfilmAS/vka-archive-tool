@@ -1,0 +1,34 @@
+{# 
+	shows all active jobs.
+	user can delete and change priority of the job
+#}
+{% extends this.viewPath('main') %}
+
+{% block content %}
+<div id="scroll" class="bs-content">
+	{% include this.viewPath('flash') %}
+	
+	<h2>{{ Yii_t('app','Active Jobs in the queue') }}</h2>
+	
+	<div class="row grid-header">
+		<div class="col-xs-1 text-right sort-key" data-sort="id">{{ Yii_t('app','id') }}</div>
+		<div class="col-xs-4 sort-key" data-sort="title">{{ Yii_t('app','title') }}</div>
+		<div class="col-xs-2 text-right sort-key" data-sort="priority">{{ Yii_t('app','priorty') }}</div>
+		<div class="col-xs-3 sort-key" data-sort="artist">{{ Yii_t('app','created') }}</div>
+		<div class="col-xs-2 text-right" data-sort="">{{ Yii_t('app','status') }}</div>
+	</div>
+	{{ this.widget( 'zii.widgets.CListView', {
+			'id' :  'id-grid',
+			'dataProvider' : this.model.activeJobs,					
+			'itemView' : 'viewJobActiveList',
+			'template' : '{items} {pager}',
+		}, true) | raw }}			
+</div>
+
+{% endblock %}
+	
+	
+{% block onReady %}
+  $('.menu-active').addClass('active');
+	{{ parent() }}
+{% endblock %}	

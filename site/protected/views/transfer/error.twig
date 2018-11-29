@@ -1,0 +1,28 @@
+{#
+  render an error message to a user who is not logged in but got a link
+  through our transfer service
+  
+  version 1.0 JvK 2015-08-03
+#}
+
+{% extends this.viewPath('message') %}
+
+{% block pageTitle %}
+  Videokunst Archivet
+{% endblock %}
+
+
+{% block dialogHeader %}
+  <h3 class="panel-title">{{ Yii_t('app', 'Error') }}</h3>
+{%endblock %}
+
+{% block dialogBody %}
+  <p>{{Yii_t('app', 'There was an error processing your request.') }}</p>
+  <p>{{ message }}</p>
+{% endblock %}
+
+{% block dialogFooter %}
+{% endblock %}
+
+{% block bootstrap3Footer %}
+{% endblock %}

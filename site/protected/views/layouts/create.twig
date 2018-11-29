@@ -1,0 +1,28 @@
+{% extends this.viewPath('dialog') %}
+
+{% block dialogHeader %}
+	<h4>{{ Yii_t('app','create new') }} {{ form.model }}</h4>
+{% endblock %}
+
+{% block dialogBody %}
+	{% if this.model.hasErrors() %}
+	<div class="row">
+		<div class="col-lg-10 col-lg-offset-1 alert alert-danger">			
+			{{ html.errorSummary(this.model)|raw }}
+		</div>
+	</div>
+	{% endif %}	
+	{% include this.viewPath('_form') %}
+{% endblock %}
+			 
+{% block dialogFooter %}
+	<button id="btn-cancel" type="button" class="btn btn-default action-close" data-dismiss="modal">{{ Yii_t('button','btn-cancel') }}</button>
+	<button id="btn-create" type="button" class="btn btn-primary">{{ Yii_t('button','btn-create') }}</button>
+{% endblock %}
+	
+{% block onReady %}
+	$('#btn-create').on('click', function() {		
+		$('#id-form').submit();  
+	});	
+	{{ parent() }}
+{% endblock %}	

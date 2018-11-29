@@ -1,0 +1,1 @@
+{"model":"Art","report":{"order":[{"attribute":"title","label":"Title","order":"asc","fields":[]}],"fields":["title","agent","year"]},"select":[],"name":"Number of Artworks in VKA"}

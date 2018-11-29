@@ -1,0 +1,1 @@
+{"model":"Art","report":{"order":[{"attribute":"title","label":"Title","order":"asc","fields":[]}],"fields":["id","title","agent","year","seconds","masterFileSize","is_digitized","tags_gama"]},"select":[{"attribute":"title","value":"Toxus"}],"name":"Test VKA Adm 30.8"}

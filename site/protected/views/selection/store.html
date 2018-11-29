@@ -1,0 +1,33 @@
+{% raw %}
+<div class="panel panel-default col-xs-offset-1 col-xs-10 border" >
+	<div class="panel-heading">
+    <h3 class="panel-title">Save report for later use</h3>
+  </div>
+	
+		<nav class="navbar navbar-default" role="navigation">
+			<div class="container-fluid">
+				<button type="button" class="btn btn-default navbar-btn" ng-click="reportNew()">Create new</button>
+				<button type="button" class="btn btn-default navbar-btn" ng-click="reportOpen()" ng-disabled="reportNameUnique()">Open existing</button>
+								<button type="button" class="btn btn-default navbar-btn" ng-click="reportSave()">Save</button>
+			</div>
+		</nav>	
+	<div class="panel-body" >
+		<form role="form">
+			<div class="form-group">
+				<label for="reportname">Name</label>
+				<input type="text" class="form-control" id="id-reportname" placeholder="Name of the report" ng-model="store.reportUserFilename">
+			</div>		 
+		</form>	 
+		<div class="report-list">
+			<h3>Report available</h3>
+			<div class="well">
+				<div class="report-list" ng-repeat="report in reports" >
+					<span ng-click="store.reportUserFilename=report"
+								ng-dblclick="reportOpen(report)">{{ report }}</span>
+					<span class="pull-right" ng-click="reportDelete(report)"><span class="glyphicon glyphicon-remove-circle"></span></span>
+				</div>
+			</div>	
+		</div>	
+	</div>	 
+</div>
+{% endraw %}

@@ -1,0 +1,1 @@
+{"model":"Art","report":{"order":[{"attribute":"tags_gama","label":"Gama tags","order":"group","fields":[{"attribute":"tags_gama","label":"Gama tags","type":"split"},{"attribute":"count","label":"Count in group","type":"recordcount"}]}],"fields":["title"]},"select":[{"attribute":"agent","value":"to"}],"name":"Gama Tags usages"}

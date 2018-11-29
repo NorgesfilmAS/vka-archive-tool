@@ -1,0 +1,77 @@
+10
+
+dir
+5188
+http://svn.resourcespace.org/svn/resourcespace/plugins/discount_code
+http://svn.resourcespace.org/svn/resourcespace
+
+
+
+2013-10-24T20:43:09.074727Z
+4999
+hfrizen
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+c08608d7-6e46-0410-86ca-f2a6f1370df5
+
+hooks
+dir
+
+discount_code.yaml
+file
+
+
+
+
+2013-02-20T10:35:51.969817Z
+3ac97b8a8b64c66953707fe161bd5d5e
+2012-11-16T13:28:00.534255Z
+4014
+hfrizen
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+182
+
+config
+dir
+
+languages
+dir
+
+dbstruct
+dir
+
+pages
+dir
+

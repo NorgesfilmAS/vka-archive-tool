@@ -1,0 +1,39 @@
+{% extends this.viewPath('main') %}
+
+{% block content %}
+
+{% include this.viewPath('flash') %}
+<div class="bs-content">
+	<div class="row">
+		<div class="col-lg-10">
+		</div>
+	</div>
+  
+	<div class="row ">
+		<div class="col-lg-10">		
+			<h3>File in the upload directory</h3>			
+		</div>
+  </div>
+		<div class="row grid-header">
+			<div class="col-sm-7 " data-sort="id">{{ Yii_t('app','name') }}</div>
+			<div class="col-sm-2 text-right" data-sort="title">{{ Yii_t('app','size') }}</div>			
+			<div class="col-sm-2 " data-sort="year">{{ Yii_t('app','changed') }}</div>
+			<div class="col-sm-1 ">{{ Yii_t('app','MD5') }}</div>
+		</div>	
+	{% for file in files %}
+		<div class="grid-row art-row row table-hover" >	
+			<div class="col-sm-7 grid-col-no-wrap">{{ file.basename }}</div>	
+			<div class="col-sm-2 text-right nowrap">{{ file.sizeText }}</div>				
+			<div class="col-sm-2 ">{{ file.time |date('d/m/Y') }} </div>
+			<div class="col-sm-1 text-center">
+				<a href="{{ this.createUrl('site/uploadedFiles', {'filename': file.basename })}}"><span class="glyphicon glyphicon-retweet"></span></a> 
+			</div>			
+		</div>	
+  {% else %}
+    Strange: There are no uploaded files 
+	{% endfor %}	
+		</div>
+  </div>
+</div>
+{% endblock %}
+		

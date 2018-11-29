@@ -1,0 +1,49 @@
+{#
+  listing of the groups and their stateautoescape
+#}
+
+{% extends this.viewPath('main') %}
+
+{% block content %}
+<div id="scroll" class="bs-content">
+	<h2>{{ Yii_t('app','groups') }}</h2>
+	
+	<div class="row grid-header">
+		<div class="col-xs-1 text-right sort-key" data-sort="id">{{ Yii_t('app','id') }}</div>
+		<div class="col-xs-4 sort-key" data-sort="name">{{ Yii_t('app','name') }}</div>
+		<div class="col-xs-4 sort-key" data-sort="parent">{{ Yii_t('app','parent') }}</div>
+	</div>
+	{{ this.widget( 'zii.widgets.CListView', {
+			'id' :  'id-grid',
+			'dataProvider' : model.search,					
+			'itemView' : 'viewGroupList',
+			'template' : '{items} {pager}',
+			'pager' : {
+	          'class' : 'toxus.extensions.infiniteScroll.IasPager', 
+             'rowSelector' : '.art-row', 
+             'listViewId'  : 'id-grid', 
+             'header' : '',
+             'loaderText' : '<img src="'~App.baseUrl~'/images/loading.gif'~'"/ >',
+             'options' : {
+								'history' : false, 'triggerPageTreshold' : 10, 'trigger' :'Load more' 
+						}		
+         }
+		}, true) | raw }}			
+</div>
+<script type="text/javascript">
+  function bindEvents(id, result)
+	{
+		$('.a-url').on('click', function() {
+			window.location = $(this).data('url');
+		});
+		{{ this.getReady('modal-dialog') |raw }}
+	}
+</script>	
+
+{% endblock %}
+	
+	
+{% block onReady %}
+  $('.menu-groups').addClass('active');
+	{{ parent() }}
+{% endblock %}	

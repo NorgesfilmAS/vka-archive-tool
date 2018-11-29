@@ -1,0 +1,28 @@
+{% extends this.viewPath('main') %}
+
+{# no menu for this form on the left side #}
+{% block menuLeft %}
+{% endblock %}
+
+{% block content %}
+
+<div class="row {{ class | default('dialog') }}">
+	<div class="col-sm-8 col-xs-10 msgbox-layout border well">
+		<div class="col-sm-12">
+			<h2>{% block title %}{{ form.title}} {{ title }} {% endblock %}</h2>
+			{% include this.viewPath('flash') %}
+			{% block message %}{{ message  |raw }}{% endblock %}
+			</div>
+		<div class="{% if this.model.hasErrors() %}shake{% endif %} col-sm-12">		
+			{% if form %}
+			<div class="bs-content">
+		{% include this.viewPath('_form') %}
+			</div>		
+		{% include this.viewPath('_buttons') %}
+			{% endif %}
+		{% block endMessage %}{{ endMessage |raw}}{% endblock %}	
+		</div>		
+	</div>
+</div>	  
+	
+{% endblock %}

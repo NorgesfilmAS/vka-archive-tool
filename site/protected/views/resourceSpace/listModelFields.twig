@@ -1,0 +1,31 @@
+{% extends this.viewPath('main') %} {# "views/layouts/main.twig" #}
+
+{% block content %}
+	<div class="hero-unit">
+		<div class="container">
+			<h2>Fields of <b>{{ rs.modelName(modelId) }}</b></h2>
+		</div>
+	</div>	
+	{% block pageContent %}
+	<div class="container clearfix" id="main-content"> 
+		<table>
+			<thead>
+				<tr>
+					<td>ID</td>
+					<td>name</td>
+					<td>type</td>
+					<td>options</td>
+			</thead>
+			<tbody>
+				{% for id, field in this.model %}
+				<tr>
+					<td>{{ id }}</td>
+					<td>{{ field.name }}</td>
+					<td>{{ field.optionText }}</td>					
+				</tr>	
+				{% endfor %}	
+			</tbody>	
+		</table>
+	</div>		
+  {% endblock %}
+{% endblock %}

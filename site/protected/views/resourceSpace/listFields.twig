@@ -1,0 +1,29 @@
+{% extends this.viewPath('main') %} {# "views/layouts/main.twig" #}
+
+{% block content %}
+	<div class="hero-unit">
+		<div class="container">
+			<h2>Listing fields for {{ model.modelName }}</h2>
+		</div>
+	</div>	
+	{% block pageContent %}
+	<div class="container clearfix" id="main-content"> 
+		<table>
+			<thead>
+				<tr>
+					<td>name</td>
+					<td>value</td>
+			</thead>
+			<tbody>
+				
+				{% for fieldName in model.attributeNames() %}
+				<tr>
+					<td>{{ model.attributeLabel(fieldName) }}</td>
+					<td>{{ model.__get(fieldName) }}</td>
+				</tr>	
+				{% endfor %}	
+			</tbody>	
+		</table>
+	</div>		
+  {% endblock %}
+{% endblock %}

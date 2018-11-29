@@ -1,0 +1,14 @@
+{#
+
+#}
+<table>
+	<tr><th>Artworks per decennia</th></tr>
+	{% for list in model %}
+		{% for art in list %}
+		{% if loop.first %}
+		<tr><td colspan="2">{{ art.decennia | default('unknown') }} - number of works: {{ list | length }}</td></tr>
+		{% endif %}
+		<tr><td>&nbsp;</td><td>{{ art.title }}</td></tr>
+		{% endfor %}	
+	{% endfor %}
+</table>

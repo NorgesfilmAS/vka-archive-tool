@@ -1,0 +1,85 @@
+{# 
+	changes made by the user
+#}
+
+{% extends this.viewPath('main') %}
+
+{% block content %}
+	{% include this.viewPath('caption') %}
+	<div class="row">
+		<div class="col-sm-12">
+		This list the changes by the user, grouped by date and resource changed.
+		</div>
+	</div>
+	<div class="row">
+		{% if this.model.transactionDates | length > 0 %}
+		<div class="col-sm-2">
+			<div class="panel panel-default" style='height: 390px;'>
+				<div class="panel-heading">{{ Yii_t('app', 'date') }}</div>
+				<div class="panel-body panel-no-padding list-dates" >
+					{% for date in this.model.transactionDates %}
+						<div class="select-date clickable panel-item-full" data-url="{{this.createUrl(listBy, {'id' : id, 'd': date | date('Y-m-d')}) }}">{{ date | date('d/m/Y') }}</div>
+					{% endfor %}
+				</div>
+			</div>			
+		</div>
+		<div class="col-sm-5" >
+			<div class="panel panel-default" style='height: 390px;'>
+				<div class="panel-heading">{{ Yii_t('app', 'Art/Artist') }}</div>
+				<div class="panel-body panel-no-padding" id="resource-list" style="overflow-y: scroll; height:350px;">
+				</div>
+			</div>	
+		</div>		
+		<div class="col-sm-5">
+			<div class="panel panel-default">
+				<div class="panel-heading">{{ Yii_t('app', 'Information') }}</div>
+				<div class="panel-body" id="changes">
+				</div>
+			</div>				
+		</div>
+		{% else %}
+			<br/><br/><br/><br/><br/><br/>
+			<div class="col-sm-6 col-sm-offset-3">
+				<div class="well well-lg text-center">
+					<strong>{{ Yii_t('app', 'there are no transactions') }}</strong>
+				</div>	
+			</div>	
+		{% endif %}
+	</div>	
+{% endblock %}
+	
+	
+{% block onReady %}
+	function bindResource() {
+		$('.cls-transaction').on('click', function() {
+			url = $(this).data('url')
+			// $('#change-list').html('<div class="wait-icon"><center>{{ Yii_t('app', 'loading ...') }}</center></div>');
+			$('.cls-transaction').removeClass('mark-active');
+			$(this).addClass('mark-active');
+			$.ajax({
+					url: url,
+					dataType: 'html',
+					success: function(data) {
+							$('#changes').html(data);
+					}
+			});
+		});
+		$('#changes').html('');
+	}
+
+	$('.select-date').on('click', function() {
+		$('.select-date').removeClass('mark-active');
+		$(this).addClass('mark-active');
+		url = $(this).data('url');
+		
+		$('#resource-list').html('<div class="wait-icon"><center>{{ Yii_t('app', 'loading ...') }}</center></div>');
+		$('#resource-list').load(url, function() {
+			bindResource();
+		});	
+		bindResource();
+	});
+
+	
+  $('{{ menuItem | replace({ '~key~' : model.id} ) }}').addClass('active');	
+	{{ parent() }}
+{% endblock %}	

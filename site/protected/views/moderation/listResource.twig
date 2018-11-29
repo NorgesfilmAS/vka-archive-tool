@@ -1,0 +1,14 @@
+{# 
+	list the resource defined by resource 
+#}
+{% for resource in model %}
+<div class="cls-transaction clickable panel-item-full" data-url="{{ this.createUrl(detailUrl, {'id': id, 'd': date, 'resource_id' : resource.id}) }} ">
+	{{ resource.caption }}
+	<a href="{{ this.createUrl( resource.type | lower ~ '/view',{'id' :resource.id}) }}">
+		<span class="glyphicon glyphicon-link"></span>
+	</a>	
+	<div class='pull-right'>{{ resource.id}}</div>
+</div>
+{% else %}
+{{ Yii_t('app', 'No resources found') }} 
+{% endfor %}

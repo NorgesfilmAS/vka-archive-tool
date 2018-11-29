@@ -1,0 +1,1 @@
+{"model":"Art","report":{"order":[{"attribute":"id","label":"Id","order":"asc","fields":[]}],"fields":["id","title","agent"]},"select":[],"name":"Diskspace used"}

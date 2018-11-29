@@ -1,0 +1,166 @@
+{# 
+  alternate file section
+#}
+<div class="panel-group list-toggle" id="accordion">
+	{% set folder = 'XXXXXXX' %}
+
+	{% for altFile in this.model.altFiles %}
+		{% if folder != altFile.folder %}
+			{% if not loop.first %}	{# end the previow #}		
+      </div>
+    </div>
+  </div>		
+			{% endif %}
+  {# writing the header for the accordion #}    
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<span class="pull-right">
+				<a class="display-layout{% if userLayout == 'list' %} active {% endif %}" title="{{ Yii_t('app', 'Show files in a list layout') }}" data-layout="tiles" href="?layout=list">
+					<span class="glyphicon glyphicon-th"></span>
+				</a>&nbsp;
+
+				<a class="display-layout{% if userLayout == 'grid' %} active {% endif %}" title="{{ Yii_t('app', 'show files in a grid layout')}}" data-layout="grid" href="?layout=grid">
+					<span class="glyphicon glyphicon-th-list"></span>
+				</a>			
+			</span>
+			<h4 class="panel-title">
+        {% if altFile.folder %}
+          {{ Yii_t('app','Documents') }} <a data-toggle="collapse" data-parent="#accordion" href="#collapse{{ altFile.id }}"> - {{ altFile.folder }} <span class="caret"></span></a></h4>					
+        {% else %}	
+          <a data-toggle="collapse" data-parent="#accordion" href="#collapse{{ altFile.id }}">{{ Yii_t('app','Documents') }}</a>
+        {% endif %}	
+			</h4>										
+		</div>
+		<div id="collapse{{ altFile.id}}" class="panel-collapse collapse{% if loop.first %} in{% endif %}">
+			<div class="panel-grid row">	
+				{% if userLayout == 'grid' %}
+          <div class="row grid-header">
+            <div class="col-xs-1"></div>
+            <div class="col-xs-7">Name</div>
+            <div class="col-xs-1">Kind</div>
+            <div class="col-xs-1">Size</div>
+          </div>						
+				{% endif %}
+  			{% set folder = altFile.folder %}			
+		{% endif %}
+						
+		{# checking the layout requested by the user #}				
+	{% if userLayout == 'grid' %}
+    
+	<div class="row table-hover file-table" >	
+		<div class="col-xs-1">
+			<img
+					style="width:100%"
+				{% if altFile.isProcessing %}
+					src="{{ App.baseUrl }}/images/processing.jpg"
+				{% else %}
+					class="menu-modal"					
+					src="{{ altFile.tvRatioUrl }}"
+					data-url="{{ this.createUrl(baseClass ~ '/alternative', {'id': altFile.id, 'action':'preview', 'isMaster':0 })}}" 
+					data-compact="1"
+				{% endif %}
+				>			
+		</div>
+		<div class="col-xs-7">{{ altFile.name }}</div>	
+		<div class="col-xs-1 ">{{ altFile.file_extension }}</div>	
+		{# <div class="col-xs-4 grid-col-no-wrap">{{ altFile.description }}</div>	 #}
+		<div class="col-xs-1 text-right grid-col-no-wrap">{{ altFile.fileSize }}</div>	
+
+		<div class="col-xs-2 text-right">
+		{% if altFile.isProcessing %}
+			<span class="processing-job">{{ Yii_t('app', 'Processing') }}</span>
+		{% else %}
+			{% if App.user.hasMenu(baseClass~'/alt-edit') %}
+			<a id="btn-alt-edit-{{ altFile.id }}" class="menu-modal" href="#" data-url="{{ this.createUrl(baseClass~'/alternative', {'id': altFile.id, 'isMaster':0})}}" >
+				<span class="glyphicon glyphicon-pencil"></span>
+			</a>
+			{%endif %}
+			{% if App.user.hasMenu(baseClass~'/alt-edit') %}
+			<a id="btn-alt-dele-{{ altFile.id }}" class="id-confirm"  href="#" data-url="{{ this.createUrl(baseClass ~ '/alternative', {'id':altFile.id, 'action': 'delete', 'isMaster':0})}}" data-confirm="{{ Yii_t('app','Do you want to remove {filename}?',{'{filename}': altFile.name })}}">
+				<span class="glyphicon glyphicon-remove"></span>
+			</a>
+			{% endif %}
+			<a id="btn-alt-prev-{{ altFile.id }}" title="{{ Yii_t('app', 'Preview this file')}}" class="menu-modal" href="#" data-div-debug="#id-preview" data-url="{{ this.createUrl(baseClass ~ '/alternative', {'id': altFile.id, 'action':'preview', 'isMaster':0 })}}" >
+				<span class="glyphicon glyphicon-expand"></span>
+			</a>
+			{% if App.user.hasMenu(baseClass~'/alt-edit') %}
+			<a id="btn-alt-down-{{ altFile.id }}" title="{{ Yii_t('app', 'Download this file')}}" target="_blank" href="{{ this.createUrl(baseClass ~ '/alternative', {'id': altFile.id, 'action': 'download', 'isMaster' : 0})}}" >
+				<span class="glyphicon glyphicon-cloud-download"></span>
+			</a>
+			{% endif %}
+		{% endif %}
+		</div>	
+	</div>		
+    
+	{% else %}		
+		<div class="col-sm-4 thumb-preview">
+			<img
+					style="width:100%"
+				{% if altFile.isProcessing %}
+					src="{{ App.baseUrl }}/images/processing.jpg"
+				{% else %}
+					class="menu-modal"					
+					src="{{ altFile.tvRatioUrl }}"
+					data-url="{{ this.createUrl(baseClass ~ '/alternative', {'id': altFile.id, 'action':'preview', 'isMaster':0 })}}" 
+					data-compact="1"
+				{% endif %}
+				>
+			
+			<div class="thumb-info">				
+				<div class="infoXXX">
+					<span class="info">{{ altFile.name }}</span>
+					<div class="pull-right btn-group btn-alt-dropdown ">
+						<button href="#" class="btn btn-default btn-xs dropdown-toggle btn-dim" data-toggle="dropdown"><span class="caret"></span></button>
+						<ul class="dropdown-menu dropdown-menu-small no-opacity" >
+							{% if App.user.hasMenu(baseClass~'/alt-edit') %}
+							<li>
+								<a id="btn-alt-edit-{{ altFile.id }}" class="menu-modal" href="#" data-url="{{ this.createUrl(baseClass~'/alternative', {'id': altFile.id, 'isMaster':0})}}" >
+									{{ Yii_t('button','btn-edit') }}
+								</a>
+							</li>
+							{% endif %}
+							{% if App.user.hasMenu(baseClass~'/alt-edit') %}
+							<li>
+								<a id="btn-alt-dele-{{ altFile.id }}" class="id-confirm"  href="#" data-url="{{ this.createUrl(baseClass ~ '/alternative', {'id':altFile.id, 'action':'delete', 'isMaster':0})}}" data-confirm="{{ Yii_t('app','Do you want to remove ')}} '{{ altFile.name }}'?">
+									{{ Yii_t('button','btn-delete') }}
+								</a>
+							</li>								
+							{% endif %}
+							<li>
+								<a id="btn-alt-prev-{{ altFile.id }}" 
+									 class="menu-modal" 
+									 href="#" data-div-debug="#id-preview" 
+									 data-url="{{ this.createUrl(baseClass ~ '/alternative', {'id': altFile.id, 'action':'preview', 'isMaster':0 })}}" 
+									 data-compact="1">
+									{{ Yii_t('button','btn-preview') }}
+								</a>
+							</li>			
+							{% if App.user.hasMenu(baseClass~'/alt-edit') %}
+							<li>
+								<a id="btn-alt-down-{{ altFile.id }}" href="{{ this.createUrl(baseClass ~ '/alt-download', {'id': altFile.id, 'isMaster' : 0})}}" >
+									{{ Yii_t('button','btn-download') }}
+								</a>
+							</li>						
+							{% endif %}
+							{% if App.user.hasMenu(baseClass~'/alt-edit') %}
+							<li>
+								<a id="btn-alt-check-{{ altFile.id}}" href="{{ this.createUrl(baseClass ~ '/altcheck',  {'id': altFile.id }) }}">
+									{{ Yii_t('app','Check status') }}
+								</a>
+							</li>
+							{% endif %}
+						</ul>
+					</div>		
+				</div>	
+			</div>
+		</div>	
+	{% endif %}					
+		{% if loop.last %}	{# end the preview #}
+      </div>	
+    </div>
+  </div>
+		{% endif %}		
+	{% endfor %}	
+		
+</div>
+  

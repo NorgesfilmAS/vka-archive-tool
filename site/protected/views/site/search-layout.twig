@@ -1,0 +1,146 @@
+
+
+<form class="id-search" method="get" action="{{ this.createUrl('site/search')}}">
+	<div class="nav-form nav bs-sidenav">	
+		<input type="hidden" class="id-layout" value="{{ layout }}" name="layout"/>
+		<div class="pull-right" style="display: inline-block">
+			<ul class="list-layout">
+				<li id="id-large"><a href="#" class="display-layout {% if layout=='grid' %}active{%endif%}" data-layout="grid" title="list"><span class="glyphicon glyphicon-th-list"></span></a></li>
+				<li id="id-4column"><a href="#" class="display-layout {% if layout!='grid' %}active{%endif%}" data-layout="tiles"><span class="glyphicon glyphicon-th"></span></a></li>
+			</ul>
+		</div>
+
+		<label for="id-agent">{{ Yii_t('app','Artist') }}</label>
+		<input type="text" id="id-agent" name="Art[agent]" class="form-control cls-search" value="{{ this.model.agent }}"/>		
+		<label for="id-title">{{ Yii_t('app','Title') }}</label>
+		<input type="text" id="id-title" name="Art[title]" class="form-control cls-search" value="{{ this.model.title }}" />
+		<div class="nav-options">
+			<div class="nav-option-header cls-toggle"><label><span class="caption">{{ Yii_t('app','Show extra search') }}</span><span class="pull-right nav-arrow">&#x25BC</span></label></div>
+			<div class="nav-option-body" style="display: none;">
+				<label for="id-year">{{ Yii_t('app','Year') }}</label>
+				<input type="year" id="id-title" name="Art[year]" class="form-control cls-search" value="{{ this.model.year }}"/>
+				
+				<label for="id-agent">{{ Yii_t('app','Digitization') }}</label>
+				<select name="Art[is_digitized]" class="form-control cls-select-search cls-digitization">
+					<option value=""></option>
+			{% for key, caption in this.model.attributeOptions('is_digitized') %}
+					<option value="{{ key }}">{{ caption }}	
+			{% endfor %}	
+				</select>
+				<label for="id-collection">{{ Yii_t('app','Collection') }}</label>
+				<select name="Art[collection]" class="form-control cls-select-search cls-collection">
+					<option value=""></option>
+			{% for caption in this.model.attributeOptions('collection') %}
+					<option 
+							data-toggle="popover" 
+							data-content="{{ this.model.collectionInfo(caption)}}" 
+							data-trigger="hover" 
+							value="{{ caption }}">
+							{{ caption }}	
+			{% endfor %}					
+				</select>	
+			</div>
+		</div>		
+		<label for="id-agent">{{ Yii_t('app','Direct search on ID') }}
+    {% if App.user.hasFlash('error') %}
+      <div class="text-warning">
+        {{ App.user.getFlash('error') }}
+      </div>
+    {% endif %}    
+    </label>
+		<input type="text" id="id-agent" name="Art[searchId]" class="form-control" value="{{ this.model.searchId }}"/>		
+		<label for="id-sort">{{ Yii_t('app','Sort by') }}</label>
+		<select name="Art[searchOrder]" class="id-sort form-control">
+			<option value="agent" {% if this.model.searchOrder == 'agent' %}selected="1"{% endif %}>{{ Yii_t('app','artist') }}</option>
+			<option value="title" {% if this.model.searchOrder == 'title' %}selected="1"{% endif %}>{{ Yii_t('app','title') }}</option>
+			<option value="year" {% if this.model.searchOrder == 'year' %}selected="1"{% endif %}>{{ Yii_t('app','year') }}</option>
+			<option value="id" {% if this.model.searchOrder == 'id' %}selected="1"{% endif %}>{{ Yii_t('app','id') }}</option>
+			<option value="creation" {% if this.model.searchOrder == 'creation' %}selected="1"{% endif %}>{{ Yii_t('app','creation date') }}</option>
+			<option value="digitization_date" {% if this.model.searchOrder == 'digitization_date' %}selected="1"{% endif %}>{{ Yii_t('app','digitization date') }}</option>
+			<option value="received_date" {% if this.model.searchOrder == 'received_date' %}selected="1"{% endif %}>{{ Yii_t('app','received date') }}</option>			
+		</select>
+		<div class="bs-nav-searchbar">
+		<input type="submit" class="btn btn-info pull-right" value="{{Yii_t('app','search') }}"/>
+		</div>
+	</div>
+</form>	
+{{ this.onReady("
+
+$('.display-layout').on('click', function() {	
+	$('.display-layout').parent().removeClass('active');
+	$('.id-layout').val($(this).data('layout'));
+	$('.id-'+$(this).data('layout')).addClass('active');
+	$('.id-search').submit();
+});
+$('.id-'+$('#id-layout').val()).addClass('active');
+$('.id-sort').on('change', function() {
+	$(this).closest('form').submit();
+
+});
+var theForm;
+function formRefreh() {
+	if (document.getElementById('id-grid') !== null) {
+		$.fn.yiiListView.update('id-grid', {
+			data: theForm.serialize()
+		});
+	}	
+}
+$('.cls-select-search').on('change', function() {
+	theForm = 	$(this).closest('form');
+	setTimeout(formRefreh, 150);
+})
+
+$('.cls-search').on('keyup', function(e) {
+	//console.log('changed: '+ e.keyCode);
+	switch  (e.keyCode) {
+       case 40: // down arrow
+        case 38: // up arrow
+        case 16: // shift
+        case 17: // ctrl
+        case 18: // alt
+				case 37: // left
+				case 39: // right
+          break;
+				default: 
+					theForm = 	$(this).closest('form');
+					setTimeout(formRefreh, 150);
+					return;
+	}				
+});
+$('.cls-search').on('change', function() {
+	if (document.getElementById('id-grid') === null) {
+		$(this).closest('form').submit();
+	}
+});
+
+$('.cls-toggle').on('click', function() {
+	if ($('.nav-option-body').is(':visible')) {
+		$('.nav-option-body').hide('blind');	
+		$('.caption').text('" ~ Yii_t('app', 'show extra search') ~"');
+		$('.nav-arrow').html('&#x25BC');
+	} else {	
+		$('.nav-option-body').show('blind');	
+		$('.caption').text('" ~ Yii_t('app', 'hide extra search') ~"');
+		$('.nav-arrow').html('&#x25B6');
+	}
+});
+$('.cls-digitization').val('"~this.model.is_digitized~"');
+$('.cls-collection').val('"~this.model.collection|join~"'); 
+
+$('.cls-collection').on('mouseover', function(e) {
+    var $e = $(e.target); 
+    if ($e.is('option')) {
+			$('.cls-collection').popover('destroy');
+			$('.cls-collection').popover({
+					trigger: 'hover',
+					placement: 'right',
+					title: $e.attr('data-title'),
+					content: $e.attr('data-content'),
+					html: 1,
+					delay : {show: 250, hide:600}
+			}).popover('show');
+    }
+});
+
+
+") }}

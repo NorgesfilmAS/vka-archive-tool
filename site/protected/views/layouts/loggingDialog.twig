@@ -1,0 +1,25 @@
+{#
+  form displayed in a dialog popup 
+#}
+{% extends this.viewPath('dialog') %}
+
+{% block dialogHeader %}
+<h4>{{ Yii_t('app','on date by user', {'date': date, 'user' : fullname}) }}</h4>
+{% endblock %}
+
+{% block dialogBody %}
+	<div class="row  no-horz-margin">
+		
+	</div>
+	{% for fieldname, value in this.model.loggingFields(date, user_id,99999) %}
+	<div class="row  o-horz-margin">
+		<div class="col-sm-12">{{ fieldname }}</div>
+	</div>
+	<div class="row no-horz-margin">
+		{{ value | raw }}
+	</div>				
+	{% endfor %}	
+
+{% endblock %}
+		
+

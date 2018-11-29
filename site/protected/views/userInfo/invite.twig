@@ -1,0 +1,14 @@
+{# 
+	empty Twig template 
+
+#}
+{% extends this.viewPath('main') %}
+
+{% block content %}
+  {% include this.viewPath('caption') %}
+<div class="row">
+	<div class="col-sm-8 well well-small">Send an invitation to an user to become part the Videokunst Archive</div>
+</div>
+	{% include this.viewPath('_form') %}
+	{% include this.viewPath('_buttons') %}
+{% endblock %}

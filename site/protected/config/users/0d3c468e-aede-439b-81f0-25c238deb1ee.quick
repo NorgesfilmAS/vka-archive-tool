@@ -1,0 +1,1 @@
+{"model":"Art","report":{"order":[{"attribute":"agent","label":"Artist","order":"asc","fields":[]},{"attribute":"title","label":"Title","order":"asc","fields":[]}],"fields":["agent","title","year","masterFileSize"]},"select":[{"attribute":"year","value":"<1983"},{"attribute":"agent_id.gender","value":"Female","compare":"="}],"name":"Number of Artist in VKA"}

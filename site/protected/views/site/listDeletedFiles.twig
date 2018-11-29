@@ -1,0 +1,56 @@
+{% extends this.viewPath('main') %}
+
+{% block content %}
+
+{% if this.model.hasErrors() %}
+<div class="bs-content">
+	{# must first display any error connected to the main record #}		
+	<div class="row">
+		<div class="col-lg-10 col-offset-2 alert alert-danger">			
+			{{ html.errorSummary(this.model)|raw }}
+		</div>
+	</div>
+</div>
+{% endif %}
+
+<div class="bs-content">
+	<div class="row">
+		<div class="col-lg-10">
+			<h3>Warning</h3>
+			Resource Space does not store the original filename. This makes it a lot harder to restore file.<br />
+			The only thing know is the id of the Art work the file was connected to and the extension.
+		</div>
+	</div>
+  
+	<div class="row ">
+		<div class="col-lg-10">		
+			<h3>File in the delete directory</h3>			
+		</div>
+  </div>
+		<div class="row grid-header">
+			<div class="col-sm-1 text-right" data-sort="id">{{ Yii_t('app','id') }}</div>
+			<div class="col-sm-2 text-right" data-sort="title">{{ Yii_t('app','size') }}</div>
+			<div class="col-sm-2 text-right" data-sort="title">{{ Yii_t('app','extension') }}</div>
+			<div class="col-sm-2 " data-sort="year">{{ Yii_t('app','changed') }}</div>
+			<div class="col-sm-1 ">{{ Yii_t('app','view') }}</div>
+			<div class="col-sm-2 ">{{ Yii_t('app','download') }}</div>
+			<div class="col-sm-1 ">{{ Yii_t('app','restore') }}</div>
+		</div>	
+	{% for file in files %}
+		<div class="grid-row art-row row table-hover" >	
+			<div class="col-sm-1 text-right  grid-col-no-wrap">{{ util.substringIndex(util.substringIndex(file.name, '.', 1), '_',1) }}</div>	
+			<div class="col-sm-2 text-right nowrap">{{ file.sizeText }}</div>	
+			<div class="col-sm-2 text-right nowrap">{{ file.extension }}</div>	
+			<div class="col-sm-2 ">{{ file.time |date('d/m/Y') }} </div>
+			<div class="col-sm-1 text-center"><a href="#" class="menu-modal" data-url="{{ this.createUrl('site/deleteView', {'name': file.filename })}}"><span class="glyphicon glyphicon-eye-open"></span></a> </div>
+			<div class="col-sm-2 text-center"><a href="{{ this.createUrl('site/deleteDownload', {'name' : file.filename})}}"><span class="glyphicon glyphicon-download"></span></a></div>
+			<div class="col-sm-1 text-center"><a href="{{ this.createUrl('site/deleteRestore', {'name': file.filename })}}"><span class="glyphicon glyphicon-retweet"></span></a> </div>			
+		</div>	
+  {% else %}
+    Strange: There are no delete files 
+	{% endfor %}	
+		</div>
+  </div>
+</div>
+{% endblock %}
+		

@@ -1,0 +1,37 @@
+[submodule "assetsBase/bootstrap302"]
+	path = assetsBase/bootstrap302
+	url = https://github.com/twbs/bootstrap.git
+[submodule "assetsBase/video-lightning"]
+	path = assetsBase/video-lightning
+	url = https://github.com/musocrat/jquery-video-lightning.git
+[submodule "assetsBase/typeahead2"]
+	path = assetsBase/typeahead2
+	url = https://github.com/twitter/typeahead.js.git
+[submodule "assetsBase/videojs"]
+	path = assetsBase/videojs
+	url = https://github.com/videojs/video.js.git
+[submodule "assetsBase/jquery-sortable"]
+	path = assetsBase/jquery-sortable
+	url = https://github.com/johnny/jquery-sortable.git
+[submodule "assetsBase/bootstrap-switch"]
+	path = assetsBase/bootstrap-switch
+	url = https://github.com/nostalgiaz/bootstrap-switch.git
+[submodule "extensions/postmark/api"]
+	path = extensions/postmark/api
+	url = https://github.com/balaclark/postmark-yii.git
+
+[submodule "assetsBase/tinymce2"]
+	path = assetsBase/tinymce2
+	url = https://github.com/tinymce/tinymce.git
+[submodule "extensions/mailchimp/api"]
+	path = extensions/mailchimp/api
+	url = https://bitbucket.org/mailchimp/mailchimp-api-php.git
+[submodule "assetsBase/ajaxForm"]
+	path = assetsBase/ajaxForm
+	url = https://github.com/malsup/form.git
+[submodule "assetsBase/angularJs"]
+	path = assetsBase/angularJs
+	url = https://github.com/angular/angular.js.git
+[submodule "extensions/stripe"]
+	path = extensions/stripe
+	url = https://github.com/toxus/stripe-php.git

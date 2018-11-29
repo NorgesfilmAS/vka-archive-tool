@@ -1,0 +1,1 @@
+{"model":"Art","report":{"order":[{"attribute":"agent","label":"Artist","order":"asc","fields":[]}],"fields":["title","agent","is_digitized"]},"select":[{"attribute":"agent_id.gender","value":"Male","compare":"="}],"name":"digitised"}

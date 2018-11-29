@@ -1,0 +1,80 @@
+10
+
+dir
+5188
+http://svn.resourcespace.org/svn/resourcespace/plugins/youtube_publish
+http://svn.resourcespace.org/svn/resourcespace
+
+
+
+2013-11-15T11:42:19.016128Z
+5094
+hfrizen
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+c08608d7-6e46-0410-86ca-f2a6f1370df5
+
+hooks
+dir
+
+include
+dir
+
+youtube_publish.yaml
+file
+
+
+
+
+2013-02-20T10:35:52.013818Z
+e97b851e16bd59cf3c2d14115ad55ead
+2013-02-19T20:25:08.850261Z
+4296
+nbraddy
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+170
+
+config
+dir
+
+languages
+dir
+
+dbstruct
+dir
+
+pages
+dir
+

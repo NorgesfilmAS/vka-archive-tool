@@ -1,0 +1,120 @@
+<!doctype html>
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en" dir="ltr"> <![endif]-->
+<!--[if IE 7]> <html class="no-js lt-ie9 lt-ie8" lang="en" dir="ltr"> <![endif]-->
+<!--[if IE 8]> <html class="no-js lt-ie9" lang="en" dir="ltr"> <![endif]-->
+<!--[if gt IE 8]><!--><html class="no-js" lang="en" dir="ltr"><!--<![endif]-->
+<head>
+	{{ this.addHeader() }}
+	<meta charset="UTF-8" />		
+<!--	<meta http-equiv="X-UA-Compatible" content="IE=5, IE=8, IE=9, IE=10" > -->
+<title>{% block pageTitle %}{{ this.pageTitle }}{% endblock %}</title>
+{{ this.registerCore('jquery', true) }}
+{{ this.registerPackage('bootstrap') }}
+{{ this.registerPackage('crisp') }}
+{{ this.registerPackage('core') }}
+
+<!-- Meta Data ================ -->
+<meta name="description" content="{{ App.params.description | default('site description') }}" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+
+<!--[if IE 7]>
+<link rel="stylesheet" href="{{ App.baseUrl }}/css/font-awesome-ie7.min.css">
+<![endif]-->
+<link rel="stylesheet" href='http://fonts.googleapis.com/css?family=Ubuntu:400,700,700italic,400italic' />
+<link rel="stylesheet" href='http://fonts.googleapis.com/css?family=Raleway:300,500,600,700' />
+{% for css  in App.template.css %}
+  {{ this.registerCssFile(css) }}
+{% endfor %}
+
+<!-- Icons ================ -->
+<!-- For non-Retina iPhone, iPod Touch, and Android 2.1+ devices: -->
+<link rel="apple-touch-icon-precomposed" href="apple-touch-icon-precomposed.png" />
+<!-- For first- and second-generation iPad: -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="apple-touch-icon-72x72-precomposed.png" />
+<!-- For iPhone with high-resolution Retina display: -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="apple-touch-icon-114x114-precomposed.png" />
+<!-- For third-generation iPad with high-resolution Retina display: -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="apple-touch-icon-144x144-precomposed.png" />
+<link rel="shortcut icon" href="favicon.ico" />
+
+<!-- Open Graph for facebook
+http://graph.facebook.com/[UserName] replace [UserName] 
+with yours and get your fb:admis content information where the XXXX goes.
+================================================== -->
+<meta property="og:title" content="" />
+<meta property="og:type" content="" />
+<meta property="og:url" content="" />
+<meta property="og:image" content=""/>
+<meta property="og:site_name" content="" />
+<meta property="fb:admins" content="XXXXX" />
+<meta property="og:locale" content="en_us" />
+<meta property="og:description" content="  " />
+
+<!-- JS JQuery in the head you can use ajax if you want ================ -->
+</head>
+<body class="index" data-target=".bs-docs-sidebar" data-spy="scroll" data-twttr-rendered="true">
+<!-- begin accesibility skip to nav skip content -->
+<ul class="visuallyhidden" id="top">
+	<li><a href="#nav" title="Skip to navigation" accesskey="n">{{ this.t('Skip to navigation') }}</a></li>
+	<li><a href="#page" title="Skip to content" accesskey="c">{{ this.t('Skip to content') }}</a></li>
+</ul>
+<!-- end /.visuallyhidden accesibility--> 
+<!-- mobile navigation trigger-->
+<h5 class="mobile_nav"><a href="javascript:void(0)">&nbsp;<span></span></a></h5>
+<!--end mobile navigation trigger-->
+{% block preheader %}
+<section class="container preheader"> 
+	{# this is the login for the user #}
+	<nav class="user clearfix"> {{ this.menuHtml('user') }}</nav>
+	{# close user nav #}
+	
+	<ul class="social">
+	{% if App.params.debug != false %}	
+		{{ this.menuHtml('toolbar') }}	
+	{% else %}	
+		<li><a class="socicon small rss" href="#" data-placement="bottom" title="Subscribe to our RSS feed"></a></li>
+		<li><a class="socicon small facebook" href="#" data-placement="bottom" title="Follow us on Facebook"></a></li>
+		<li><a class="socicon small twitterbird" href="#" data-placement="bottom" title="Follow us on Twitter"></a></li>
+		<li><a class="socicon small linkedin" href="#" data-placement="bottom" title="Follow us on LinkedIn"></a></li>
+		<li><a class="socicon small dribbble" href="#" data-placement="bottom" title="Follow us on dribble"></a></li>
+		<li><a class="socicon small vimeo" href="#" data-placement="bottom" title="Follow us on Vimeo"></a></li>	
+	{% endif %}
+	</ul>			
+</section>
+{% endblock %}
+<!-- begin .header-->
+<header class="header  clearfix"> 	
+	<div class="container"> 
+		<nav id="main_menu">
+			{{ this.menuHtml('system') }}
+		</nav>
+		{% include this.viewPath('logo') %}	
+	</div>
+</header>
+<!-- close /.header --> 
+<!-- begin #page - the container for everything but header -->
+
+{#<div id="page"> #}
+	
+	{% block content %}The content{% endblock %}	
+
+	<div class="modal fade hide" id="id-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" >
+		<div class="modal-body">
+
+		</div>
+	</div>
+	<footer id="footer" class="clearfix">
+	{% include this.viewPath('footer') %}
+	</footer>		
+	
+	<span class="backToTop"><a href="#top">back to top</a></span> 
+{# </div> #}
+
+{# the page scripts #}
+{% block scripts %}{% endblock %}
+{% for script in App.template.scripts  %}
+	{{ this.registerScriptFile(script, true) }}
+{% endfor %}
+</body>
+</html>

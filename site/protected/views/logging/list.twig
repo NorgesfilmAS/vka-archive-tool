@@ -1,0 +1,83 @@
+{#
+  The master page of all pages
+#}
+
+{% extends this.viewPath('main') %}
+
+
+{% block content %}
+{% include this.viewPath('caption') %}
+
+<div class="bs-content">
+	{# must first display any error connected to the main record #}		
+	{% if model.hasErrors() %}
+	<div class="row">
+		<div class="col-lg-10 col-offset-2 alert alert-danger">			
+			{{ html.errorSummary(model)|raw }}
+		</div>
+	</div>
+	{% endif %}	
+	<form id="id-filter"> 	
+		<input id="id-order-by" type="hidden" name="Logging[orderBy]" value="date"/>
+		<div class="row grid-header">		
+			<div class="col-sm-2 sort-key" data-sort="date">{{ Yii_t('app','date') }}</div>
+			<div class="col-sm-1 sort-key" data-sort="action">{{ Yii_t('app','action') }}</div>
+			<div class="col-sm-1 text-right sort-key" data-sort="id">{{ Yii_t('app','id') }}</div>
+			<div class="col-sm-3 sort-key" data-sort="explain">{{ Yii_t('app','explain') }}</div>
+			<div class="col-sm-2 sort-key" data-sort="user">{{ Yii_t('app','user') }}</div>
+			<div class="col-sm-3 sort-keyXX" data-sort="fields">{{ Yii_t('app','fields') }}</div>
+		</div>
+		<div class="row grid-header">		
+			<div class="col-sm-2 " ><input type="date" name="Logging[date]" value="{{ this.model.date }}" style="width:100%"/></div>
+			<div class="col-sm-2 " >
+				<select name="Logging[action]" style="width:100%" class="trig-change">
+					<option value=""></option>
+				{% for type in this.model.loggingTypes %}
+					<option value="{{ type}}" {% if this.model.action == type %}selected="selected"{%endif %} >{{ Yii_t('app','log-{type}', {'{type}':type}) }}</option>
+				{% endfor %}	
+				</select>		
+			</div>
+			<div class="col-sm-3 " ><input type="text" name="Logging[explain]" value="{{ this.model.title }}" style="width:100%" class="trig-change"/></div>
+			<div class="col-sm-2 " >
+				<select name="Logging[user]" style="width:100%" class="trig-change">
+					<option value=""></option>
+				{% for userId, userName in this.model.users %}
+					<option value="{{ userId }}" {% if this.model.user == userId %}selected="selected"{% endif %}>{{ userName }}</option>
+				{% endfor %}	
+				</select>						
+			</div>
+			<div class="col-sm-3 " ></div>
+		</div>
+		<div class="id-grid">
+		
+		{{ this.widget( 'BootstrapListView', {
+				'id' :  'id-grid',
+				'dataProvider' : this.model.entries,					
+				'itemView' : 'loggingRow',
+				'viewData' : {
+						'url' : this.createUrl('art/logging'),
+				}				
+			}, true) | raw }}	
+		</div>	
+	</form>		
+</div>
+{% endblock %}
+
+
+{% block onReady %}
+  {% if menuItem %}
+		$('{{ menuItem }}').addClass('active');
+	{% endif %}	
+	$('.sort-key').on('click', function() {
+		$('#id-order-by').val($(this).data('sort'));
+		$('#id-filter').submit();
+	})		
+	$('.trig-change').on('change', function() {
+		$('#id-filter').submit();
+	});
+	{{ parent() }}
+{% endblock %}
+	
+	
+	
+	

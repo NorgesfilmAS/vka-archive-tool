@@ -1,0 +1,42 @@
+{#
+ Add an contact to an list given the list
+#}
+<div id="form-base">
+<ul class="nav nav-tabs" id="id-view-tabs">
+	{% block tabCaptions %}
+		<li class="active"><a href="#id-tab-home" data-toggle="tab">{% block tabHomeCaption %}{{ sub.caption |raw}}{%endblock%}</a></li>
+	{% endblock %}	
+</ul>
+
+<div class="tab-content">	
+	{% block tabBody %}
+	<div id="id-tab-home" class="tab-pane active">
+	
+		{% if App.user.hasFlash('error') or App.user.hasFlash('success') or App.user.hasFlash('info') %}
+		<div class="span6x">
+			{% for key, flash in App.user.getFlashes %}
+			<div class="alert alert-{{ key }}">
+				{{ flash }}
+			</div>	
+			{% endfor %}	
+		</div>
+		{% elseif App.user.hasFlash('success') %}	
+
+		{% endif %}	
+		{% block formStart %}<div class="span6x">{% endblock %}
+		{% include this.viewPath('_form') %}
+		{% block formEnd %}</div>{% endblock %}
+	</div>		
+	{% endblock %}	
+</div>
+
+<script>
+  $(function () {
+{% block tabScript %}		
+    $('#id-toolbar').tab();
+		$('.btn-tooltip').tooltip();		
+{% endblock %}		
+  })
+</script>
+</div>
+

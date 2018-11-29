@@ -1,0 +1,176 @@
+{#
+  show the master file and all related files
+	
+params:
+	this.model
+  baseClass: the name of the controller 
+	hideMasterResource: boolean default true, if the masterResource is shown
+
+#}
+{% extends this.viewPath('main') %}
+
+{% block content %}
+{% include this.viewPath('caption') %}
+
+<div class="bs-content">	
+	{# must first display any error connected to the main record #}		
+	{% if this.model.hasErrors() %}
+	<div class="row">
+		<div class="col-lg-10 col-offset-2 alert alert-danger">			
+			{{ html.errorSummary(this.model)|raw }}
+		</div>
+	</div>
+	{% endif %}	
+		{% include this.viewPath('flash') %}	
+	
+	{#---------- the master file of the Resource #}
+	{% if not hideMasterResource and App.user.hasMenu(baseClass~'/master/view') %}	
+	<div class="row">
+		{% if this.model.isProcessing %}
+		<div class="col-sm-offset-8 col-sm-4" >
+			<img id="img-art-{{this.model.id}}" width="100%" src="{{ App.baseUrl }}/images/processing.jpg" />			
+		</div>	
+		{% else %}		
+		<div class="col-xs-3 col-md-4" >
+			<ul class="button-list">
+				{% if this.model.masterFileExists %}
+				<li>
+					<a id="btn-preview" href="#" data-url="{{ this.createUrl(baseClass ~'/preview', {'id' : this.model.id }) }}"  class="btn btn-info menu-modal btn-block">Preview</a>
+				</li>
+				{% endif %}
+				{% if App.user.hasMenu(baseClass~'/download')==1 and this.model.masterFileExists %}
+				<li>
+					<a href="{{ this.createUrl(baseClass ~ '/alt-download', {'id': this.model.id, 'isMaster' : 1})}}" class="btn btn-info btn-block">Download</a>
+				</li>			
+				{% endif %}
+				{% if App.user.hasMenu(baseClass~'/upload')==1 %}
+					{% if this.model.masterFileExists and App.user.hasMenu(baseClass~'/file/change') %}
+						<li>
+							<a id="btn-link" href="#" data-url="{{ this.createUrl(baseClass~'/upload', {'id' : this.model.id, 'isMaster': 1}) }}"  class="btn btn-info menu-modal btn-block">{{ Yii_t('app','Change file') }}</a>
+						</li> 
+          {% elseif this.model.masterFileExists and App.user.hasMenu(baseClass~'/changerequest') %}  
+						<li>
+							<a id="btn-link" href="#" data-url="{{ this.createUrl(baseClass~'/changerequest', {'id' : this.model.id, 'isMaster': 1}) }}"  class="btn btn-info menu-modal btn-block">{{ Yii_t('app','Request change file') }}</a>
+						</li>             
+					{% elseif not this.model.masterFileExists %}
+						<li>
+							<a id="btn-link" href="#" data-url="{{ this.createUrl(baseClass~'/upload', {'id' : this.model.id, 'isMaster': 1}) }}"  class="btn btn-info menu-modal btn-block">{{ Yii_t('app','Add file') }}</a>
+						</li> 						
+					{% endif %}
+				{% endif %}
+				{% if App.user.hasMenu('job/reprocess')==1 and this.model.masterFileExists%}
+					<li>
+						<a id="btn-link" href="#" data-url="{{ this.createUrl('job/reprocess', {'id' : this.model.id}) }}"  class="btn btn-info btn-block id-confirm" data-confirm="{{ Yii_t('app', 'Do you want to reprocess this file')}}?">{{ Yii_t('app', 'Re-process') }}</a>
+					</li> 				
+				{% endif %}	
+				{% if App.user.hasMenu('art/md5') == 1 %}
+					<li>
+						<a id="btn-link" href="#" data-url="{{ this.createUrl('art/md5', {'id' : this.model.id}) }}"  class="btn btn-info btn-block menu-modal">{{ Yii_t('app', 'MD5 information') }}</a>
+					</li> 				
+				{% endif %}
+				{% if App.user.hasMenu('art/transfer') == 1 %}
+					<li>
+						<a id="btn-link" href="#" data-url="{{ this.createUrl('transfer/listFiles', {'id' : this.model.id}) }}"  class="btn btn-info btn-block menu-modal">{{ Yii_t('app', 'Transfer files') }}</a>
+					</li> 									
+				{% endif %}
+        
+			</ul>
+		</div>						
+		<div class="col-xs-5 col-md-4 master-info">
+			<h4>File information</h4>
+			<!--
+          master: {{ this.model.masterFileName }}
+          webM high: {{ this.model.previewFileName('webm', false) }}
+          webM low : {{ this.model.previewFileName('webm', true) }}
+          mp4  high: {{ this.model.previewFileName('mp4', false) }}
+          mp4  low : {{ this.model.previewFileName('mp4', true) }}
+          mezzanine: {{ this.model.previewFileName('mezzanine') }}
+      -->
+			<dl class="dl-horizontal">
+        {% if this.model.masterFileExists %}
+      		<dt>size</dt><dd>{{ this.model.masterFileSize}}</dd>
+        	<dt>original type</dt><dd>{{ this.model.masterFileExtension }}</dd>
+  			{% else %}
+  			  {{ Yii_t('app', 'The master file does not exist.') }}
+    		{% endif %}
+
+				{# check which alt files are available #}
+				<dt>preview webm</dt>
+				<dd>
+					HQ <span class="glyphicon {% if this.model.previewExists('webm', false) %}glyphicon-ok text-success{% else %}glyphicon-remove text-danger{% endif %}"></span>
+					LQ <span class="glyphicon {% if this.model.previewExists('webm', true) %}glyphicon-ok text-success{% else %}glyphicon-remove text-danger{% endif %}"></span>
+				</dd>
+				<dt>preview mp4</dt>
+				<dd>
+					HQ <span class="glyphicon {% if this.model.previewExists('mp4', false) %}glyphicon-ok text-success{% else %}glyphicon-remove text-danger{% endif %}"></span>
+					LQ <span class="glyphicon {% if this.model.previewExists('mp4', true) %}glyphicon-ok text-success{% else %}glyphicon-remove text-danger{% endif %}"></span>
+				</dd>
+				{# end check #}
+        <dt>Mezzanine</dt>
+				<dd>
+					<span class="glyphicon {% if this.model.previewExists('mezzanine') %}glyphicon-ok text-success{% else %}glyphicon-remove text-danger{% endif %}"></span>					
+				</dd>
+
+			</dl>
+		</div>	
+		<div class="col-sm-4">			
+			{% if this.model.masterFileExists %}
+			<img id="img-art-{{this.model.id}}" 
+					 width="100%" 
+					{% if file_exists(this.model.previewImagePath) %} 
+						class="menu-modal" 
+						data-compact="1"
+						data-url="{{ this.createUrl(baseClass ~'/preview', {'id' : this.model.id }) }}" 
+						src="{{ this.model.previewImageUrl }}?r={{ util.unique() }}"
+					{%else %}
+						src="{{ App.baseUrl }}/images/no.preview.jpg"
+					{% endif %} 
+					data-missing-image="{{this.model.previewImagePath}}" />
+			{% endif %}
+		</div>
+		{% endif %}	
+	</div>	
+	{% endif %}		
+</div>
+
+{# 
+ # this is the list of the alternate files (ResourceAltFiles)
+ #}
+{% if this.model.altFiles | length > 0 and App.user.hasMenu(baseClass~'/alt-files')==1 %}
+  
+  {% include this.viewPath('file.alt') %}
+
+{% elseif App.user.hasMenu(baseClass~'/alt-files')==1 %}
+	<div class="bs-content">
+    <div class="bs-page-header no-padding no-bottom-padding">
+      {{ Yii_t('app','there are no additional files') }}
+    </div>	
+	</div>		
+{% endif %}
+{{ this.registerPackage('videojs') }}
+{% endblock %}
+
+
+{% block onReady %}
+  $('.menu-files').addClass('active');
+	
+	$('.btn-edit').on('click', function() {
+		window.location = window.location+"?mode=edit"; 
+	});
+	
+	$('.id-confirm').on('click', function() {
+		msg = $(this).data('confirm');
+		if (msg && !confirm(msg)) {
+			return; 
+		}
+		window.location = $(this).data('url');
+	});
+	$('.id-preview').on('click', function(){ 
+		alert('the preview is temporarydisabled');
+	});
+	
+	{{ parent() }}
+{% endblock %}
+	
+	
+	

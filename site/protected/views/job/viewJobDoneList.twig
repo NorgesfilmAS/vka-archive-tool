@@ -1,0 +1,24 @@
+<div class="grid-row art-row row menu-modal table-hover" data-url="{{ this.createUrl('job/view', {'id': data.id} ) }}" >	
+	<div class="col-xs-1 text-right">{{ data.resource_id }}</div>	
+	<div class="col-xs-1 text-right">{% if data.alternate_id %}alt{%endif %}</div>	
+	{% if data.job_type_id == 5 %}
+	<div class="col-xs-4 grid-col-no-wrap">
+		<span style="color: gray">system: generate MD5 value</span>	
+	</div>
+	{% else %}
+	
+
+	<div class="col-xs-4 grid-col-no-wrap">
+		{{ data.explain }}		
+	</div>	
+	{% endif %}
+	<div class="col-xs-1 text-right">{{ data.priorityText }}</div>	
+	<div class="col-xs-3 grid-col-no-wrap">{{ data.endedDate }}</div>	
+	<div class="col-xs-1 grid-col-no-wrap">
+		{% if data.error_message %}
+			<span title="{{ data.error_message }}">{{ Yii_t('app','error') }}</span>
+		{% else %}
+			{{ data.status }}
+		{% endif %}
+	</div>	
+</div>

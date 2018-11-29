@@ -1,0 +1,13 @@
+{#
+  Base page for moderation
+#}
+{% extends this.viewPath('main') %}
+
+{% block content %}
+  This is moderation
+{% endblock %}
+
+{% block onReady %}
+  $('.menu-usersNOT').addClass('active');
+	{{ parent() }}
+{% endblock %}

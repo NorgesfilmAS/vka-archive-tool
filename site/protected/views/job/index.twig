@@ -1,0 +1,93 @@
+{# 
+	default job page
+#}
+{% extends this.viewPath('main') %}
+
+{% block content %}
+	<h2>{{ Yii_t('app','Resource Space Processing Queue') }}</h2>
+	<h4>{{ Yii_t('app','jobs') }}</h4>
+	{% include this.viewPath('flash') %}
+	<dl class="dl-horizontal">
+		<dt>{{ Yii_t('app', 'total count of jobs') }}</dt>
+		<dd>{{ this.model.jobCount() }}</dd>
+		<dt>{{ Yii_t('app', 'waiting jobs') }}</dt>
+		<dd>{{ this.model.queueCount() }}</dd>
+	</dl>
+	<h4>{{ Yii_t('app','queue status') }}</h4>
+	<div>
+	{% if App.queue.status %}
+	<dl class="dl-horizontal">
+		<dt>{{ Yii_t('app', 'running since') }}</dt>
+		<dd id='last-login'>{% if App.queue.status.started %}{{ App.queue.status.started  }}{% else %}{{ Yii_t('app', '(no information)') }}{% endif %}</dd>
+		<dt>{{ Yii_t('app', 'checked for jobs') }}</dt>
+		<dd id="last-run">{% if App.queue.status.last_active %}{{ App.queue.status.last_active  }}{% else %} {{ Yii_t('app', 'not running') }} {% endif %}</dd>
+		<dt>{{ Yii_t('app', 'session id') }}</dt>
+		<dd>{{ App.queue.status.session }}</dd>
+		<dt>{{ Yii_t('app', 'generating size') }}</dt>			
+		<dd>
+			{% for art in App.queue.status.running %}
+			<span id="id-popup-{{art.jobId}}"
+						class='cls-info' data-toggle="popover" 
+						data-html='true'
+						data-placement='bottom'
+						title="{{ Yii_t('app', 'files info') }}" >
+			Artwork {{ art.id }} - <span id="id-size-text-{{ art.jobId }}">{{ art.sizeText }}</span>
+			(<span id="id-size-{{ art.jobId }}">{{ art.size }}</span> bytes)<br />
+			</span>
+			{% endfor %}
+		</dd>
+	</dl>	
+	 <a id="btn-reset" href="#" class="btn btn-default">{{ Yii_t('app', 'Reset process') }}</a>	
+	{% else %}
+		{{ Yii_t('app', 'There is no queue status. Probably the user is not defined in the system.') }}
+	{% endif %}
+	</div>	
+	<br />
+	<h4>{{ Yii_t('app','logging') }}</h4>
+	<p>
+		<a href='{{ this.createUrl('job/downloadLog') }}' class='btn btn-default'>{{ Yii_t('app', 'Download log')}}</a>
+	</p>	
+		
+	
+{% endblock %}
+	
+	
+{% block onReady %}
+	$('.cls-info').popover();
+  $('.menu-overview').addClass('active');
+	$('#btn-reset').on('click', function() {
+	  if (confirm('{{ Yii_t('app', 'Are you sure you want to end this session and start an extra Resource Space queue?') }}')) {
+			window.location = "{{ this.createUrl('job/restart') }}";
+		}
+	});
+	window.setInterval(function() {
+		$.getJSON('{{ this.createUrl('job/lastActive') }}', function(data) {
+			if (data.active == null) {
+			  $('#last-run').html('not running');
+				$('#last-login').html('(no information)');
+			} else {
+				console.log(data);
+				$('#last-run').html(data.active);
+				$('#last-login').html(data.started);
+				if (data.running) {
+					for (var i=0, cnt=data.running.length; i < cnt; i++) {
+						var job = data.running[i];
+						console.log(job);
+						$('#id-size-text-'+job.jobId).html(job.sizeText);
+						$('#id-size-'+job.jobId).html(job.size);
+						if (job.files) {
+							var html = '';
+							for (l = 0, cnt2=job.files.length; l < cnt2; l++) {
+								var file = job.files[l];
+								html += file.filename + ' - Size: <b>' + file.size + '</b> bytes<br />';								
+							}
+							$('#id-popup-'+job.jobId).attr('data-content', html);
+						}
+						
+					}
+				}
+			}
+		});
+	},1000);
+	{{ parent() }}
+{% endblock %}	

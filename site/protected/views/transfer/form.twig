@@ -1,0 +1,156 @@
+{# 
+  render the form that allowes the user to select what files will be shared with
+  whom
+
+  version 1.0 jvk 2015-08-03
+
+<div id="id-modal-body" class="modal-content">
+
+
+
+<script type="text/javascript">
+</div
+#}
+{% extends this.viewPath('dialog') %}
+
+{% block content %}
+<form id="id-transfer" method="POST" accept-charset="UTF-8" action="{{ App.createUrl('transfer/listFiles', { 'id' : model.id }) }}" >
+  <fieldset>
+    <div class="modal-header">
+      <button class="close action-close" aria-hidden="true" data-dismiss="modal" type="button">×</button>
+      <h3>Transfer files by email</h3>
+    </div>
+    <div class="modal-body">
+      {% include this.viewPath('flash') %}
+      {% include this.viewPath('_error') %}
+      
+      <div class="form-group">
+        <label class="control-label col-lg-2 no-right-padding" 
+               for="id-send-to">{{ Yii_t('app', 'Send to') }}</label><br/>
+
+          <input id="id-sendTo"
+                 class="input-xlarge form-control"
+                 type="text" 
+                 name="Transfer[sendTo]",
+                 value="{{ transfer.sendTo }}">           
+      </div>     
+
+      <div class="form-group">
+        <label class="control-label col-lg-2 no-right-padding" 
+               for="id-message">{{ Yii_t('app', 'Message') }}</label><br />
+        <textarea id="id-message" 
+                  class="input-xlarge form-control" 
+                  rows="5" 
+                  name="Transfer[message]" 
+                  style="overflow: hidden; height: 102px;">{{ transfer.message }}</textarea>
+      </div>     
+
+      <div class="">
+        <label class="control-label col-lg-10 no-right-padding" 
+               for="id-message">{{ Yii_t('app', 'What to send') }}</label><br />
+        <div class="row">  
+          <div class="col-xs-7 col-xs-offset-1"><b>{{ Yii_t('app', 'Preview in player') }}</b></div>
+          <div class="col-xs-3"><b>{{ Yii_t('app', 'View') }}</b></div>
+        </div>
+        <div class="row">  
+          <div class="col-xs-6 col-xs-offset-2">
+            {{ Yii_t('app', 'Low Quality') }}            
+          </div>  
+          <div class="col-xs-3">
+            <input type="hidden" 
+                  value="0" 
+                  name="Transfer[view_lq]">
+            <input type="checkbox" 
+                  value="lq"                    
+                  {% if transfer.fileChecked('view', 'lq') %}checked{% endif %}
+                  name="Transfer[view_lq]">
+          </div>
+        </div>    
+        
+        <div class="row">  
+          <div class="col-xs-6 col-xs-offset-2">
+            {{ Yii_t('app', 'High Quality') }}            
+          </div>  
+          <div class="col-xs-3">
+            <input type="hidden" 
+                  value="0" 
+                  name="Transfer[view_hq]">
+            <input type="checkbox" 
+                  value="hq"                    
+                  {% if transfer.fileChecked('view', 'hq') %}checked{% endif %}
+                  name="Transfer[view_hq]">
+          </div>
+        </div>    
+
+        
+        <div class="row">  
+          <br/>
+          <div class="col-xs-7 col-xs-offset-1"><b>{{ Yii_t('app', 'Art file for downloading') }}</b></div>
+          <div class="col-xs-3"><b>{{Yii_t('app', 'Download') }}</b></div>
+        </div>
+{% for key,value in transfer.masterTypes %}
+        <div class="row">  
+          <div class="col-xs-6 col-xs-offset-2">
+            {{ Yii_t('app', value) }}            
+          </div>  
+          <div class="col-xs-3">
+            <input type="hidden" 
+                  value="0" 
+                  name="Transfer[down_{{ key }}]">
+            <input type="checkbox" 
+                  value="{{key}}"                    
+                  {% if transfer.fileChecked('download', key) %}checked{% endif %}
+                  name="Transfer[down_{{ key }}]">
+          </div>       
+        </div>    
+{% endfor %}
+       <div class="row">  <br/>
+          <div class="col-xs-7 col-xs-offset-1"><b>{{ Yii_t('app', 'Alternate files') }}</b></div>
+          <div class="col-xs-3"><b>{{Yii_t('app', 'Download') }}</b></div>
+        </div> 
+      </div> 
+{% for file in model.altFiles %}
+      <div class="row">  
+        <div class="col-xs-6 col-xs-offset-2">
+          {{ file.name }}
+        </div>  
+        <div class="col-xs-3">
+          <input type="hidden" 
+                value="0" 
+                name="Transfer[altr_{{ file.id }}]">
+          <input type="checkbox" 
+                value="{{ file.id }}"   
+                {% if transfer.fileChecked('alternative', 'lq') %}checked{% endif %}
+                name="Transfer[altr_{{ file.id }}]">
+        </div>      
+      </div>          
+{% endfor %}
+        
+    </div>
+    <div class="modal-footer">
+      <input type="submit" class="btn btn-default" value="Send">
+      <button  class="btn  btn-close action-close" data-dismiss="modal" type="button">Cancel</button>
+    </div>
+  </fieldset>
+</form>
+{% endblock %}
+
+{% block onReady %}
+
+	{{ this.registerPackage('ajaxForm', {'isAjax' : true,'executeAfterLoad' : 
+"	var options = {
+		target : '#id-modal-body',
+		success : processResponse
+	};
+console.log('loaded');
+	$('#id-transfer').ajaxForm(options);		
+	function processResponse(responseText, statusText, xhr, $form) {
+    if (responseText == 'url') {
+      window.location = '" ~ App.createUrl('art/files', { 'id' : model.id}) ~"';
+    }	else {
+      $('#id-modal-body').html(responseText);
+    }
+  };
+"}) }}
+
+{% endblock %}

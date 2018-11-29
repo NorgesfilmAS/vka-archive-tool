@@ -1,0 +1,1 @@
+{"model":"Art","report":{"order":[{"attribute":"agent_id.gender","label":"Gender","order":"asc","fields":[]},{"attribute":"year","label":"Year","order":"asc","fields":[]}],"fields":["year","agent_id.gender"]},"select":[],"name":"Test VKA Adm 30.8"}

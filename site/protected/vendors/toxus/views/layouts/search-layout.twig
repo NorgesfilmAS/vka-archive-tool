@@ -1,0 +1,148 @@
+{#
+	Default search on the side. 
+  options: 
+   * navHasLayout      : if true, the layout buttons are displayed
+   * navHasExtraFields : if true, the folding search is displayed.					Overload: navExtraFields
+   * navHasMoreFields  : if true, the field below the extra are displayed		Overload: navMoreFields
+	 * navHasSearchOrder : if true, the search box is displayed								Overload: navSearchOrder
+
+   * searchUrl : the url for the form (default site/search)
+   * layout    : the layout to use. (default '')
+#}
+
+<form class="id-search" method="get" action="{{ searchUrl | default(this.createUrl('site/search')) }}">
+	<div class="nav-form nav bs-sidenav">	
+		{% if navHasLayout %}
+		<input type="hidden" class="id-layout" value="{{ layout }}" name="layout"/>
+		<div>
+			<ul class="list-layout">
+				<li id="id-large"><a href="#" class="display-layout" data-layout="grid" title="list"><span class="glyphicon glyphicon-th-list"></span></a></li>
+				<li id="id-2column"><a href="#" class="display-layout" data-layout="large"><span class="glyphicon glyphicon-th-large"></span></a></li>				
+				<li id="id-4column"><a href="#" class="display-layout" data-layout="tiles"><span class="glyphicon glyphicon-th"></span></a></li>
+			</ul>
+		</div>
+		{% endif %}
+		
+		{% block navSearchFields %}
+		<label for="id-agent">{{ Yii_t('base','artist') }}</label>
+		<input type="text" id="id-agent" name="Art[agent]" class="form-control cls-search" value="{{ this.model.agent }}"/>		
+		<label for="id-title">{{ Yii_t('base','title') }}</label>
+		<input type="text" id="id-title" name="Art[title]" class="form-control cls-search" value="{{ this.model.title }}" />
+		{% endblock %}
+
+		{% if navHasExtraFields %}
+		<div class="nav-options">
+			<div class="nav-option-header cls-toggle"><label><span class="caption">{{ Yii_t('base','Show extra search') }}</span><span class="pull-right nav-arrow">&#x25BC</span></label></div>
+			<div class="nav-option-body" style="display: none;">
+				{% block navExtraFields %}
+				<label for="id-year">{{ Yii_t('base','year') }}</label>
+				<input type="year" id="id-title" name="Art[year]" class="form-control cls-search" value="{{ this.model.year }}"/>
+				
+				<label for="id-agent">{{ Yii_t('base','digitization') }}</label>
+				<select name="Art[is_digitized]" class="form-control cls-select-search cls-digitization">
+					<option value=""></option>
+			{% for key, caption in this.model.attributeOptions('is_digitized') %}
+					<option value="{{ key }}">{{ caption }}	
+			{% endfor %}	
+				</select>
+				<label for="id-collection">{{ Yii_t('base','collection') }}</label>
+				<select name="Art[collection]" class="form-control cls-select-search cls-collection">
+					<option value=""></option>
+			{% for caption in this.model.attributeOptions('collection') %}
+					<option value="{{ caption }}">{{ caption }}	
+			{% endfor %}					
+				</select>	
+				{% endblock %}
+			</div>
+		</div>		
+		{% endif %}
+		
+		{% if navHasMoreFields %}
+		<label for="id-agent">{{ Yii_t('base','Direct search on ID') }}
+    {% if App.user.hasFlash('error') %}
+      <div class="text-warning">
+        {{ App.user.getFlash('error') }}
+      </div>
+    {% endif %}    
+    </label>
+		<input type="text" id="id-agent" name="Art[searchId]" class="form-control" value="{{ this.model.searchId }}"/>		
+		{% endif %}
+		{% if navHasSearchOrder %}
+		<label for="id-sort">{{ Yii_t('base','Sort by') }}</label>
+		{% block navSearchOrder %}
+		<select name="Art[searchOrder]" class="id-sort form-control">
+			<option value="agent" {% if this.model.searchOrder == 'agent' %}selected="1"{% endif %}>{{ this.t('artist') }}</option>
+			<option value="title" {% if this.model.searchOrder == 'title' %}selected="1"{% endif %}>{{ this.t('title') }}</option>
+			<option value="year" {% if this.model.searchOrder == 'year' %}selected="1"{% endif %}>{{ this.t('year') }}</option>
+			<option value="id" {% if this.model.searchOrder == 'id' %}selected="1"{% endif %}>{{ this.t('id') }}</option>
+		</select>
+		{% endblock %}
+		{% endif %}
+		<div class="bs-nav-searchbar">
+		{% block navButtons %}	
+		<input type="submit" class="btn btn-info pull-right" value="{{Yii_t('base','Search') }}"/>
+		{% endblock %}
+		</div>
+	</div>
+</form>	
+{{ this.onReady("
+
+$('.display-layout').on('click', function() {
+	$('.display-layout').parent().removeClass('active');
+	$('.id-layout').val($(this).data('layout'));
+	$('.id-'+$(this).data('layout')).addClass('active');
+	$('.id-search').submit();
+});
+$('.id-'+$('#id-layout').val()).addClass('active');
+$('.id-sort').on('change', function() {
+	$(this).closest('form').submit();
+
+});
+var theForm;
+function formRefreh() {
+	if (document.getElementById('id-grid') !== null) {
+		$.fn.yiiListView.update('id-grid', {
+			data: theForm.serialize()
+		});
+	}	
+}
+$('.cls-select-search').on('change', function() {
+	theForm = 	$(this).closest('form');
+	setTimeout(formRefreh, 150);
+})
+
+$('.cls-search').on('keyup', function(e) {
+	//console.log('changed: '+ e.keyCode);
+	switch  (e.keyCode) {
+       case 40: // down arrow
+        case 38: // up arrow
+        case 16: // shift
+        case 17: // ctrl
+        case 18: // alt
+				case 37: // left
+				case 39: // right
+          break;
+				default: 
+					theForm = 	$(this).closest('form');
+					setTimeout(formRefreh, 150);
+					return;
+	}				
+});
+$('.cls-search').on('change', function() {
+	if (document.getElementById('id-grid') === null) {
+		$(this).closest('form').submit();
+	}
+});
+
+$('.cls-toggle').on('click', function() {
+	if ($('.nav-option-body').is(':visible')) {
+		$('.nav-option-body').hide('blind');	
+		$('.caption').text('" ~ Yii_t('base','show extra search') ~"');
+		$('.nav-arrow').html('&#x25BC');
+	} else {	
+		$('.nav-option-body').show('blind');	
+		$('.caption').text('" ~ Yii_t('base','hide extra search') ~"');
+		$('.nav-arrow').html('&#x25B6');
+	}
+});
+") }}

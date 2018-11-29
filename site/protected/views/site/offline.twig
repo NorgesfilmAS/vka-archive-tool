@@ -1,0 +1,23 @@
+{% extends this.viewPath('main') %}
+
+{% block content %}
+
+<br/><br/><br/><br/><br/>
+<div class="col-sm-6 col-sm-offset-1 well well-large">
+	{% if error %}
+		{{ error }}
+	{% else %}
+		<div class="row">
+			<div class="col-sm-10 col-sm-offset-1">
+				<h4>Off-line</h4>
+        <div class="alert alert-block bg-warning">
+          The site is currently offline for maintenance.<br />
+          Please check in at a later time.<br/><br />
+          Videokunstarkivet er under omlegging til ny server! Sjekk igjen senere ....
+        </div>
+      </div>			
+		</div>		
+	{% endif %}
+</div>	
+
+{% endblock %}

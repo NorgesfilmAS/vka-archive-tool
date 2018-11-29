@@ -1,0 +1,126 @@
+{#
+ The moderation view
+#}
+{% set oldVersion = this.model.previousVersion(transactionId) %}
+{% set changes = this.model.fieldChanges(this.route) %}
+
+<dl class="{{ form.layoutClass |default('dl-horizontal') }}">
+	{% if form.controlWidth %}{% set width=form.controlWidth %}{% else %}{% set width='input-xlarge' %}{% endif %}
+	{% for groupKey, groupElement in form.elements %}			
+		{% if groupElement.hidden != true and groupElement.viewHidden != true and model.isVisible(groupKey) %}
+			{% if  groupElement.type != 'hidden' %}
+			<dt>{% if groupElement.label %}{{ groupElement.label}}{% else %}{{ model.attributeLabel(groupKey) }}{% endif %}</dt> 
+			{% endif %}
+			<dd>
+				{% if groupElement.elements | length > 0 %}
+					{% set fields = (groupElement.elements) %}
+				{% else %}
+					{% set fields = { (groupKey) : groupElement } %}
+				{% endif %}	
+				{% for key, element in fields %}	
+				{% set isHtml = 0 %}
+				{% set useItems = 0 %}
+				
+				{% if element.type == 'dropdown' or element.type == 'radiobuttonlist' %}	
+					{% set useItems = 1 %}
+					{% for itemKey, itemCaption in element.items %}
+					 {% if itemKey == model.__get(key) %}{{ itemCaption }}{% endif %}
+					{% endfor %}
+				{% elseif element.type == 'textarea' %}
+					 {{ html.encode(model.__get(key)) |replace({"\n" : '<br />'}) |raw }}
+				{% elseif element.type == 'checkbox' %}	
+					{% if model.__get(key)==1 %}{{ element.trueCaption|default(Yii_t('app','yes'))}}{%else%}{{ element.falseCaption|default(Yii_t('app','no'))}}{%endif%}
+				{% elseif element.type== 'image' %}
+					{{ this.form.image(model, key) | raw }}								
+				{% elseif element.type== 'finder' %}					
+				{% elseif element.type== 'html' %}
+					{{ model.__get(key) | raw }}
+					{% set isHtml = 1 %}				
+				{% elseif element.type=='chosen' %}						
+					{% set useItems = 1 %}
+						{% if element.multi and model.__get(key) | length > 0 %}						
+							<ul class="comma-list-summary">
+							{% for itemKey, itemCaption in element.items %}
+							 {% if itemKey in model.__get(key) and itemKey and itemCaption %}<li class="comma-list">{{ itemCaption }}</li>{% endif %}
+							{% endfor %}					
+							</ul> 
+						{% else %}
+							{% for itemKey, itemCaption in element.items %}
+							 {% if itemKey == model.__get(key) %}{{ itemCaption }}{% endif %}
+							{% endfor %}					
+						{% endif %}
+				{% elseif element.type=='datetime' %}						
+					{{ model.__get(key) }}	
+				{% elseif element.type=='hidden' %}
+				{% elseif element.type== 'view' %}
+					{{ model.__get(key) | raw }}	
+				  {% set isHtml = 1 %}
+				{% elseif element.type== 'password' %}
+				{% elseif element.type=='typeahead' %}
+					{% if element.associative | default(1) %}
+					{{ element.caption }}	
+					{% else %}
+					{{ model.__get(key) }}	
+					{% endif %}
+				{% elseif element.type=='button' or element.type=='dialog'%}	
+				{% elseif element.type=='email' %}
+					{% if model.__get(key) %}
+						<a href="mailto:{{ model.__get(key) }}">{{ model.__get(key) }}</a>
+					{% endif %}	
+				{% elseif element.type=='url' %}						
+						<a href="{{ model.__get(key) }}">{{ model.__get(key) }}</a>	
+				{% elseif element.type=='raw' %}
+						{{ element.value | raw }}						
+				{% else %}	
+					{{ model.__get(key) | raw }}	
+				{% endif %}
+				{% if element.openUrl %}
+					&nbsp;<a href="{{ element.openUrl}}"><span class="glyphicon glyphicon-link"></span></a>
+				{% endif %}
+					
+					
+				{% if oldVersion.itemAt(key) %}	
+					<span class="mod-original level-{{oldVersion.itemAt(key).level}}">{{ oldVersion.itemAt(key).value }}</span> 
+					<a title="Undo this change" href="{{ this.createUrl('resourceSpace/undoStep',{'id': oldVersion.itemAt(key).id, 'route': this.route, 'url': App.request.requestUri} )}}" class="mod-undo-field level-{{oldVersion.itemAt(key).level}}"> &nbsp; &#8404; &nbsp; </a> 
+				{% endif %}
+				{% for change in changes.itemAt(key) |reverse%}	
+					<div class="mod-info-marker pull-right level-{{ change.level}}" data-toggle="tooltip" title="{{change.value}}" data-placement="bottom">
+						<div class="mod-info-link" data-url="#id-{{key}}-{{change.id}}">&nbsp;&#x233E;</div>
+					</div>
+				{% endfor %}	
+				{% for change in changes.itemAt(key) %}		
+					<div id="id-{{key}}-{{change.id}}" 
+							 class="mod-info-text level-{{ change.level}} 
+										  mod-trans-{{ change.transaction }}
+											mod-value-link"  
+							 style="display:none" 
+							 data-toggle="tooltip" 
+							 data-url="{{ this.createUrl('resourceSpace/undoStep',{'id': change.id, 'route': this.route, 'url': App.request.requestUri} )}}"
+							 title="{{ Yii_t('app', 'Reverse this change')}}"
+							 >
+						{% if isHtml %}
+						{{ change.value | default(Yii_t('app', '(field was empty)')) |raw }}
+						{% else %}
+						{% if useItems != 0 %}
+							{% set tmp ='' %}
+							{% for itemKey, itemCaption in element.items %}
+							 {% if itemKey == change.value %}{% set tmp = itemCaption %}{% endif %}
+							{% endfor %}
+							{{ tmp | default(Yii_t('app', '(field was empty)')) }}
+						{% else %}
+							{{ change.value | default(Yii_t('app', '(field was empty)')) }}
+						{% endif %}
+						{% endif %}
+					</div>					
+				{% endfor %}	
+				{% endfor %}&nbsp;
+			</dd>	
+		{#</div> #}
+		{% endif %}	
+	{% endfor %}	
+</dl>
+
+{{ this.onReady("
+	$('.mod-info-link').on('click', function() { $($(this).data('url')).toggle('fast') });
+	$('.mod-value-link').on('click', function() { window.location = $(this).data('url') });
+") }}

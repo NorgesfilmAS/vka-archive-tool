@@ -1,0 +1,105 @@
+{#
+  render a view to a user who is not logged in but got a link
+  through our transfer service
+  
+  version 1.0 JvK 2015-08-03
+#}
+
+{% extends this.viewPath('main') %}
+
+{% block pageTitle %}
+  Videokunst Archivet
+{% endblock %}
+
+{% block menuLeft %}
+  <div class="transfer">
+  {% if this.model.userMasterViewLQMp4 and this.model.userMasterViewHQMp4 %}
+    <h5>Artwork</h5>
+    <ul>
+    {% if this.model.userMasterViewLQMp4 %}
+      <li><a href="#"><span class="play-lq">Show Low Quality</span></a></li>
+    {% endif %}
+    {% if this.model.userMasterViewHQMp4 %}
+      <li><a href="#"><span class="play-hq">Show High Quality</span></a></li>
+    {% endif %}
+    </ul>
+  {% endif %}  
+  {% if this.model.userMasterDownloadFiles | length > 0 %}
+    <h5>Downloadable art file{% if this.model.userMasterDownloadFiles | length > 1 %}s{%endif%}</h5>
+    <ul >
+      {% for file in this.model.userMasterDownloadFiles %}
+        <li class="file">
+          <a href="{{ file.url }}">{{ Yii_t('app', file.caption) }}</a>
+        </li>
+      {% endfor %}
+    </ul>
+  {% endif %}  
+  {% if this.model.userAltDownloadFiles | length > 0 %}
+    <h5>Other file{% if this.model.userAltDownloadFiles | length > 1 %}s{%endif%}</h5>
+    <ul >
+      {% for file in this.model.userAltDownloadFiles %}
+        <li class="file">
+          <a href="{{ file.url }}">{{ Yii_t('app', file.caption) }}</a>
+        </li>
+      {% endfor %}
+    </ul>
+  {% endif %}  
+  
+  </div>
+{% endblock %}
+
+{% block content %}
+  <div class="transfer-view">
+    <h2>{{ this.model.art.title }} <span class='pull-right'>{{ this.model.art.year }}</span></h2>
+    <h4>{{ this.model.art.artistNames }}</h4>
+  </div>
+  <div class="preview">
+    {% if this.model.userMasterViewLQMp4 %}
+    <video id="id-video-lq" 
+           class="video-js vjs-default-skin"       
+           poster="{{ this.model.art.previewImageUrl }}" 
+           preload="auto" 
+           controls="">
+      <source type="video/mp4" 
+            src="{{ this.model.UserMasterViewLQMp4.url }}"></source>
+      <source type="video/webm" 
+              src="{{ this.model.UserMasterViewLQWebm.url }}"></source>
+    </video>
+    {% endif %}
+    {% if this.model.userMasterViewHQMp4 %}
+    <video id="id-video-hq" 
+           class="video-js vjs-default-skin"       
+           poster="{{ this.model.art.previewImageUrl }}" 
+           preload="auto" 
+           controls="">
+      <source type="video/mp4" 
+            src="{{ this.model.UserMasterViewHQMp4.url }}"></source>
+      <source type="video/webm" 
+              src="{{ this.model.UserMasterViewHQWebm.url }}"></source>
+    </video>
+    {% endif %}
+    
+  </div>
+{{ this.registerPackage('videojs') }}    
+{% endblock %}
+
+{% block bootstrap3Footer %}
+{% endblock %}
+
+{% block onReady %}  
+  
+  
+  {% if this.model.UserMasterViewHQMp4 and this.model.UserMasterViewLQMp4 %}
+    $('#id-video-lq').hide();
+    $('.play-hq').on('click',function() {
+      $('#id-video-lq').hide();
+      $('#id-video-hq').show();
+    });
+    $('.play-lq').on('click',function() {
+      $('#id-video-hq').hide();
+      $('#id-video-lq').show();    
+  });    
+  {% endif %}  
+  
+  {{ parent() }}
+{% endblock %}  

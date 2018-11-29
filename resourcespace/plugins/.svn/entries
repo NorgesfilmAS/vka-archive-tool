@@ -1,0 +1,185 @@
+10
+
+dir
+5188
+http://svn.resourcespace.org/svn/resourcespace/plugins
+http://svn.resourcespace.org/svn/resourcespace
+
+
+
+2013-12-13T11:07:35.924399Z
+5157
+nbraddy
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+c08608d7-6e46-0410-86ca-f2a6f1370df5
+
+format_chooser
+dir
+
+transform
+dir
+
+embeddocument
+dir
+
+news
+dir
+
+api_upload
+dir
+
+licensemanager
+dir
+
+grant_edit
+dir
+
+api_core
+dir
+
+flickr_theme_publish
+dir
+
+youtube_publish
+dir
+
+discount_code
+dir
+
+colorthemer
+dir
+
+feedback
+dir
+
+remoteimport
+dir
+
+view_in_finder
+dir
+
+rss2
+dir
+
+refineresults
+dir
+
+embedslideshow
+dir
+
+api_search
+dir
+
+auto_login
+dir
+
+resourceconnect
+dir
+
+embedvideo
+dir
+
+value_filter_date.php
+file
+
+
+
+
+2013-02-20T10:35:16.853328Z
+268cb78033764523f435d568c0f7ca27
+2010-02-11T15:27:31.610049Z
+1712
+tgleason
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+55
+
+api_alt_file
+dir
+
+annotate
+dir
+
+resourceoftheday
+dir
+
+legacy_styling
+dir
+
+checkmail
+dir
+
+sample
+dir
+
+lightbox_preview
+dir
+
+ref_urls
+dir
+
+greyspace
+dir
+
+magictouch
+dir
+
+remotedownload
+dir
+
+pdf_split
+dir
+
+posixldapauth
+dir
+
+image_text
+dir
+
+legacy_search
+dir
+
+action_dates
+dir
+
+filterbox
+dir
+
+imagestream
+dir
+
+video_splice
+dir
+

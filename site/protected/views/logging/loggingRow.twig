@@ -1,0 +1,12 @@
+{% if data.id == 0 %}
+<div class="grid-row art-row row table-hover"  >	
+{% else %}
+<div class="grid-row art-row row a-url table-hover" data-url="{{ url }}/{{ data.id }}" >	
+{% endif %}
+	<div class="col-sm-2 grid-col-no-wrap" data-sort="date">{{ data.date | date('d/m/Y H:i')}}</div>
+	<div class="col-sm-1 grid-col-no-wrap" data-sort="action">{{ Yii_t('app','log-{action}', {'{action}': data.action}) }}</div>
+	<div class="col-sm-1 text-right" data-sort="id">{{ data.id }}</div>
+	<div class="col-sm-3 grid-col-no-wrap" data-sort="title">{{ data.explain }}</div>
+	<div class="col-sm-2 grid-col-no-wrap" data-sort="user">{{ data.username }} {{ modelClass }}</div>
+	<div class="col-sm-3 grid-col-no-wrap" data-sort="fields">{{ data.fields }}</div>
+</div>

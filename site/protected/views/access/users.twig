@@ -1,0 +1,58 @@
+{#
+  listing of the users and their state
+#}
+
+{% extends this.viewPath('main') %}
+
+{% block content %}
+<div id="scroll" class="bs-content">
+	<h2>{{ Yii_t('app','users') }}</h2>
+	
+	<div class="row grid-header">
+		<div class="col-xs-1 text-right sort-key" data-sort="id">{{ Yii_t('app','id') }}</div>
+		<div class="col-xs-3 sort-key" data-sort="username">{{ Yii_t('app','login') }}</div>
+		<div class="col-xs-3 sort-key" data-sort="fullname">{{ Yii_t('app','fullname') }}</div>
+		<div class="col-xs-2 sort-key" data-sort="usergroup">{{ Yii_t('app','type') }}</div>
+		<div class="col-xs-2 sort-key" data-sort="account_expires">{{ Yii_t('app','expires') }}</div>
+		
+	</div>
+	{{ this.widget( 'zii.widgets.CListView', {
+			'id' :  'id-grid',
+			'dataProvider' : this.model.search,					
+			'itemView' : 'viewUserList',				'afterAjaxUpdate' : 'bindEvents',
+				'template' : '{items} {pager}',
+				'pager' : {
+	          'class' : 'toxus.extensions.infiniteScroll.IasPager', 
+             'rowSelector' : '.art-row', 
+             'listViewId'  : 'id-grid', 
+             'header' : '',
+             'loaderText' : '<img src="'~App.baseUrl~'/images/loading.gif'~'"/ >',
+             'options' : {
+								'history' : false, 'triggerPageTreshold' : 10, 'trigger' :'Load more' 
+						}		
+         }
+				 
+			}, true) | raw }}
+</div>
+
+<script type="text/javascript">
+  function bindEvents(id, result)
+	{
+		$('.a-url').on('click', function() {
+			window.location = $(this).data('url');
+		});
+		{{ this.getReady('modal-dialog') |raw }}
+	}
+</script>	
+
+{% endblock %}
+	
+	
+{% block onReady %}
+	$.ias['defaults']['onRenderComplete'] =  function() {bindEvents();}
+  $('.menu-users').addClass('active');
+	$('.sort-key').on('click', function() {
+		window.location = "{{ this.createUrl('access/users', {'orderBy' : ''}) }}" + $(this).data('sort');
+	});
+	{{ parent() }}
+{% endblock %}	

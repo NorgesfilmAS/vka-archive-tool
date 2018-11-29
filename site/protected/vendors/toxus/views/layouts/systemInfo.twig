@@ -1,0 +1,63 @@
+{#
+  systtem information in a dialog popup 
+#}
+{% extends this.viewPath('main') %}
+
+{% block content %}
+	{% include this.viewPath('flash') %}
+	<div class="row">
+	<h2>System information</h2>
+	</div>
+	{% for key, props in properties %}
+	<div class="panel panel-primary">
+		<div class="panel-heading">{{ props.caption }}</div>
+		<div class="panel-body">
+			
+	{% for name, value in props.items %}
+	<div class="row">		
+		<div class="col-xs-3">
+				{{name}}
+				{% if value.explain %}
+				<span class='pull-right'><a href="#" class="tip" data-toggle="tooltip" title="{{ value.explain }}"><span class="glyphicon glyphicon-question-sign"></span></a></span>
+				{% endif %}
+		</div>
+		<div class="col-xs-9">{% if value is iterable  %}{{ value.value }} {% else %}{{value}}{%endif %}</div>
+	</div>	
+	{% endfor %}			
+			
+		</div>
+	</div>
+	{% endfor %}
+
+	{% if actions |length > 0 %}
+	<div class="panel panel-primary">
+		<div class="panel-heading">{{ Yii_t('base','actions') }}</div>
+		<div class="panel-body">
+	{% for key, action in actions %}
+		<div class='row'>	
+			<div class='col-xs-3'>
+				<p class="text-right"><a href="{{ this.createUrl(action.action, action.params | default({}) ) }}" class="btn {{ action.style|default('btn-primary')}}">{{ action.caption }}</a></p>
+			</div>
+			<div class="col-xs-9">
+			{% if action.info %}
+				<p>{{ action.info }}</p>
+			{% endif %}
+			{% if loop.last==false %}
+				<hr />	
+			{% endif %}
+			</div>
+		</div>
+	{% endfor %}
+		</div>
+	</div>	
+	{% endif %}
+
+
+{% endblock %}
+
+{% block onReady %}
+	$('.tip').tooltip();
+	{{ parent() }}
+{% endblock %}	
+	
+

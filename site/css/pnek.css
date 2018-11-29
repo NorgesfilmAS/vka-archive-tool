@@ -1,0 +1,153 @@
+/* 
+    Document   : pnek.css
+    Created on : Jul 30, 2013, 12:22:13 PM
+    Author     : Toxus/jaap
+    Description:
+        PNEK specific layout
+*/
+
+#logo-pnek {
+	background-color: darkslateblue;
+	height: 120px;
+	padding: 7px 14px;
+}
+#logo-pnek-image {
+	background-image: url('logo.png');
+	background-repeat: no-repeat;
+	height: 100px;
+}
+.bs-header {
+	padding-top: 50px;
+}
+.bs-content {
+	margin-top: 35px;
+}
+.bs-page-header {
+	margin-bottom: 30px;
+}
+
+.nav-form {
+	padding: 10px;
+}
+.nav-form label {
+	color: darkgray;
+	font-weight:normal;
+	display: block;
+	padding-top: 0px;
+	padding-bottom: 0px;
+}
+.nav-form input {
+	display: block;
+	margin-bottom: 9px;
+}
+
+/* items visible in the search grid */
+.item-large {
+	padding-bottom: 15px;
+}
+
+/**
+drop zone NOT USED
+*/
+.pnek-dropzone {
+	height: 100px;
+	padding-top: 39px;
+	margin: 10px auto;
+	background-color: lightgrey;
+}
+.pnek-dropzone-message {
+	text-align: center;
+}
+.dropzone {
+	height: 100px;
+	min-height: 100px !important;
+}
+.dz-message {
+	background-image: none !important;
+}
+
+/**
+ dialog to add a file
+ */
+.pnek-file-selected {
+	 font-size: 120%;
+	 font-weight: bold;
+	 margin-top:20px;
+	 margin-bottom: 20px;
+ }
+ .filelist {
+ list-style: none outside none;
+ padding-left: 0;
+}
+.filelist li {
+	line-height: 135%;
+	padding-left: 10px;
+}
+.filelist .active {
+	background-color: lightgray;
+}
+.pnek-filelist {
+	background-color: #FFFFFF;
+	border: 1px solid #DDDDDD;
+	border-radius: 4px 4px 4px 4px;
+	position: relative;	
+}
+/* highlighting button */
+.btn-area .btn-dim {
+	opacity: 0.2;
+}
+
+.btn-area:hover .btn {
+	opacity: 1;
+}
+.in-image {
+	margin-top : -30px;
+	margin-right: 4px;
+}
+.dropdown-menu-small {
+	min-width: 90px;
+}
+.preview-image {
+	margin-bottom: 20px;
+}
+.a-url {
+	cursor: pointer;
+}
+.search-item {
+	margin-bottom: 20px;
+}
+.panel {
+	margin-top: 0px;
+}
+
+.panel-fixed {
+	min-height: 339px;
+	max-height: 339px;
+	
+}
+
+.work-list li{
+	padding-bottom: 5px;
+}
+
+.panel-preview {
+	overflow: hidden;
+	margin-bottom: 18px;
+}
+/* in the art.files */
+.button-list {
+	list-style: none;
+	padding-left: 0px;
+}
+.button-list li {
+	margin: 5px 0 5px 0;
+
+}
+.button-list li .btn {
+	text-align: right;
+	padding-right: 5px;
+}
+
+.caption-buttons {
+	margin-top: -6px;
+}

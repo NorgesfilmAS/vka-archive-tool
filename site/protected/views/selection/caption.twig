@@ -1,0 +1,15 @@
+{#
+	the caption shown for every sub page
+ #}
+
+
+<div class="bs-content">
+	<div class="row bs-page-header no-padding no-bottom-padding">
+		<div class="col-xs-2 id-marker text-center">{% raw %}{{ recordCount }}{% endraw %}</div>
+		<div class="col-xs-10 no-right-padding info-text">{{ header }}
+			<span class="pull-right caption-buttons" >
+				<a href="{{this.createUrl('article/index', { 'reports' : ''}) }}" class="btn btn-info btn-sm" ><span class="glyphicon glyphicon-question-sign"></span></a> 
+			</span>
+		</div>
+	</div>
+</div>

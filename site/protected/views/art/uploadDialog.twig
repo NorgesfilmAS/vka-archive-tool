@@ -1,0 +1,160 @@
+{# 
+  the form to create a new file and upload it
+		* this.model  Art or ResourceAltFiles
+		* isMaster boolean if true the model is Art otherwise ResourceAltFiles
+
+ #}
+{% extends this.viewPath('dialog') %}
+
+{% block dialogHeader %}
+	{% if isMaster %}
+		{% if this.model.hasResource %}
+			{{ Yii_t('app','Replace master file for ') }} "{{ this.model.title| slice(0,20) }}"
+		{% else %}
+			{{ Yii_t('app','Add master file to ') }} "{{ this.model.title | slice(0,20) }}"
+		{% endif %}
+  {% else %}
+		{{ Yii_t('app','Add new alternative file') }}
+	{% endif %}
+{% endblock %}
+
+{% block dialogBody %}
+	{% if this.model.hasErrors() %}
+	<div class="row">
+		<div class="col-sm-10 col-sm-offset-1 alert alert-danger">			
+			{{ html.errorSummary(this.model)|raw }}
+		</div>
+	</div>
+	{% endif %}	
+	<div class="row">	
+		<div class="col-sm-10 col-sm-offset-1">
+			<h5>{{ Yii_t('app', 'Uploading a file to the server:') }}</h5>
+			<form id="form-upload" method="POST" action="{{ this.createUrl('art/upload', {'id': this.model.id, 'isMaster' : isMaster, 'type':'upload'})}}" enctype = "multipart/form-data">		
+				{{ html.activeFileField(this.model, 'file') | raw}}<br>
+				<div class="upload-bar progress progress-striped active"  >
+					<div  id="id-bar" class="progress-bar"  role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%">
+						<span class="sr-only">0% Complete</span>
+					</div>
+				</div>				
+				<button type="submit" class="btn btn-primary">{{ Yii_t('app','Upload the file') }}</button>
+			</form>
+		</div>		
+	</div>					
+	{% if fileList |length > 0 %}			
+	<div class="row">
+		<div class="col-sm-10 col-sm-offset-1">
+		<hr />	
+		<h3 style="text-align: center">OR</h3>
+		<hr />
+		</div>
+	</div>	
+			
+	<div class="row">		
+		<div class="col-sm-10 col-sm-offset-1">
+			<h5>{{ Yii_t('app', 'Select a file from the file store:') }}</h5>
+			<div style="height: 150px; overflow-y: scroll;" class="pnek-filelist">
+				<ul class="filelist">
+				{% for file in fileList %}
+					<li data-file="{{file}}" class="file-select">{{ file }}</li>	
+				{% endfor %}	
+				</ul>		
+			</div>
+		</div>
+	</div>
+	<div class="row">		
+		<div class="col-sm-10 col-sm-offset-1">
+			<form id="form-select" method="POST" action="{{ this.createUrl('art/upload', {'id': this.model.id, 'isMaster' : isMaster, 'type':'select'})}}" enctype = "multipart/form-data">		
+				<div id="id-showFilename" class="pnek-file-selected"></div>
+				<input type="hidden" id="id-selectFilename" name="Art[selectFilename]" value="">
+				<button type="submit" class="btn btn-primary">Use this file</button><br>
+			</form>			
+		</div>
+	</div>		
+	{% endif %}
+
+{% endblock %}
+			 
+{% block dialogFooter %}
+	<button type="button" class="btn btn-default btn-close action-close" data-dismiss="modal">{{ Yii_t('button','btn-cancel') }}</button>
+{% endblock %}
+	
+{% block onReady %}
+	var bar = $('#id-bar');
+	$('.upload-bar').hide();
+	
+	{% set confirm = this.model.hasResource ? "if (!confirm('"~Yii_t('app', 'There is already a master file. Do you want to replace the existing file?') ~ "')) return false" : "" %}
+	{{ this.registerPackage('ajaxForm', {'isAjax' : true,'executeAfterLoad' : "
+		
+		var optionsUpload = {
+			target : '#id-modal-body',
+			success : processResponse,
+			beforeSend : beforeSend,
+			uploadProgress : uploadProgress,
+			beforeSubmit : showWaitConfirm
+		};
+		$('#form-upload').ajaxForm(optionsUpload);		
+
+		var optionsSelect = {
+			target : '#id-modal-body',
+			success : processResponse,
+			beforeSubmit : showWait
+		};
+
+		$('#form-select').ajaxForm(optionsSelect);			
+
+		function showWaitConfirm()
+		{
+			"~ confirm ~"
+		}
+		function beforeSend()
+		{ 	
+			bar.width('0%');     
+			$('.upload-bar').show();
+		}
+		function afterSend()
+		{	
+			// queue for ResourceSpace
+			// showWait();
+		}
+		function uploadProgress(event, position, total, percentComplete) 
+		{
+      var pVal = percentComplete + '%';
+			// console.log(pVal);
+      bar.width(pVal);     
+    }
+		function processResponse(responseText, statusText, xhr, $form) 
+		{
+			if (responseText == 'ok') {/* ok: load information in a div */
+				alert('did not expect to get an ok');
+			} else	if (responseText == 'url') {/* ok, but open an other page */
+				$('#id-modal-body').html('');
+				window.location = '"~this.createUrl('art/files', {'id':this.model.id, 'refresh':util.unique()})~"';
+			}	else {
+				$('#id-modal-body').html(responseText);
+			}
+		};	
+	" } )}}
+	function showWait(arr, $form, options) {
+		{{ confirm |raw }}
+		$('.wait-message').text("{{ Yii_t('app', 'Processing file with ResourceSpace') }}");
+		$('#id-modal-body').html($('#id-wait-message').html());
+	}
+	
+	$('.action-close').on('click', function() {
+		$('#id-modal').modal('hide');
+	});
+	
+	$('#btn-create').on('click', function() {		
+		$('#id-form').submit();  
+	});	
+	$('.file-select').on('click', function() {
+		$('.file-select').removeClass('active');
+	  $('#id-showFilename').text($(this).data('file'));
+		$(this).addClass('active');
+		$('#id-selectFilename').val($(this).data('file'));
+	});
+	
+	
+	
+	{{ parent }}
+{% endblock %}	

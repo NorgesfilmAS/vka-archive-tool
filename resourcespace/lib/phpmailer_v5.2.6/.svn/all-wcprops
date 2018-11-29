@@ -1,0 +1,53 @@
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/svn/resourcespace/!svn/ver/4506/lib/phpmailer_v5.2.6
+END
+LICENSE
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/resourcespace/!svn/ver/4506/lib/phpmailer_v5.2.6/LICENSE
+END
+.travis.yml
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/resourcespace/!svn/ver/4506/lib/phpmailer_v5.2.6/.travis.yml
+END
+changelog.md
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/resourcespace/!svn/ver/4506/lib/phpmailer_v5.2.6/changelog.md
+END
+class.phpmailer.php
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/resourcespace/!svn/ver/4506/lib/phpmailer_v5.2.6/class.phpmailer.php
+END
+class.pop3.php
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/resourcespace/!svn/ver/4506/lib/phpmailer_v5.2.6/class.pop3.php
+END
+README.md
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/resourcespace/!svn/ver/4506/lib/phpmailer_v5.2.6/README.md
+END
+class.smtp.php
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/resourcespace/!svn/ver/4506/lib/phpmailer_v5.2.6/class.smtp.php
+END
+composer.json
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/resourcespace/!svn/ver/4506/lib/phpmailer_v5.2.6/composer.json
+END

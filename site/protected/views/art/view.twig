@@ -1,0 +1,157 @@
+{% extends this.viewPath('main') %}
+
+
+{% block content %}
+<div class="pnek pnek-view">
+	{% include this.viewPath('flash') %}
+	{% include this.viewPath('caption') %}
+	{% if App.user.hasMenu('art/agent') %}	
+	<div class="row tx-view">
+		<div class="col-xs-12 col-sm-8 bg-hover">
+			<div class="panel panel-default panel-top a-url" data-url="{{ this.createUrl('art/agent', {'id': this.model.id})}}">
+				<div class="panel-heading">
+					<h3 class="panel-title">{{ Yii_t('app','Artist / credits') }}</h3>
+				</div>	
+				<div class="panel-body">						
+					<dl class="dl-horizontal">
+						<dt>{{ Yii_t('app','Artist') }}</dt>
+							<dd>
+							{% for  id, name in this.model.agents %}
+							<a href="{{ this.createUrl('agent/view', {'id': id}) }}">{{ name }} </a><br />
+							{% endfor %}
+							</dd>
+						<dt>{{ Yii_t('app','Producer') }}</dt><dd>{{ this.model.producer|e|replace({"\n" :'<br/>'})|raw }}</dd>
+						<dt>{{ Yii_t('app','Distributor') }}</dt><dd>{{ this.model.distributor|e|replace({"\n" :'<br/>'})|raw }}</dd>
+					</dl>
+				</div>
+			</div>
+		</div>
+		<div class="col-xs-12 col-sm-4 float-right" style="position: relative">
+			  <div style="position: absolute; padding-top:10px;">
+					<img id="img-art-{{this.model.id}}" 
+							 width="100%" 
+							 class="menu-modal" 
+							 data-url="{{ this.createUrl('art/preview', {'id' : this.model.id }) }}" 
+							 data-compact="1"
+							{% if this.model.tvRatioUrl %} 
+								src="{{ this.model.tvRatioUrl }}?r={{ util.unique() }}"
+							{%else %}
+								src="{{ App.baseUrl }}/images/no-preview.png"
+							{% endif %}/>
+					{% if this.model.tvRatioUrl %}
+						<span class="play menu-modal" 
+									style="margin-top:28px;"
+									data-compact="1"
+									data-url="{{ this.createUrl('art/preview', {'id' : this.model.id }) }}"></span>
+					{% endif %}
+					
+				</div>
+		</div>
+	</div>
+	{% endif %}	
+	{% if App.user.hasMenu('art/artworkInfo') %}	
+	<div class="row tx-view">
+		<div class="col-xs-12 col-sm-8 bg-hover">
+			<div class="panel panel-default panel-top a-url" data-url="{{ this.createUrl('art/artworkInfo', {'id': this.model.id})}}">
+				<div class="panel-heading">
+					<h3 class="panel-title">{{ Yii_t('app','Artwork info') }} </h3>
+				</div>	
+				<div class="panel-body">						
+					<dl class="dl-horizontal">
+						<dt>{{ Yii_t('app','Year') }}</dt><dd>{{this.model.year }}</dd>
+						<dt>{{ Yii_t('app','Type') }}</dt><dd>{{this.model.type }}</dd>
+						<dt>{{ Yii_t('app','Length') }}</dt><dd>{{ this.model.length }}</dd>
+						<dt>{{ Yii_t('app','Format') }}</dt><dd>{{ this.model.format }}</dd>
+{% if App.user.hasMenu('art/files') %}								
+						<dt>{{ Yii_t('app','Fields') }}</dt><dd>{% if this.model.altFiles | length > 0 %}{{ this.model.altFiles | length}} {{ Yii_t('app','alternate files') }}{% else %}{{ Yii_t('app','no files') }}{% endif %}</dd>
+{% endif %}						
+						<dt>{{ Yii_t('app','Collection') }}</dt>
+						<dd>
+							<ul class="comma-list-summary">
+								{% for itemCaption in this.model.collection %}
+								  {% if itemCaption %}
+									<li class="comma-list popit" 
+											data-toggle="popover" 
+											data-html="true"
+											data-title="{{ Yii_t('app','collection')~' '~itemCaption}}"	
+											data-placement="left" data-content="{{ this.model.collectionInfo(itemCaption) }}">
+											{{ itemCaption }}
+									</li>
+									{% endif %}
+								{% endfor %}													
+							</ul>
+
+						</dd>
+					</dl>
+					
+				</div>
+			</div>
+		</div>
+		{% endif %}
+	</div>
+	<div class="row tx-view">		
+		{% if App.user.hasMenu('art/description') %}
+		<div class="col-xs-12 col-sm-8 bg-hover">
+			<div class="panel panel-default panel-top a-url" data-url="{{ this.createUrl('art/description', {'id': this.model.id})}}">
+				<div class="panel-heading">
+					<h3 class="panel-title">{{ Yii_t('app','Description') }}</h3>
+				</div>	
+				<div class="panel-body">			
+					{% if this.model.tags_gama %}
+					<dl class="dl-horizontal">
+						<dt>{{ Yii_t('app','Tags gama') }}</dt><dd>{{ this.model.tags_gama | join(', ') }}</dd>					
+					</dl>	
+					{% endif %}
+					<p class="text-overflow">	
+					{# this.model.content | length > 300 ? (this.model.content|slice(0, 300) ~ ' ...') |raw : this.model.content | raw #}
+					{{ this.model.content |raw }}	
+					</p>	
+				</div>
+			</div>
+		</div>		
+	</div>
+	{% endif %}
+	{% if App.user.hasMenu('art/digitization') %}
+	<div class="row tx-view">				
+		<div class="col-xs-12 col-sm-8 bg-hover">
+			<div class="panel panel-default panel-top a-url" data-url="{{ this.createUrl('art/digitization', {'id': this.model.id})}}">
+				<div class="panel-heading">
+					<h3 class="panel-title">{{ Yii_t('app','Digitization') }}</h3>
+				</div>	
+				<div class="panel-body">						
+					<dl class="dl-horizontal">
+						<dt>{{ Yii_t('app','Is digitized') }}</dt><dd>{{ this.model.is_digitized }}</dd>
+						<dt>{{ Yii_t('app','Location') }}</dt><dd>{{ this.model.digitizing_location }}</dd>
+						<dt>{{ Yii_t('app','Return date agent') }}</dt><dd>{{ this.model.return_date_agent }}</dd>
+						<dt>{{ Yii_t('app','Digitization date') }}</dt><dd>{{ this.model.digitization_date }}</dd>
+					</dl>
+				</div>
+			</div>
+		</div>				
+	</div>	
+	{% endif %}
+	{% if App.user.hasMenu('art/history') %}	
+	<div class="row tx-view">		
+		<div class="col-xs-12 col-sm-8 bg-hover">
+			<div class="panel panel-default panel-top a-url" data-url="{{ this.createUrl('art/history', {'id': this.model.id})}}">
+				<div class="panel-heading">
+					<h3 class="panel-title">{{ Yii_t('app','History') }} </h3>
+				</div>	
+				<div class="panel-body text-overflow">						
+					{{ this.model.awards | raw}}
+				</div>
+			</div>
+		</div>
+	</div>
+	{% endif %}	
+	
+</div>	
+{% endblock %}
+
+
+{% block onReady %}
+	console.log('ready');
+  $('.menu-overview').addClass('active');
+	$('.popit').popover({trigger: 'hover'});
+	{{ parent() }}
+{% endblock %}

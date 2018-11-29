@@ -1,0 +1,69 @@
+{# 
+	shows all active jobs.
+	user can delete and change priority of the job
+#}
+{% extends this.viewPath('main') %}
+
+{% block content %}
+<div id="scroll" class="bs-content">
+	<h2>{{ Yii_t('app','Jobs done') }}</h2>
+	
+	<div class="row grid-header">
+		<div class="col-xs-1 text-right sort-key" data-sort="id">{{ Yii_t('app','id') }}</div>
+		<div class="col-xs-1"></div>
+		<div class="col-xs-4 sort-key" data-sort="title">{{ Yii_t('app','title') }}</div>
+		<div class="col-xs-1 text-right sort-key" data-sort="priority">{{ Yii_t('app','priorty') }}</div>
+		<div class="col-xs-3 sort-key" data-sort="artist">{{ Yii_t('app','ended') }}</div>
+		<div class="col-xs-1" data-sort="">{{ Yii_t('app','status') }}</div>
+	</div>
+	{{ this.widget( 'zii.widgets.CListView', {
+			'id' :  'id-grid',
+			'dataProvider' : this.model.doneJobs,					
+			'itemView' : 'viewJobDoneList',
+			'template' : '{items} {pager}',
+			'pager' : {
+	          'class' : 'toxus.extensions.infiniteScroll.IasPager', 
+             'rowSelector' : '.art-row', 
+             'listViewId'  : 'id-grid', 
+             'header' : '',
+             'loaderText' : '<img src="'~App.baseUrl~'/images/loading.gif'~'"/ >',
+             'options' : {
+								'history' : false, 'triggerPageTreshold' : 10, 'trigger' :'Load more' 
+						}		
+         }
+		}, true) | raw }}			
+</div>
+<script type="text/javascript">
+
+  function bindEvents(id, result)
+	{
+		$('.menu-modal').on('click', function() {
+			{# should be done better, but is copy of the BaseController.modal_dialog.onReady #}
+						$(".menu-modal").on("click", function() {
+							div = $(this).data("div");
+							if (div) {
+								$(div + " .modal-content").html($("#id-wait-message").html());
+								$(div).modal("show"); 							
+								$(div + " .modal-content").load($(this).data("url"));
+							} else {
+								$("#id-modal-body").html($("#id-wait-message").html());
+								$("#id-modal").modal("show"); 							
+								$("#id-modal-body").load($(this).data("url"));							
+							}
+					});
+		});
+	}
+
+</script>	
+
+{% endblock %}
+	
+	
+{% block onReady %}
+  console.log('xx');
+	$.ias['defaults']['onRenderComplete'] = function() {
+		bindEvents();
+	}
+  $('.menu-done').addClass('active');
+	{{ parent() }}
+{% endblock %}	

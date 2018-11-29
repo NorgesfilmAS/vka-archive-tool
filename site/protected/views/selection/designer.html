@@ -1,0 +1,133 @@
+{% raw %}
+<div class="row">
+	<div class="col-xs-12 select-order">	
+		<h4>Ordering</h4>
+		<div ng-hide="orderFields.length==0">
+			<h3>
+			{% endraw %}
+			{{ Yii_t('app', 'The fields use to order / group the final result.') }}
+			{% raw %}		
+			</h3>			
+		</div>
+		<!-- the definition of the order group  -->
+		<div class="row order-line" ng-repeat="field in orderFields" >
+			<div class="col-xs-5">
+				<div class="row">
+					<div class="col-xs-1" ng-click="orderRemove($index)"><span class="glyphicon glyphicon-minus-sign"></span></div>
+					<div class="col-xs-4">{{ field.label }}</div>
+					<div class="col-xs-3" ng-click="orderSortNext($index)">{{ orderSort(field) }}</div>
+					<div class="col-xs-3">
+						<span class="glyphicon glyphicon-chevron-up pull-left" 
+									ng-click="orderMoveUp($index)"
+									ng-hide="$first"></span>
+						<span class="glyphicon glyphicon-chevron-down pull-right" 
+									ng-click="orderMoveDown($index)"
+									ng-hide="$last"></span>
+					</div>	
+				</div>
+			</div>
+			<div class="col-xs-7">
+				<div class="row">
+					<div class="col-xs-11 col-xs-offset-1" ng-show="field.order=='group'">
+						<strong>Fields shown in header</strong><br />				
+						<span class="command"  
+									ng-hide="showHeaderFields[$index]" 
+									ng-click="showHeaderFields[$index] = ! showHeaderFields[$index]">
+							<span class="glyphicon glyphicon-pencil">Show field list</span>					
+						</span>
+						<span class="command"  
+									ng-show="showHeaderFields[$index]" 
+									ng-click="showHeaderFields[$index] = ! showHeaderFields[$index]">
+							<span class="glyphicon glyphicon-pencil">Hide field list</span>					
+						</span>
+						<br />			
+
+						<div class="list" ng-repeat="show in field.fields">
+							<span class="glyphicon glyphicon-minus-sign" ng-click="headerRemove($parent.$index, $index)">{{ show.label }}</span>					
+						</div>	
+						<div class="field-orderlist" ng-show="showHeaderFields[$index]">
+							<div class="order-field" ng-repeat="header in headerFields">
+								<div ng-click="headerAdd($parent.$index, $index);showHeaderFields[$parent.$index]=0" ng-show="headerIndex($parent.$index, header.attribute) < 0">{{ header.label }}</div>
+							</div>
+						</div>
+					</div>
+				</div>	
+			</div>				
+		</div>	
+
+		<div class="row " ng-hide="orderFields.length==allowedOrderFields.length">
+			<div class="col-xs-12 no-padding">
+				<h3>
+			{% endraw %}
+			{{ Yii_t('app', 'The fields available for ordering and grouping') }}
+			{% raw %}
+				</h3>	
+			</div>	
+		</div>
+		<div class="row" ng-repeat="field in allowedOrderFields" ng-show="orderIndex(field.attribute) < 0 ">
+			<div class="col-xs-1">
+				<span class="glyphicon glyphicon-plus-sign add-field" 
+							ng-click="orderAdd($index)" ></span>
+			</div>
+			<div class="col-xs-10">{{ field.label }}</div>
+		</div>	
+	</div>
+
+
+
+
+
+
+
+
+
+
+
+
+	<div class="col-xs-4 field-list">
+	<h4>fields in body</h4>
+		<div class="row" ng-hide="bodyFields.length==0">
+			<div class="col-xs-12 no-padding">
+				<h3>
+			{% endraw %}
+			{{ Yii_t('app', 'The fields in the report (columns).') }}
+			{% raw %}		
+				</h3>	
+			</div>	
+		</div>
+		<div class="row" ng-repeat="field in bodyFields" >
+			<div class="col-xs-1" ng-click="bodyRemove(field)"><span class="glyphicon glyphicon-minus-sign"></span></div>
+			<div class="col-xs-7">{{ bodyLabel(field) }}</div>
+			<div class="col-xs-1 pull-right">
+				<span class="glyphicon glyphicon-chevron-up" 
+							ng-click="bodyMoveUp(field)"
+							ng-hide="$first"></span>
+			</div>	
+			<div class="col-xs-1 pull-right">	
+				<span class="glyphicon glyphicon-chevron-down" 
+							ng-click="bodyMoveDown(field)"
+							ng-hide="$last"></span>
+			</div>
+		</div>	
+
+		<div class="row " ng-hide="bodyFields.length==allowedBodyFields.length">
+			<div class="col-xs-12 no-padding">
+				<h3>
+			{% endraw %}
+			{{ Yii_t('app', 'The fields available as columns') }}
+			{% raw %}
+				</h3>	
+			</div>	
+		</div>
+		<div class="row" ng-repeat="field in allowedBodyFields" ng-hide="bodyFields.indexOf(field.attribute) >=0 ">
+			<div class="col-xs-1">
+				<span class="glyphicon glyphicon-plus-sign add-field" 
+							ng-click="bodyAdd($index)" ></span>
+			</div>
+			<div class="col-xs-10">{{ field.label }}</div>
+		</div>		
+	</div> 
+</div>
+{% endraw %}
+	
+	

@@ -1,0 +1,32 @@
+{% extends this.viewPath('main') %} {# "views/layouts/main.twig" #}
+
+{% block content %}
+<div id="scroll" class="bs-content">
+	<h2>Resource Space Definitions</h2>
+	
+	{% include this.viewPath('flash') %}
+	{% block pageContent %}
+	
+		<div class="row grid-header">
+			<div class="col-xs-1">ID</div>
+			<div class="col-xs-2">NameID</div>
+			<div class="col-xs-2">Fields</div>
+			<div class="col-xs-2">Model</div>
+			<div class="col-xs-2">Show</div>
+		</div>
+		<div id="id-grid" class="list-view">
+			<div class="items">
+				{% for id, key in this.model %}
+				<div class="grid-row row table-hover">
+					<div class="col-xs-1">{{ id }}</div>
+					<div class="col-xs-2">{{ key }}</div>
+					<div class="col-xs-2"><a href="{{ this.createUrl('resourceSpace/listModel', { 'id' : id }) | raw }}">List fields</a></div>
+					<div class="col-xs-2"><a href="{{ this.createUrl('resourceSpace/generateModel', { 'id' : id }) | raw }}">Generate model</a></div>
+					<div class="col-xs-2"><a href="{{ this.createUrl('resourceSpace/show', { 'modelName': key, 'id' : 4 }) | raw }}">Show</a></div>
+				</div>	
+				{% endfor %}	
+			</div>
+		</div>				
+  {% endblock %}
+</div>			
+{% endblock %}

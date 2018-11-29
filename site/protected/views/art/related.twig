@@ -1,0 +1,61 @@
+{% extends this.viewPath('main') %}
+
+
+{% block content %}
+<div class="pnek">
+{% include this.viewPath('caption') %}
+
+<div class="bs-content">
+	{% if this.model.hasErrors() %}
+	<div class="row">
+		<div class="col-sm-10 col-sm-offset-2 alert alert-danger">			
+			{{ html.errorSummary(this.model)|raw }}
+		</div>
+	</div>
+	{% endif %}
+	<div class="bs-content">
+	{% for id, art in this.model.relatedArt %}
+		<div class="col-sm-4">
+			<div class="panel panel-default panel-top panel-fix-height-art" >
+				<div class="panel-heading">
+					<h3 class="panel-title">
+						<div class="pull-right btn-group" style="right: -13px;">
+							<button href="#" class="btn btn-default btn-xs dropdown-toggle btn-dim" data-toggle="dropdown"><span class="caret"></span></button>
+							<ul class="dropdown-menu dropdown-menu-small">
+								<li><a href="{{ this.createUrl('art/view', {'id': art.id})}}" >{{ Yii_t('app','Goto') }}</a></li>
+								{% if art.model.agents | length > 0 %}
+									<li>
+										{% for  id, name in this.model.agents %}
+											{{ name }} <a href="{{ this.createUrl('agent/view', {'id': id}) }}"><span class="glyphicon glyphicon-link"></span></a><br />
+										{% endfor %}
+								{% endif %}
+								<li><a id="btn-alt-dele-{{ altFile.id }}" class="id-delete"  href="#" data-url="{{ this.createUrl('art/relatedRemove', {'id' : id, 'parent' : this.model.id}) }}" data-confirm="{{ Yii_t('app','Do you want to remove the relation with {title}?' , {'{title}': art.title} )}}">{{ Yii_t('button','btn-remove') }}</a></li>								
+							</ul>
+						</div>												
+						<span class="a-url" data-url="{{ this.createUrl('art/view', {'id': art.id})}}">{{ art.title }}</span>
+					</h3>
+				</div>	
+				<div class="panel-body a-url" data-url="{{ this.createUrl('art/view', {'id': art.id})}}">						
+					{{ art.agent }}<span class="pull-right">{{ art.year }}</span>
+				</div>
+			</div>
+		</div>
+	{% else %}
+		<h5>{{ Yii_t('app','There are no related art works') }}</h5>	
+	{% endfor %}	
+	</div>		
+</div>	
+</div>
+
+{% endblock %}		
+		
+{% block onReady %}
+	$('.id-delete').on('click', function() {
+		msg = $(this).data('confirm');
+		if (msg && !confirm(msg)) {
+			return; 
+		}
+		window.location = $(this).data('url');
+	});
+	{{ parent() }}
+{% endblock %}

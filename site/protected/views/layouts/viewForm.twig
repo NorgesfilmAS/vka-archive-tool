@@ -1,0 +1,59 @@
+{#
+ Extension that allowes moderation of the infomration
+#}
+
+{% extends this.viewPath('viewForm', {'libOnly' : 1}) %}
+
+
+{% block viewContent %}
+	{% if App.user.isModerating and form.canModerate is defined %}
+	<div class="row">
+		<div class="col-sm-9">	
+			{% include this.viewPath('_moderate') %}
+		</div>
+		<div class="col-sm-3">
+			{% if this.model.moderationsView(this.route) | length > 0 %}
+				<ul class="moderation">
+				{% for change in this.model.moderationsView(this.route) %}
+					<li class="mod-transaction">
+						<div class="pull-right btn-group">
+							<button class="btn btn-default btn-xs dropdown-toggle btn-dim" data-toggle="dropdown" href="#"><span class="caret"></span></button>
+							<ul class="dropdown-menu dropdown-menu-small">
+								<li>
+									<a href="{{ this.createUrl('resourceSpace/undoTransaction', {'id' : change.id, 'url' : App.request.requestUri }) }}">{{ Yii_t('app', 'Undo this change')}}</a>
+								</li>
+							</ul>
+						</div>						
+						
+						{# "{{ this.createUrl(App.controller.route,{'id': this.model.id, 'mode':'moderate','transaction':change.id} ) }}" #}
+						<div class="mod-icon level-{{ loop.index}} mod-trans-event" data-id=".mod-trans-{{ change.id}}"><span class="glyphicon glyphicon-map-marker"></span><br />
+						{% if change.is_rollback %}
+							<span class="mod-rollback glyphicon glyphicon-refresh mod-trans-event" data-id=".mod-trans-{{ change.id}}"></span>
+						{% endif %}
+						</div>	
+						<div class="mod-user mod-trans-event" data-id=".mod-trans-{{ change.id}}">{{ change.user.username }}<br />{{ change.creation_date | date('d/m/Y H:i') }}</div>
+					</li>	
+				{% endfor %}
+				</ul>	
+			{% endif %}	
+		</div>
+	</div>	
+  {% else %}
+	{{ parent() }}
+	{% endif %}
+{% endblock %}
+
+{% block onReady %}
+	$('.btn-moderate').on('click', function() {
+		window.location = window.location+"?mode=moderate"; 
+	});
+	$('.mod-trans-event').on('click', function() {
+		$('.mod-info-text').hide();
+		$($(this).data('id')).show('fast');
+	});
+	{{ parent() }}
+{% endblock %}
+	
+	
+	
+	

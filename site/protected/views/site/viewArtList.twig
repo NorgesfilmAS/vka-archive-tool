@@ -1,0 +1,24 @@
+<div class="grid-row art-row row a-url table-hover" data-url="{{ this.createUrl('art/view', {'id': data.id} ) }}" >	
+	<div class="col-xs-1 text-center" >
+		{% if data.isProcessing %}
+			<img id="img-art-{{data.id}}" width="100%" src="{{ App.baseUrl }}/images/processing.jpg" />			
+		{% else %}			
+			<img id="img-art-{{data.id}}" 
+					 width="100%" 
+					{% if data.tvRatioUrl %} 
+						class="menu-modal" 
+						data-compact="1"
+						data-url="{{ this.createUrl('art/preview', {'id' : data.id }) }}" 
+						src="{{ data.tvRatioUrl }}"{% else %}src="{{ App.baseUrl }}/images/no-preview-small.png"
+					{% endif %} 
+					data-missing-image="{{dataImagePath}}" />
+		{% endif %}		
+	</div>	
+	<div class="col-xs-1 text-right">{{ data.id }}</div>	
+	<div class="col-xs-3 grid-col-no-wrap">{{ data.title }}</div>	
+	<div class="col-xs-1 text-right">{{ data.year }}</div>	
+	<div class="col-xs-3 grid-col-no-wrap">{{ data.agent }}</div>	
+	<div class="col-xs-1 grid-col-no-wrap">{{ data.type }}</div>	
+	<div class="col-xs-1 grid-col-no-wrap">{{ data.format }}</div>	
+	<div class="col-xs-1 text-right">{{ data.length }}</div>	
+</div>

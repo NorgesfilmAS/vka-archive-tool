@@ -1,0 +1,1 @@
+{"model":"Art","report":{"order":[{"attribute":"title","label":"Title","order":"asc","fields":[]}],"fields":["agent","title","year","id","seconds","masterFileSize","tags_gama","collection","is_digitized"]},"select":[],"name":"Test VKA Adm 30.8"}

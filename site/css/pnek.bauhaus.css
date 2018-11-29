@@ -1,0 +1,785 @@
+/** 
+ * the bauhaus styles
+ * version 0.01 jvk 2013-09-03
+ */
+
+#logo-pnek {
+	background-color: black;
+	height: 100px;
+}
+#logo-pnek-image {
+	background-image: url('logo-black.png');
+	background-repeat: no-repeat;
+	padding-top: 19px;
+	padding-left: 90px;
+	margin-left: -20px;
+	height: 70px;	
+	font-size: 27px;
+	color : white;		
+} 
+#logo-pnek a:hover {
+	 text-decoration: none;
+}
+ /**
+ header for art
+ */
+.bs-page-header {
+	 background-color: white;
+	 border: 0px;
+	 border-bottom: 4px black solid;
+	 font-size: 130%;	 
+} 
+
+.id-marker {
+	background-color: black;
+	color: white;
+	height: 34px;
+	padding-top: 5px;
+	padding-left: 0px;
+	padding-right: 35px;
+  background-image: url('caption.corner.png');
+	background-repeat:no-repeat;
+	background-position: right center;
+}
+
+.bs-footer {
+	background-color: black;
+	background-image: url('light-footer-bg.png');
+	color: white;
+}
+.bs-footer h4 {
+	font-size: 14px;
+	color: #b0b0b0;
+}
+
+.version {
+	color: #b0b0b0;	
+}
+.info-text {
+	padding-top: 0px;		
+	margin-top: -9px;
+	font-size: 30px;
+}
+
+/** view for data */
+.dl-horizontal dt {
+	text-align: left;
+	border-bottom: 1px #eee solid;
+}
+
+.dl-horizontal dd {
+	border-bottom: 1px #eee solid;
+}
+
+.bs-content {
+	margin-top:25px;
+	margin-right: -15px;
+}
+.bs-sidebar {
+	margin-top: 20px;
+}
+
+/** the navigation menu (left side) */
+.bs-sidenav {
+	background-color: white;
+	margin-top: 20px;
+	text-shadow: none;
+}
+
+
+.bs-sidebar .nav > li > a {
+	background-color: #ecf4f6;
+	color: #646464;
+	font-size: 130%;
+	padding: 2px 10px 2px 10px;
+	border-top: #50b4d2 1px solid;
+	border-bottom: #50b4d2 1px solid;
+	margin-top: -1px;
+}
+
+ul.bs-sidenav>.active>a {
+	background-color: #50b4d2 !important;
+	color: white !important;
+	font-weight: normal !important;
+}
+.bs-sidebar .nav > .active > a, .bs-sidebar .nav > .active:hover > a, .bs-sidebar .nav > .active:focus > a {
+	font-weight: normal !important;
+}
+/** top of page navigation */
+.navbar-inverse {
+	background-image: url('darker-header-bg.png');
+}
+.bs-header {
+	background-color: black;
+	border-bottom: none;
+	padding-bottom: 0;
+}
+
+/* the panel in art overview */
+.pnek .panel-default {
+	border: none;
+	box-shadow: none;
+}
+.pnek .panel-default .panel-heading {
+	background-color: transparent;
+	border: none;	
+	color: #428bca;
+	border-bottom: black 3px solid;
+	padding-left: 0px;	
+	padding-right: 0px;
+	padding-bottom: 5px;
+	margin-bottom: 30px;
+	font-size: 17px;
+}
+
+.pnek .tx-view .panel-default, .pnek .tx-view .panel-body {
+	padding: 0px;	
+}
+/* 
+.pnek .panel-body {
+	padding: 0;
+}
+*/
+.pnek .panel-body dl {
+	margin-top: 0;
+}
+.pnek .art-sum {
+	border-bottom: 1px solid lightgray;
+	padding-bottom: 5px;
+	padding-top: 5px;
+}
+.art-sum .grid-small {
+	font-size: 90%;
+}
+/** for the search on the front page */
+.pnek .panel-list dd{
+/*	border-bottom: solid lightgray 1px; */
+}
+.pnek .panel-list dt {
+	font-weight: normal;
+}
+#id-search .btn-block {
+	padding-top: 20px;
+}
+.nav-form {
+/*	background-color: #f7f5fa; */
+	margin-top: 15px;
+}
+.search-spacer {
+	height: 20px;
+}
+.thumbnail {
+	margin-top: 20px;
+	background-color: #ECF4F6;
+	border: #5bb3de solid 1px;;
+	padding: 0;
+}
+.thumbnail .caption {
+	font-size: 110%;
+	background-color: #5bb3de;
+}
+.thumbnail .body {
+	padding: 5px;
+}
+.panel-body {
+	margin-top: 5px;
+}
+.panel-fix-height {
+	overflow-y: hidden;
+	height: 300px;
+}
+.panel-fix-height-xl {
+	overflow-y: hidden;
+	height: 350px;
+}
+.panel-fix-height-art {
+	overflow-y: hidden;
+	height: 280px;	
+}
+.panel-fix-height-agent {
+	overflow-y: hidden;
+	height: 250px;		
+}
+.bg-hover .panel {
+	background-color: transparent;
+}
+.bg-hover:hover {
+	background-color: #f8f8f8 !important;
+}
+.bs-sidebar .nav > .active > a, .bs-sidebar .nav > .active:hover > a, .bs-sidebar .nav > .active:focus > a {
+	border-right: none;
+}
+.items .panel-title {
+	min-height: 36px;
+}
+.overview .dl-horizontal dt  {
+	width: 100px;	
+}
+.overview .dl-horizontal dd {
+	margin-left: 110px;
+}
+.overview .panel-title {
+	overflow: hidden;
+	max-height: 38px;
+	min-height: 38px;
+}
+
+.toggle-select {
+	background-color: #ECF4F6;
+  border: 1px solid;
+	padding-left: 6px;
+	padding-right: 3px;
+}
+.panel-group .panel .panel-grid {
+/*	padding-left: 0px;
+	padding-right: 0px;
+*/	border: none !important;
+}
+.processing-job {
+	background-image: url('progress.gif');
+	background-repeat: no-repeat;
+	padding-left: 20px;
+	width: 16px;
+	height: 16px;
+	color: #428BCA;
+}
+
+ol.vertical .no-items {
+
+}
+.drop-scroll {
+	overflow-y: scroll;
+	height: 500px;
+}
+
+.mod-original {
+	text-decoration: line-through;
+}
+.moderation {
+	background-color: #ECF4F6;
+	padding: 0px;
+}
+.moderation > li {
+  list-style: none;
+	border-bottom: 1px solid #50B4D2;
+	padding: 6px;
+}
+.moderation a {
+	color: #646464;
+}
+.moderation > li:hover {
+	background-color: #E5E3E9;
+}
+
+.mod-icon {
+	display: inline-block;
+	vertical-align: top;
+}
+.mod-user {
+	display: inline-block;	
+}
+.mod-date {
+	display: inline;
+	padding-left: 30px
+}
+.mod-rollback {
+	margin-top: 3px;
+	color: darkgray;
+}
+.mod-info-text {
+	display: block;
+}
+.mod-value-link {
+	cursor: pointer;
+}
+.mod-info-link {
+	cursor: pointer;
+}
+/* colors used to show the moderation level */
+.level-1 {
+	color :#E30000; 
+}
+.level-2 {
+	color :#FF8419; 
+}
+.level-3 {
+	color :#AC6805; 
+}
+.level-4 {
+	color :#97C40F; 
+}
+.level-5 {
+	color :#009A2F; 
+}
+.level-6 {
+	color :#22C6D3; 
+}
+.level-7 {
+	color :#0F7AAC; 
+}
+.level-8 {
+	color :#9022C7; 
+}
+.level-9 {
+	color :#D01495; 
+}
+.level-10 {
+	color :#434343; 
+}
+.level-11 {
+	color :#434343;
+}
+.level-12 {
+	color :#E30000;
+}
+.level-13 {
+	color :#A80000;
+}
+.level-14 {
+	color :#FF8419;
+}
+.level-15 {
+	color :#AC6805;
+}
+.level-16 {
+	color :#FFE600;
+}
+.level-17 {
+	color :#93C00F;
+}
+.level-18 {
+	color :#19FF00;
+}
+.level-19 {
+	color :#19FF00;
+}
+.level-20 {
+	color :#00FFFF;
+}
+.level-21 {
+	color :#00A7A7;
+}
+.level-22 {
+	color :#0F7AAC;
+}
+.level-23 {
+	color :#3F41A4;
+}
+.level-24 {
+	color :#DF06CA;
+}
+.level-25 {
+	color :#A700A7;
+}
+.level-26 {
+	color :#FF78A7;
+}
+.level-27 {
+	color :#784378;
+}
+.level-28 {
+	color :#000000;
+}
+.level-29 {
+	color :#E1E1E1;
+}
+.level-30 {
+	color :#909090;
+}
+
+.indent-level ul {
+	padding-left: 20px;
+}
+.indent-level li {
+	list-style: square;
+
+}
+.indent-level li a {
+	padding-bottom: 6px;	
+	display: block;
+}
+/* to application.css */
+.clickable:hover {
+	background-color: #EEEEEE
+}
+.clickable {
+	cursor: pointer;
+}
+.chosen-container {
+	height: auto;
+}
+.form-marge {
+	padding: 0px 20px 0px 20px;
+}
+
+.menu-item-text {
+	padding-left: 30px;
+	font-size: 120%;
+}
+.nav .menu-item {
+	background-color: #ECF4F6;
+}
+
+.menu-submenu  {
+	background-color: #ECF4F6 !important;
+	color: black;
+}
+
+.menu-item-level-1 {
+	padding-left: 20px;
+}
+.menu-item-level-2 {
+	padding-left: 40px;
+}
+.menu-item-level-3 {
+	padding-left: 60px;
+}
+
+.menu-info-block {
+	font-style: italic;	
+}
+
+.checkbox-inline {
+	display: inline-block;
+}
+
+.cls-transaction {
+	 border-bottom: 1px solid #D3D3D3;
+   margin-bottom: 7px;
+   padding-bottom: 5px;
+}
+.list-dates {
+	overflow-y: 
+	scroll; height:350px;
+	margin-left: -2px;
+}
+
+.menu-overflow {
+	font-size: 100% !important;
+}
+.tt-cursor {
+	color: white;
+	background-color: #5BC0DE;
+	padding-bottom: 2px;
+}
+
+.badge-menu {
+	float:right;
+	padding-top: 4px;
+	margin-top: 3px;
+}
+
+/** this must be move to application.css */
+.no-padding {
+	padding-left: 0px;
+	padding-right: 0px;
+}
+
+.select-fields .menu.active {
+	border-bottom: solid 7px #50B4D2;
+}
+
+.select-fields .menu {
+	border-bottom: solid 1px #50B4D2;
+	padding-bottom: 2px;
+	padding-left: 8px;
+}
+.select-field h4, .field-list h4 {
+	font-size: 14px;
+	color : #50B4D2;
+	border-bottom: #50B4D2 1px dashed;
+}
+
+.select-toolbar {
+	margin: -10px -15px 15px -15px;
+	padding: 2px;
+	background-color: lightgray;
+}
+.select-toolbar .type {
+	font-size: 90%;	
+}
+.select-toolbar button {
+	color: #646464;
+}
+.select-order h3, .field-list h3 {
+	color: #50b4d2;
+  font-size: 14px;
+  font-weight: normal;
+}
+
+.master-info dt {
+	width: 100px;
+}
+.master-info dd {
+	margin-left: 105px;
+}
+/* fading message */
+.info-panel {
+	margin-left: 230px;
+	margin-right: 0;
+	margin-top: -136px;
+	position: absolute;
+	width: 494px;
+}
+.fade {
+  opacity: 0;
+  -webkit-transition: opacity 0.50s ease-in;
+  -moz-transition: opacity 0.50s ease-in;
+  -o-transition: opacity 0.50s ease-in;
+  -ms-transition: opacity 0.50s ease-in;
+  transition: opacity 0.50s ease-in;
+}
+/*
+.fade.in{
+  opacity: 1;
+}
+*/
+.order-line {
+	border-bottom: 1px solid lightblue;
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+}
+
+.waiting {
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  top:0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  opacity: 0.5;
+  margin: auto;
+  z-index: 10;
+}
+.label-help {
+	margin-bottom: 5px;
+}
+
+/**
+version 1.5 New layout 2015
+*/
+.bs-header .search {
+	height: 100px;
+	padding-top: 28px;
+	width: 230px;
+}
+
+.input-bg-dark {
+	background-color: #555555;
+	color: #EEEEEE;
+	border: solid 1px #555555;
+}
+.input-bg-dark:focus {
+	border: solid 1px #555555;
+}
+.display-layout {
+	color: black;
+}
+.id-search input, .id-search select {
+	background-color: #e9f8fd;
+	border: 1px solid #cfe6ea;
+}
+.id-search select {
+	appearance:none;
+-moz-appearance:none; /* Firefox */
+-webkit-appearance:none; /* Safari and Chrome */
+}
+.id-search .btn {
+	background-color: #76bdd7;
+}
+.id-search .active, .list-toggle .active {
+	color :#76b3c6;
+}
+.tile-view .artX {
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;	
+}
+.tile-view {
+	padding-bottom: 20px;
+}
+.tile-view .artist {
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+.preview-image {
+}
+.preview-data .line-div {
+	border-bottom: 1px #eee solid;
+}
+.preview-data .art {
+	font-weight: bold;
+}
+.preview-data .data-label {
+	display: inline-block;	
+	width: 50%;
+}
+.preview-data .data-info {
+	display: inline-block;	
+	width: 50%;
+}
+.preview-data .data-info {
+	color: gray;
+}
+.list-view .art-spacer {
+ 	margin-bottom: 35px; 
+}
+span.play {
+    background: url("../images/play.png") no-repeat scroll 50% 50% rgba(0, 0, 0, 0);    
+    height: 50%;
+    left: 0;
+    opacity: 0.6;
+    position: absolute;
+    top: 5%;
+    width: 100%;
+}
+.pnek .panelXXX {
+	border : none;
+	box-shadow: none;
+}
+.pnek-view .panel-default .panel-heading {
+	margin-bottom: 10px;
+	color: black;
+	border-color: #428bca;
+}
+.pnek-view .panel, .pnek-view dl {
+	margin-bottom: 0;
+}
+.bs-page-header .id-marker2 {
+	position: absolute;
+	left: 0px;
+	bottom: 0;
+}
+
+.thumb-info {
+	position: relative;
+}
+.thumb-info .info {
+	background-color: #444444;
+	color: white;
+	opacity: 0.6;
+	bottom: 0;
+	padding: 7px;
+	position: absolute;
+	width: 100%;
+}
+.no-opacity {
+	opacity: 0.9;
+}
+
+.dialog-full {
+	margin-top: 125px;
+}
+.dialog-full .modal-header .close {
+	font-size: 14px;
+	color: white;
+	font-weight: normal;
+  opacity: 0.8;
+  text-shadow: none
+}
+.dialog-full h4 {
+	display: none;
+}
+.dialog-full .modal-header {
+	background-color: black;
+	border: none;
+}
+.dialog-full .modal-body {
+	padding: 0 !important;
+	background-color: black;
+}
+.dialog-full .modal-footer {
+	display: none;
+}
+
+.quality-switch {
+	display: inline-block;
+}
+.quality-switch button {
+	background-color: black;
+	color: #888888;
+	border: none;
+}
+.quality-switch .active {
+	color: white;
+}
+.tx-view {
+	margin-bottom: 10px;
+}
+.tx-view .grid {
+	margin-bottom: 5px;
+}
+.grid-header {
+	border-bottom: 2px darkgray solid;
+	font-weight: bold;
+}
+.panel-grid .grid-header {
+	margin-left: 0;
+	margin-right: 0;
+}
+
+.search-agent-link {
+	border-bottom: lightgray solid 2px;
+	margin-bottom: 7px;
+}
+.no-wrap {
+	overflow: hidden;
+	white-space: nowrap;
+}
+
+.thumb-preview {
+	margin-bottom: 24px;
+}
+
+.art-preview {
+	border: 1px solid darkgray;
+}
+.file-table {
+	padding-top: 10px;
+}
+
+#scroll .col-xs-1  {
+	padding-left : 0;
+}
+
+.btn-alt-dropdown {
+	margin-top: -27px;
+}
+.btn-dim {
+	margin-right: 5px;
+}
+
+form .controls label.checkbox {
+  margin-left: 20px;
+}
+
+@media screen and (max-width: 767px) { 
+	#logo-pnek-image  { 
+		font-size: 16px;
+		margin-left: 0px;
+	}
+	.search {
+		margin-right: 10px;
+		width: 70%;
+	}
+}
+
+.transfer {
+  margin-top : 70px;
+}
+.transfer ul {
+  list-style: outside none none;
+  padding-left: 0;
+}
+.preview .video-js {
+  width : 100%;
+}
+.tt-menu {
+  background-color: white;
+  border: #5bc0de 1px solid;
+  border-radius: 0px 0px 8px 8px; 
+  -moz-border-radius: 0px 0px 8px 8px; 
+  -webkit-border-radius: 0px 0px 8px 8px;   
+}

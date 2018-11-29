@@ -1,0 +1,31 @@
+{% extends this.viewPath('mainPage') %}
+
+{# file information #}
+{% block content %}
+<h1>Multi channel works</h1>
+<p>
+  A complex thing to enter are the multi channel works.<br /> 
+  A multichannel work is always an <strong>Installation</strong>. The <strong>Installation</strong> describes the 
+  Artwork as totality. The installation can have multiple channels, which are separate Artworks.
+<p>
+<p>  
+  To create a Multichannel work:
+</p>
+<ul>
+    <li>first create the <strong>Installation</strong>.</li>
+    <li>Then create the <strong>Channel</strong>.<br />
+      When creating it the <strong>Master Art</strong> field will show all <strong>Channel</strong> known in the database.</li>
+    <li>Select the Master art to use in the screen.</li>
+    <li>Save the <strong>Channel</strong></li>
+    <li>Repeat the creation of <strong>Channel</strong> for every Channel</li>
+</ul>
+<p>
+When looking at a <strong>Multichannel Artwork</strong>, the Master Art (the one holding all Channels) 
+has the option <strong>Channels</strong> in the left column. It will show the list of <strong>Channels</strong>. 
+The screen can <b>NOT</b> be used to add an extra Channel.<br />
+If you select and open a <strong>Channel</strong>, the left menu will show <strong>Channel belongs to</strong>. 
+This shows the <strong>Master Art</strong> of this multi channel Artwork. Here you can edit what Installation 
+is the Master art.
+</p>
+
+{% endblock %}

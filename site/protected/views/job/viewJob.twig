@@ -1,0 +1,66 @@
+{# empty Twig template #}
+{% extends this.viewPath('dialog') %}
+
+{% block dialogHeader %}
+	{{ Yii_t('app', 'job information') }} - {{ this.model.explain }}  
+{% endblock %}
+
+{% block dialogBody %}
+<dl class="dl-horizontal">
+	<dt>{{ Yii_t('app', 'id') }}</dt>   <dd>{{ this.model.id }}</dd>
+	<dt>{{ Yii_t('app', 'owner') }}</dt>   <dd>{{ this.model.user.fullname }}</dd>
+	{% if this.model.resourceType == 'Art' %}
+	<dt>{{ Yii_t('app', 'title') }}</dt>		
+	<dd>
+		{{ this.model.art.title }} 
+		<a href="{{ this.createUrl('art/files', {'id': this.model.art.id })}}">
+			<span class="glyphicon glyphicon-link"></span>
+		</a>
+	</dd>
+	{% elseif this.model.resourceType == 'Agent' %}
+	<dt>{{ Yii_t('app', 'Name') }}</dt>		
+	<dd>
+		{{ this.model.agent.name }}
+		<a href="{{ this.createUrl('agent/files', {'id': this.model.agent.id })}}">
+			<span class="glyphicon glyphicon-link"></span>
+		</a>
+	</dd>
+	{% endif %}
+	<dt>{{ Yii_t('app', 'type') }}</dt>    <dd>{{ this.model.jobTypeText }}</dd>
+	{% if this.model.job_type_id == 5 %}
+		<dt>{{ Yii_t('app', 'filename') }}</dt>    <dd>{{ this.model.filename }}</dd>
+		<dt>{{ Yii_t('app', 'md5') }}</dt>    <dd>{{ this.model.action }}</dd>
+	{% endif %}
+	<dt>{{ Yii_t('app', 'created') }}</dt> <dd>{{ this.model.creationDate }}</dd>
+	<dt>{{ Yii_t('app', 'started') }}</dt> <dd>{{ this.model.startedDate }}</dd>
+	<dt>{{ Yii_t('app', 'ended') }}</dt>   <dd>{{ this.model.endedDate }}{% if this.model.is_finished==1 %} (finished){% endif %}</dd>
+	{% if this.model.error %}
+	<dt>{{ Yii_t('app', 'error number') }}</dt>   <dd>{{ this.model.error }}</dd>
+</dl>
+	{{ this.model.error_message |nl2br }}
+{% else %}
+</dl>
+
+{% endif  %}
+{% if this.model.logging %}
+<dl >	
+	<dt id="id-logging"><a href='#'>{{ Yii_t('app', 'logging') }}<span class="caret"></span></a></dt>   <dd id="id-log-info">{{ this.model.logging |nl2br }}</dd>
+</dl>
+{% endif %}
+{% endblock %}
+	
+{% block dialogFooter %}
+	{% if App.user.hasMenu('job/endprocess') %}
+		<a class="btn btn-danger" href="{{ this.createUrl('job/endprocess', {'id': this.model.id}) }}">{{ Yii_t('button', 'btn-end-process') }}</a>
+	{% endif %}
+	<a class="btn btn-danger" href="{{ this.createUrl('job/hide', {'id': this.model.id}) }}">{{ Yii_t('button', 'btn-delete') }}</a>
+	
+	{{ parent() }}
+{% endblock %}
+
+{% block onReady %}
+	$('#id-log-info').hide();
+	$('#id-logging').on('click',function() {
+		$('#id-log-info').toggle();
+	});
+{% endblock %}	

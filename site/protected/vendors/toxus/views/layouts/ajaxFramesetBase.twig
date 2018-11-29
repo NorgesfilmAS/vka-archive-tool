@@ -1,0 +1,21 @@
+{# 
+  variables needed:
+		* sub is the subController defining the list to show
+#}
+{% extends this.viewPath('mainThreeCol') %}
+
+{%block subMenuFrame %}
+	{% include this.viewPath('ajaxMenu') %}
+{% endblock %}
+
+{% block viewContent %}
+
+{% endblock %}
+
+ 
+{% block scripts %}
+ {{ this.registerPackage('typeahead') }}
+ {{ this.registerPackage('datepicker') }}
+ {{ this.registerPackage('ajaxForm') }} 
+{% endblock %}
+

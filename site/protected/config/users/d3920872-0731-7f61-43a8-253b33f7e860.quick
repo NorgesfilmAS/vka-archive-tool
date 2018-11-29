@@ -1,0 +1,1 @@
+{"model":"Art","report":{"order":[{"attribute":"agent","label":"Artist","order":"asc","fields":[]}],"fields":["agent"]},"select":[{"attribute":"agent_id.gender","value":"Male","compare":"="}],"name":"Number of Artist in VKA"}

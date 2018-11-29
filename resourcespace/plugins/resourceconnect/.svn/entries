@@ -1,0 +1,77 @@
+10
+
+dir
+5188
+http://svn.resourcespace.org/svn/resourcespace/plugins/resourceconnect
+http://svn.resourcespace.org/svn/resourcespace
+
+
+
+2013-10-24T20:43:09.074727Z
+4999
+hfrizen
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+c08608d7-6e46-0410-86ca-f2a6f1370df5
+
+config
+dir
+
+languages
+dir
+
+dbstruct
+dir
+
+pages
+dir
+
+resourceconnect.yaml
+file
+
+
+
+
+2013-02-20T10:35:52.153820Z
+dd0a6a0f7005e7ed7174681ba09edef0
+2012-11-16T13:28:00.534255Z
+4014
+hfrizen
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+234
+
+hooks
+dir
+

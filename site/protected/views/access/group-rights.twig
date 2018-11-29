@@ -1,0 +1,190 @@
+{#
+  show the fields so we can set the rights
+#}
+
+{% extends this.viewPath('main') %}
+
+{% block content %}
+<div id="scroll" class="bs-content">
+	<div class="row">
+		<div class="col-sm-9">
+			<h2>{{ Yii_t('app','group') }} - {{ this.model.name }}</h2>
+			<h4>{{ Yii_t('app', 'Access to individual fields') }}</h4>
+			<p>				
+				{{ Yii_t('app',
+				'In this screen you can define whichs rights the Group has on the individual fields. A Field can have 3 state: <b>Editable</b>,
+				<b>visible</b> or <b>inherited</b>.<br/>
+				<b>Editable</b> and <b>Visible</b> are self explaining. <b>Inherited</b> means that the fields visibility / editability is defined by the parent group of this
+				group. Default all fields are <b>Hidden</b>. Rights can\'t be revoked; the can only added. Therefor it is important that the parent 
+				has the minimal rights, so the children can get more rights (they can edit something the parent group can\'t).') |raw }}
+			</p>			
+		</div>
+	</div>
+	
+	<div class="row">
+		<div class="col-sm-4">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h3 class="panel-title" data-toggle="tooltip" data-placement="bottom" title="{{ Yii_t('app','Field that are fully editable.') }}">{{ Yii_t('app','fields editable') }}
+						<div class="pull-right btn-group">
+							<button class="btn btn-default btn-xs dropdown-toggle btn-dim" data-toggle="dropdown" href="#"><span class="caret"></span></button>
+							<ul class="dropdown-menu dropdown-menu-small">
+								<li>
+									<a id="btn-editable-all" href="#">{{ Yii_t('app','Add all fields') }}</a>
+									<a id="btn-editable-none" href="#">{{ Yii_t('app','Remove all fields') }}</a>
+								</li>
+							</ul>	
+						</div>											
+					</h3>
+				</div>
+				<div class="panel-body">
+					<ol id="fields-editable" class="drop-scroll simple_with_animation vertical">
+					{% for field in this.model.editAccess %}
+					<li data-id="{{ field.ref}}">{{ Yii_t('app', field.resourceName) }} - {{ field.fieldname }}</li>
+					{% endfor %}						
+					<li class="no-items"></li>
+					</ol>				
+				</div>
+			</div>		
+		</div>
+		
+		<div class="col-sm-4">			
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h3 class="panel-title" data-toggle="tooltip" data-placement="bottom" title="Field that are only visible, not editable.">{{ Yii_t('app', 'fields only visible') }}
+					<div class="pull-right btn-group">
+						<button class="btn btn-default btn-xs dropdown-toggle btn-dim" data-toggle="dropdown" href="#"><span class="caret"></span></button>
+					<ul class="dropdown-menu dropdown-menu-small">
+						<li>
+							<a id="btn-visible-all" href="#">{{ Yii_t('app','Add all fields') }}</a>
+							<a id="btn-visible-none" href="#">{{ Yii_t('app','Remove all fields') }}</a>
+						</li>
+					</ul>	
+					</div>					
+					</h3>	
+				</div>
+				<div class="panel-body">
+					<ol id="fields-visible" class=" drop-scroll simple_with_animation vertical">
+					{% for field in this.model.readAccess %}
+					<li data-id="{{ field.ref}}">{{ field.resourceName }} - {{ field.fieldname }}</li>
+					{% endfor %}
+					<li class="no-items"></li>					
+					</ol>
+				</div>
+			</div>		
+		</div>
+
+		<div class="col-sm-4">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h3 class="panel-title" data-toggle="tooltip" data-placement="bottom" title="{{ Yii_t('app', 'Field that are defined in the parent group and whose rights aren\'t changed.') }}">
+							{{ Yii_t('app', 'Field rights inherited') }}</h3>
+				</div>
+				<div class="panel-body">
+					<ol id="fields-defined" class="drop-scroll simple_with_animation vertical">
+					{% for field in this.model.allFields %}
+					<li data-id="{{field.ref}}">{{ field.resourceName}} - {{ field.fieldname }}</li>
+					{% endfor %}
+					<li class="no-items"></li>
+					</ol>				
+				</div>
+			</div>		
+		</div>
+	</div>	
+</div>
+{% include this.viewPath('_form') %}
+
+{% endblock %}
+
+	
+{% block onReady %}
+  $('.menu-rights').addClass('active');
+	{{ parent() }}
+	{{ this.registerPackage('sortable') }}
+	
+	function moveLi(fromSelector, selector)
+	{
+		var p = $(fromSelector);
+		$(selector).each(function() {
+			$this = $(this);
+			if (!$this.hasClass('no-items')) {
+				var element = $this.detach();
+				p.append(element);
+			}	
+		});	
+	}
+	
+	$('#btn-visible-all').on('click', function() {
+		moveLi('#fields-visible', '#fields-defined li');
+	});
+	$('#btn-visible-none').on('click', function() {
+		moveLi('#fields-defined', '#fields-visible li');
+	});
+	$('#btn-editable-all').on('click', function() {
+		moveLi('#fields-editable', '#fields-defined li');
+	});
+	$('#btn-editable-none').on('click', function() {
+		moveLi('#fields-defined', '#fields-editable li');
+	});
+	
+	$('.cls-{{ util.formId(form) }}').submit(function() {
+		var lst='';
+		$('#fields-visible li').each(function() {
+			$this = $(this);
+			if (!$this.hasClass('no-items')) {
+				lst += ',' + $this.data('id');
+			}
+		});
+		$('#id-read_access').val(lst.substr(1));
+		
+		lst='';
+		$('#fields-editable li').each(function() {
+			$this = $(this);
+			if (!$this.hasClass('no-items')) {
+				lst += ',' + $this.data('id');
+			}
+		});
+		$('#id-edit_access').val(lst.substr(1));		
+
+	});
+
+	
+	var adjustment
+
+	$("ol.simple_with_animation").sortable({
+		group: 'simple_with_animation',
+		pullPlaceholder: false,
+		// animation on drop
+		onDrop: function  (item, targetContainer, _super) {
+			var clonedItem = $('<li/>').css({height: 0})
+			item.before(clonedItem)
+			clonedItem.animate({'height': item.height()})
+
+			item.animate(clonedItem.position(), function  () {
+				clonedItem.detach()
+				_super(item)
+			})
+		},
+
+		// set item relative to cursor position
+		onDragStart: function ($item, container, _super) {
+			var offset = $item.offset(),
+			pointer = container.rootGroup.pointer
+
+			adjustment = {
+				left: pointer.left - offset.left,
+				top: pointer.top - offset.top
+			}
+
+			_super($item, container)
+		},
+		onDrag: function ($item, position) {
+			$item.css({
+				left: position.left - adjustment.left,
+				top: position.top - adjustment.top
+			})
+		},
+		tolerance: 6,
+		distance: 10
+	})	
+{% endblock %}	

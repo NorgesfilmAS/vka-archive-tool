@@ -1,0 +1,13 @@
+{# 
+  display a article 
+#}
+
+<div class="row">
+  <div class="col-xs-offset-1 col-xs-11 article-body">
+    <h2>{{ this.model.title }}</h2>	
+    <div class="article-content">
+    {{ this.model.content | raw }}
+    </div>	
+  </div>	
+</div>
+

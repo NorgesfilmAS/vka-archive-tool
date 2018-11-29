@@ -1,0 +1,1 @@
+{"model":"Art","report":{"order":[{"attribute":"agent","label":"Artist","order":"asc","fields":[]}],"fields":["title","agent","year","seconds","id","is_digitized","masterFileSize","tags_gama"]},"select":[{"attribute":"collection","value":"Atelier Nord","compare":"contains"}],"name":"Number of Artworks in VKA"}

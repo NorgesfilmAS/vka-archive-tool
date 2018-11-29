@@ -1,0 +1,1 @@
+{"model":"Art","report":{"order":[{"attribute":"resource_type","label":"type","order":"group","fields":[{"attribute":"count","label":"Count in group","type":"recordcount"}]}],"fields":[]},"select":[{"attribute":"resource_type","value":"4","compare":"="}],"name":"Number of Artist in VKA"}

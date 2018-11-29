@@ -1,0 +1,15 @@
+#Options +FollowSymLinks
+
+IndexIgnore */*
+RewriteEngine On
+
+RewriteBase /site/
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond $1 !^(index\.php)
+RewriteRule ^(.+)$ /site/index.php?$1 [PT,L,QSA]
+RewriteRule ^$ /site/ [L,QSA]
+
+php5_value post_max_size 6000M
+php5_value upload_max_filesize 5000M

@@ -1,0 +1,56 @@
+{# 
+  a view based upon tabs
+
+	the caption of the tab should be:
+		<li class="active"><a href="#id-contact" data-toggle="tab">{{ this.t('participant') }}</a></li>
+		<li ><a href="#id-payments" data-toggle="tab">{{ this.t('payment') }}</a></li>
+#}
+
+{% block viewContent %}
+
+<ul class="nav nav-tabs" id="id-view-tabs">
+	{% block tabCaptions %}
+		<li class="active"><a href="#id-tab-home" data-toggle="tab">{% block tabHomeCaption %}{{ this.t(sub.caption) | raw }}{%endblock%}</a></li>
+	{% endblock %}	
+</ul>
+
+<div class="tab-content">	
+	{% block tabBody %}
+	<div id="id-tab-home" class="tab-pane active">
+	
+		{% if App.user.hasFlash('error') or App.user.hasFlash('success') or App.user.hasFlash('info') %}
+		<div class="span6x">
+			{% for key, flash in App.user.getFlashes %}
+			<div class="alert alert-{{ key }}">
+				{{ flash }}
+			</div>	
+			{% endfor %}	
+		</div>
+		{% elseif App.user.hasFlash('success') %}	
+
+		{% endif %}	
+		{% block formStart %}<div class="span6x">{% endblock %}
+		{% if sub.onEditUrl %}
+			<span class="btn btn-small float-right btn-info btn-tooltip" id="btn-edit" data-placement="bottom" data-toggle="tooltip" title="{{ Yii_t('button','btn-edit-tooltip') |raw }}" >{{ Yii_t('button','btn-edit') |raw}}</span>
+		{% endif %}	
+		{% include this.viewPath('_view') %}
+		{% block formEnd %}</div>{% endblock %}
+	</div>		
+	{% endblock %}	
+</div>
+
+<script>
+  $(function () {
+{% block tabScript %}		
+    $('#id-toolbar').tab();
+		$('.btn-tooltip').tooltip();		
+		{% if sub.onEditUrl %}
+		$('#btn-edit').on('click', function() {
+			$('#{{ sub.slaveFrame }}').load('{{ sub.onEditUrl | replace({'-key-' : sub.childId}) }}');
+		});
+		{% endif %}
+{% endblock %}		
+  })
+</script>
+
+{% endblock %}

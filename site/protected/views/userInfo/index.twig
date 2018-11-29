@@ -1,0 +1,33 @@
+{# 
+	overview about the user
+#}
+
+{% extends this.viewPath('main') %}
+
+{% block content %}
+	{% include this.viewPath('caption') %}
+
+	<div class="row">
+		<div class="col-sm-6">
+			<h4>{{ Yii_t('app','Profile') }}</h4>
+			<dl class="dl-horizontal a-url" data-url="{{ this.createUrl('userInfo/profile', {'id': this.model.id }) }}">
+				<dt>{{ Yii_t('app',this.model.getAttributeLabel('fullname')) }}</dt>
+				<dd>{{ this.model.fullname }}</dd>
+				<dt>{{ Yii_t('app',this.model.getAttributeLabel('email')) }}</dt>
+				<dd><a href="mailto:{{ this.model.email }}">{{ this.model.email }}</a></dd>
+				<dt>{{ Yii_t('app',this.model.getAttributeLabel('usergroup')) }}</dt>
+				<dd>{{ this.model.group.name }}</dd>
+				<dt>{{ Yii_t('app',this.model.getAttributeLabel('account_expires')) }}</dt>
+				<dd>{{ this.model.account_expires is empty ? Yii_t('app', '(never)') : this.model.account_expires | date('d/m/Y') }}</dd>				
+			</dl>
+		</div>
+		<div class="col-sm-6">
+			<h4>{{ Yii_t('app','access') }}</h4>
+		</div>
+	</div>
+{% endblock %}
+
+{% block onReady %}
+  $('.menu-user-overview').addClass('active');
+	{{ parent() }}
+{% endblock %}	

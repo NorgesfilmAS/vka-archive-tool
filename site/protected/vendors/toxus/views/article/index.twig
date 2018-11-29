@@ -1,0 +1,55 @@
+{# 
+	list the articles available
+#}
+{% extends this.viewPath('main') %}
+
+{# 
+  create a list of article on the left
+#}
+{% block menuLeft %}
+  {% if App.user.canUpdateHelp %}
+  <div class="cls-navbar-toolbar navbar bs-nav-toolbar id-navbar-toolbar">
+  {% include this.viewPath('_buttons') %}
+  </div>
+  {% endif %}
+	<div class="article-search">
+		<form method="get" class="article-search-form well form-inline">
+			{{ Yii_t('base','search') }}			
+			<input type="text" id="id-field" class="article-search-field  form-control input-sm">
+		</form>
+	</div>	
+	<div class="art-result well">
+	</div>
+{% endblock %}
+
+{% block extraNav %}{% endblock %}
+
+{% block content %}
+	<div class="row article-body">
+		{% if this.model %}
+		{% include this.viewPath('view') %}
+		{% endif %}
+	</div>
+{% endblock %}
+
+		
+{% block onReady %}
+  function articleSearchFor(value) {
+    if (typeof value == 'undefined') {
+      value = '';
+    }  
+		$.ajax( {
+			'url' : "{{ this.createUrl('article/list', {'q' :''}) }}" + value,
+			'success' : function(data) {
+					$('.art-result').html(data);	
+			}		
+		});  
+  }
+  
+	$('.article-search-field').on('keyup', function() {
+    articleSearchFor($(this).val());
+	});
+  articleSearchFor();
+	
+	{{ parent() }}
+{% endblock %}		

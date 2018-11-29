@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/resourcespace/!svn/ver/4014/plugins/api_upload
+END
+readme.txt
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/resourcespace/!svn/ver/3789/plugins/api_upload/readme.txt
+END
+index.php
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/resourcespace/!svn/ver/4014/plugins/api_upload/index.php
+END
+api_upload.yaml
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/resourcespace/!svn/ver/2368/plugins/api_upload/api_upload.yaml
+END

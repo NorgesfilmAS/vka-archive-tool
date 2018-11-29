@@ -1,0 +1,113 @@
+{# 
+  To preview a master File user the videojs drive (http://www.videojs.com/)
+	parameters:
+		this.model is Art / Agent of ResourceAltFiles (have the same functions / properties)
+		title: the title of the dialog
+		isMaster: [1|0] - if the model is Art / Agent | ResourceAltFiles
+
+		if isMaster there are 2 videos on the page: hi and low to switch the preview
+    otherwise only hi is availalbe
+ #}
+{% extends this.viewPath('dialog') %}
+
+{% block dialogHeader %}	
+	{% if this.model.isVideo %}
+	<div class="quality-switch">
+		<button class="btn-quality active " 
+			 href="#" 
+			 id='btn-hq'
+			 data-quality="hq">HQ</button>&nbsp; 
+		<button 
+			 class="btn-quality" 
+			 id ='btn-lq'
+			 data-quality="lq"
+			 href="#" >LQ</button>
+    <button 
+			 class="btn-quality " 
+			 id ='btn-mezzanine'
+			 data-quality="mezzanine"
+			 href="#" >Mezzanine</button>    
+       
+	</div>
+	{% endif %}
+<h4>{{ title | slice(0,60) }}</h4>
+{% endblock %}
+
+{% block modalCloseText %}
+{{ Yii_t('button', 'close') }}
+{% endblock %}
+
+{% block dialogBody %}
+	{% if this.model.isVideo %}
+	<div id="id-mezzanine" class="text-center pagination-centered" style="padding-left: 0px; display: none;">
+		<video id="popup-video-mezzanine" class="video-js vjs-default-skin"
+				controls preload="auto" width="598" {# width="640" height="264" #}
+				poster="{{ this.model.previewImageUrl }}?x={{ util.unique() }}"
+				data-setup='{"example_option":true}'>
+			<source src="{{ this.model.previewUrl('mp4') }}?x={{ util.unique() }}" type='video/mp4' />
+			<source src="{{ this.model.previewUrl('webm') }}?x={{ util.unique() }}" type='video/webm' />
+		</video>
+	</div>
+  <div id="id-hq" class="text-center pagination-centered" style="padding-left: 0px; ">
+		<video id="popup-video-hq" class="video-js vjs-default-skin"
+				controls preload="auto" width="598" {# width="640" height="264" #}
+				poster="{{ this.model.previewImageUrl }}?x={{ util.unique() }}"
+				data-setup='{"example_option":true}'>
+			<source src="{{ this.model.previewUrl('mp4') }}?x={{ util.unique() }}" type='video/mp4' />
+			<source src="{{ this.model.previewUrl('webm') }}?x={{ util.unique() }}" type='video/webm' />
+		</video>
+	</div>
+	{% if isMaster %}
+	<div id="id-lq" class="text-center pagination-centered" style="padding-left: 0px;  display: none;">
+		<video id="popup-video-lq" class="video-js vjs-default-skin"
+				controls preload="auto" width="598" {# width="640" height="264" #}
+				poster="{{ this.model.previewImageUrl }}?x={{ util.unique() }}"
+				data-setup='{"example_option":true}'>
+			<source src="{{ this.model.previewUrl('mp4', true) }}?x={{ util.unique() }}" type='video/mp4' />
+			<source src="{{ this.model.previewUrl('webm', true) }}?x={{ util.unique() }}" type='video/webm' />
+		</video>
+	</div>
+	{% endif %}
+	{% else %}
+	<div class="text-center pagination-centered" >			
+			<img src="{{ this.model.previewImageUrl }}" class="pagination-centered" style="width: 598px;"/>
+	</div> 
+	{% endif %} 
+{% endblock %}
+			 
+{% block dialogFooter	%}
+{% if isMaster == 1 %} 	
+	<div class="pull-left">
+		{{ Yii_t('app','quality')}}: <input id="id-quality" type="checkbox" name="quality" checked="1" data-on-label="{{ Yii_t('app', 'hi') }}" data-off-label="{{ Yii_t('app', 'low') }}"
+		>
+	</div>
+{% endif %}	
+	{{ parent() }}
+{% endblock %}	
+	
+{% block onReady %}
+{% if isMaster == 1 %} 	
+	$('.quality-switch button').on('click', function() {
+		var q = $(this).data('quality');
+		$('.quality-switch button').removeClass('active');
+		$('#btn-'+q).addClass('active');
+		$('#popup-video-lq').get(0).pause();
+		$('#popup-video-hq').get(0).pause();
+    $('#popup-video-mezzanine').get(0).pause();    
+		$('#id-lq').hide(0);		
+		$('#id-hq').hide(0);
+    $('#id-mezzanine').hide(0);
+		$('#id-' + q).show(0);					
+	});
+	$('#id-modal').on('hidden.bs.modal', function () {
+		$('#popup-video-lq').get(0).pause();
+		$('#popup-video-hq').get(0).pause();		
+    $('#popup-video-mezzanine').get(0).pause();
+	});
+	
+{% else %}
+	$('.quality-switch').hide();
+{% endif %}
+		
+	{{ parent() }}	
+{% endblock %}		

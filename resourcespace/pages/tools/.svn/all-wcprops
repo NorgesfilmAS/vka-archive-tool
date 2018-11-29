@@ -1,0 +1,173 @@
+K 25
+svn:wc:ra_dav:version-url
+V 44
+/svn/resourcespace/!svn/ver/5076/pages/tools
+END
+reindex_by_collection.php
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/resourcespace/!svn/ver/4346/pages/tools/reindex_by_collection.php
+END
+export_files.php
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/resourcespace/!svn/ver/2209/pages/tools/export_files.php
+END
+update_previews_alternative.php
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/resourcespace/!svn/ver/1450/pages/tools/update_previews_alternative.php
+END
+recover.php
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn/resourcespace/!svn/ver/3351/pages/tools/recover.php
+END
+prune_filestore.php
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/resourcespace/!svn/ver/4940/pages/tools/prune_filestore.php
+END
+geo_setcoords_from_country.php
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/resourcespace/!svn/ver/5059/pages/tools/geo_setcoords_from_country.php
+END
+update_resource_file_sizes.php
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/resourcespace/!svn/ver/3722/pages/tools/update_resource_file_sizes.php
+END
+update_previews.php
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/resourcespace/!svn/ver/4017/pages/tools/update_previews.php
+END
+staticupdateexif.php
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/resourcespace/!svn/ver/2661/pages/tools/staticupdateexif.php
+END
+cron_copy_hitcount.php
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/resourcespace/!svn/ver/4234/pages/tools/cron_copy_hitcount.php
+END
+mysql_timeout.php
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/resourcespace/!svn/ver/4021/pages/tools/mysql_timeout.php
+END
+database_prune.php
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/resourcespace/!svn/ver/3537/pages/tools/database_prune.php
+END
+dbstruct_create.php
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/resourcespace/!svn/ver/3047/pages/tools/dbstruct_create.php
+END
+xfer_scrambled.php
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/resourcespace/!svn/ver/880/pages/tools/xfer_scrambled.php
+END
+update_paths.php
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/resourcespace/!svn/ver/880/pages/tools/update_paths.php
+END
+staticsync_alt.php
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/resourcespace/!svn/ver/3384/pages/tools/staticsync_alt.php
+END
+staticsync.php
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/resourcespace/!svn/ver/5076/pages/tools/staticsync.php
+END
+update_checksums.php
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/resourcespace/!svn/ver/1954/pages/tools/update_checksums.php
+END
+add_commas.php
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/resourcespace/!svn/ver/3081/pages/tools/add_commas.php
+END
+ss_alt_makeup.php
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/resourcespace/!svn/ver/3427/pages/tools/ss_alt_makeup.php
+END
+reset_hitcount_to_logged_downloads.php
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/resourcespace/!svn/ver/1335/pages/tools/reset_hitcount_to_logged_downloads.php
+END
+reindex_collections.php
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/resourcespace/!svn/ver/2725/pages/tools/reindex_collections.php
+END
+update_xml_metadump.php
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/resourcespace/!svn/ver/3323/pages/tools/update_xml_metadump.php
+END
+update_exiftool_field.php
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/resourcespace/!svn/ver/4924/pages/tools/update_exiftool_field.php
+END
+reindex.php
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn/resourcespace/!svn/ver/4662/pages/tools/reindex.php
+END
+update_sizes.php
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/resourcespace/!svn/ver/3361/pages/tools/update_sizes.php
+END
+reindex_field.php
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/resourcespace/!svn/ver/4851/pages/tools/reindex_field.php
+END
+purge_deleted_resources.php
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/resourcespace/!svn/ver/1388/pages/tools/purge_deleted_resources.php
+END

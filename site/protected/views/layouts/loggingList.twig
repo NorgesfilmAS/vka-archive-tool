@@ -1,0 +1,10 @@
+<div class="grid-row art-row row menu-modal table-hover" data-url="{{ this.createUrl('art/loggingDialog', {'id': this.model.id, 'date': data.date, 'user' : data.user_id} ) }}" >	
+	<div class="col-sm-3">{{ data.date }}</div>	
+	<div class="col-sm-2 grid-col-no-wrap">{{ data.fullname }}</div>	
+	<div class="col-sm-1 grid-col-no-wrap">
+		{{ Yii_t('app','log-{type}', {'{type}' : data.type} ) }}
+	</div>
+	<div class="col-sm-6 grid-col-no-wrap">
+	{% for fieldname, value in this.model.loggingFields(data.date, data.user_id,5)%}{% if not loop.first %}, {% endif %}{{ Yii_t('app', fieldname) }}{% endfor %}		
+	</div>	
+</div>

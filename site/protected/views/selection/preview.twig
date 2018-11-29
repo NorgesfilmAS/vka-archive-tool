@@ -1,0 +1,129 @@
+{% extends this.viewPath('angular') %}
+{% set layout='content' %}
+
+
+{% block scriptFiles %}
+<script type="text/javascript">
+	var collections = {{ collections | json_encode | raw }};
+</script>
+	 {{ this.registerScriptFile({
+		0: 'app.js',
+		1: 'controllers.js', 
+		2: 'models.js',
+		3: 'util.js',
+		4: 'dynamic-forms.js'
+	 }) 
+}}
+{% endblock %}
+
+
+{% block itemMenuHeader %}
+		<button ng-hide="designState"  
+						ng-click="designState= ! designState" 
+						class="btn btn-info btn-sm" >
+			<span class="glyphicon glyphicon-pencil"></span>
+			{{ Yii_t('button', 'btn-design') }}
+		</button> 			
+		<button ng-show="designState" 
+						ng-click="designState= ! designState" 
+						class="btn btn-info btn-sm" >
+			<span class="glyphicon glyphicon-pencil"></span> 
+			{{ Yii_t('button', 'btn-preview') }}
+		</button> 
+		<button ng-click="reportSave()" 
+						ng-show="designState"
+						class="btn btn-info btn-sm pull-right">
+			{{ Yii_t('button', 'btn-save') }}
+		</button>
+		<span ng-show="designState" class="pull-right">&nbsp;</span>
+		<button ng-click="reportDelete()" 
+						ng-show="designState"
+						class="btn btn-info btn-sm pull-right">
+			{{ Yii_t('button', 'btn-delete') }}
+		</button> 
+		<button ng-click="reportExport()" 
+						ng-hide="designState"
+						ng-disabled="canExport==false"
+						class="btn btn-info btn-sm pull-right">
+			{{ Yii_t('button', 'btn-export') }}
+		</button> 		
+{% endblock %}
+
+{% block bodyTag %}
+	ng-controller="SelectController"
+	{{ parent() }}
+{% endblock %}
+
+
+{% block itemMenuContent %}
+{% raw %}
+	<div class="row">
+		<div class="col-xs-10 col-xs-offset-1">
+			<div class="row select-fields">
+				<div class="col-xs-6 menu" 
+						 ng-class="{active : navState=='select'}"
+						 ng-click="navState='select'"
+						 >
+					Selection
+				</div>
+			</div>
+			<form ng-submit="submit()">	
+				<div ng-show="navState=='select'">	
+					<div class="control-group" 
+							 ng-repeat="element in queryFields">
+						<div class="row select-field">
+							<h4>{{ element.label }}</h4>
+							<div class="controls" ng-switch="element.type">
+								<div ng-switch-when="text" >
+									<input type="text" 
+												 class="form-control" 
+												 ng-model="queryFields[$index].value" 
+												 ng-required="element.required" />
+								</div>	
+								<div ng-switch-when="dropdown"> 
+									<select class="form-control" 
+													ng-model="queryFields[$index].value" 
+													ng-required="element.required" >
+										<option value="{{ data.id }}" ng-repeat="data in element.data" ng-attr-selected="element.value==data.id" >{{ data.label }}</option>
+									</select>
+								</div>							
+							</div>
+						</div>			
+					</div>	
+				</div>
+				<div class="row select-field">
+					<h5>&nbsp;</h5>
+					<div class="control-group"> 
+						<div class="controls">
+						<input type="submit" class="btn btn-info" value="Run selection" />
+						</div>
+					</div>					
+				</div>	
+			</form>				
+		</div>	
+	</div>
+
+{% endraw %}
+
+{% endblock %}
+
+{% block content %}
+	{% include this.viewPath('caption') %}
+	{% include this.viewPath('flash') %}	
+	
+	{% raw %}
+	<div class="alert alert-warning" ng-show="errorMessage">{{ errorMessage }}</div>	
+	<div ng-bind-html="reportData" ng-hide="designState"></div>
+	<div ng-show="designState" >	
+	{% endraw %}
+		{% include this.viewPath('designer', {'extension' : '.html'}) %}	
+	{% raw %}	
+	</div>	
+	{% endraw %}
+	<div ng-show="showWait==1" style="margin-top:300px"
+       class="waiting"><img src="{{ App.baseUrl}}/images/loading4.gif"/>
+  </div>
+
+	{{ parent() }}	
+	{{ this.registerPackage('angularJs.sanitize.min') }}
+{% endblock %}

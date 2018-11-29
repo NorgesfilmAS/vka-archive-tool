@@ -1,0 +1,46 @@
+{#
+  listing of the groups and their stateautoescape
+#}
+
+{% extends this.viewPath('main') %}
+
+{% block content %}
+<div id="scroll" class="bs-content">
+	{% include this.viewPath('caption') %}
+	{% if this.model.parentGroup %}
+	<p>
+	{{ Yii_t('app', 'sub group of') }} <a href="{{ this.createUrl('access/group', {'id':this.model.parent} ) }}">{{ this.model.parentGroup.name }}</a>
+	</p>
+	{% endif %}
+	<div class="row">
+
+	<div class="col-sm-4">
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h3 class="panel-title">{{ Yii_t('app', 'fields editable') }}</h3>
+			</div>
+			<div class="panel-body">
+				{% for field in this.model.editAccess %}
+				{{ field.resourceName }} - {{ field.fieldname }}<br />
+				{% endfor %}
+			</div>
+		</div>		
+	</div>
+	<div class="col-sm-4">
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h3 class="panel-title">{{ Yii_t('app', 'fields visible') }}</h3>
+			</div>
+			<div class="panel-body">
+				{% for field in this.model.readAccess %}
+				{{ field.resourceName }} - {{ field.fieldname }}<br />
+				{% endfor %}
+			</div>
+		</div>		
+	</div>
+		
+</div>
+</div>
+{% endblock %}
+	
+	

@@ -1,0 +1,49 @@
+{% extends this.viewPath('main') %}
+
+{% block pageTitle %}
+	{{ App.params.appName |raw }} - Artist {% if this.model %}- {{ this.model.name }}{% endif %}
+{% endblock %}
+
+
+
+{% block content %}
+<div class="bs-content">
+	<div class="bs-page-header">
+		<div class="bs-page-info">{{ Yii_t('app','Artist & co-workers') }}</div>
+		<h4>{{ this.model.title }} <span class="pull-right">{{ this.model.agent }}{{ this.field(', ', this.model.year) | raw }}</span></h4>
+	</div>	
+</div>
+<div class="bs-content">
+	{# must first display any error connected to the main record #}
+	{% if model.hasErrors() %}
+	<div class="row">
+		<div class="col-sm-10 col-sm-offset-2 alert alert-danger">			
+			{{ html.errorSummary(model)|raw }}
+		</div>
+	</div>
+	{% endif %}	
+		
+	{# now display the form #}	
+	{% if mode == 'edit' %}
+		{% include this.viewPath('_form') %}
+	{% else %}	
+		{% include this.viewPath('_view') %}
+	{% endif %}	
+</div>
+{% endblock %}
+
+
+{% block onReady %}
+  $('#menu-agent').addClass('active');
+	$('#btn-edit').on('click', function(){ 
+		window.location = "{{ this.createUrl('art/agent', {'id' : this.model.id, 'mode' : 'edit'}) }}";
+	});	
+	$('#tbl-edit').on('click', function() {
+		window.location = "{{ this.createUrl('art/agent', {'id' : this.model.id, 'mode' : 'edit'}) }}";		
+	});
+	{{ parent() }}
+{% endblock %}
+	
+	
+	
+	

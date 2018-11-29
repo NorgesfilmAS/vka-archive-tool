@@ -1,0 +1,39 @@
+{# 
+	User edits his own profile
+#}
+
+{% extends this.viewPath('main') %}
+
+{% set layout='full' %}
+{% block content %}
+<br /><br /><br />
+<div class="row ">
+	<div class="col-sm-6 col-sm-offset-3 well">
+		<h2>User profile: {{ this.model.username }}</h2>
+{#		
+	{% if error %}
+		{{ error }}
+	{% else %}
+		{% if this.model.hasErrors() %}
+		<div class="row-fluid ">
+			<div class="span10 offset1">
+				<div class="alert alert-block bg-warning">
+					{{ html.errorSummary(this.model)|raw }}
+				</div>
+			</div>
+		</div>
+		{% endif %}	
+#}
+		{% include this.viewPath('flash') %}	
+		{% if mode != 'edit' %}
+		{% include this.viewPath('_view') %}
+		{% else %}
+		{% include this.viewPath('_form') %}
+		{% endif %}
+		{% include this.viewPath('_buttons') %}
+	
+</div>	
+	
+	
+</div>	
+{% endblock %}

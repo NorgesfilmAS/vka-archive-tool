@@ -1,0 +1,32 @@
+{% extends dialog ? this.viewPath('ajaxDialog') : this.viewPath('main') %}
+{# parameter:
+ # - title		[block: dialogHeader]   (the caption of the dialog | default=message)
+ # - body			[block: dialogBody]			(the message to display)
+ # -          [block: dialogFooter]   (default: close on the right side }  
+ # - url      (next url to open)
+ # - closeCaption											(the caption of the ok button)
+#}
+{% block content %}
+<div class="row tx-message">
+	<div class="{{ width |default('col-sm-9')}} panel {{ style |default('panel-primary') }} no-padding">
+		<div class="panel-heading">
+			{# <button type="button" class="close action-close" data-dismiss="modal" aria-hidden="true">×</button> #}
+			{% block dialogHeader %}<h3 class="panel-title">{{ title | default(Yii_t('base','Message')) }}</h3>{%endblock %}
+		</div>
+
+		<div class="panel-body">
+			{% block dialogBody %}
+			{% block body %}{{ body | raw}}{% endblock %}
+			{% endblock %}
+		</div>
+		
+		<div class="panel-footer text-center">
+			{% block dialogFooter %}
+			<a id="btn-close" class="btn btn-primary action-close" {% if url %}href="{{ url }}" {% else %}data-dismiss="modal"{% endif %}>{{ closeCaption | default(Yii_t('button','btn-close')) }}</a>
+			{% endblock %}
+		</div>		
+	</div>
+</div>
+
+{% endblock %}
+	   

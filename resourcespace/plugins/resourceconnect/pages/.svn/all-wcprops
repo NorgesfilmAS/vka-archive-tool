@@ -1,0 +1,53 @@
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/resourcespace/!svn/ver/4262/plugins/resourceconnect/pages
+END
+view.php
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/resourcespace/!svn/ver/3557/plugins/resourceconnect/pages/view.php
+END
+ajax_request.php
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/resourcespace/!svn/ver/3627/plugins/resourceconnect/pages/ajax_request.php
+END
+remote_results.php
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/resourcespace/!svn/ver/4262/plugins/resourceconnect/pages/remote_results.php
+END
+setup.php
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/resourcespace/!svn/ver/4052/plugins/resourceconnect/pages/setup.php
+END
+preview.php
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/resourcespace/!svn/ver/3684/plugins/resourceconnect/pages/preview.php
+END
+collection_download.php
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/resourcespace/!svn/ver/4019/plugins/resourceconnect/pages/collection_download.php
+END
+add_collection.php
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/resourcespace/!svn/ver/4052/plugins/resourceconnect/pages/add_collection.php
+END
+search.php
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/resourcespace/!svn/ver/4052/plugins/resourceconnect/pages/search.php
+END

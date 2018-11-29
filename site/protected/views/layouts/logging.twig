@@ -1,0 +1,62 @@
+{% extends this.viewPath('viewForm') %}
+
+{% block content %}
+{% include this.viewPath('caption') %}
+
+<div id="scroll" class="bs-content">
+	<div class="row grid-header">
+		<div class="col-sm-3 sort-key" data-sort="id">{{ Yii_t('app','date') }}</div>
+		<div class="col-sm-2 sort-key" data-sort="title">{{ Yii_t('app','user') }}</div>
+		<div class="col-sm-1 sort-key" data-sort="title">{{ Yii_t('app','action') }}</div>
+		<div class="col-sm-6 sort-key" data-sort="title">{{ Yii_t('app','fields') }}</div>
+	</div>
+	<div class="row no-horz-margin">
+	{{ this.widget( 'zii.widgets.CListView', {
+			'id' :  'id-grid',
+			'dataProvider' : this.model.logging,					
+			'itemView' : 'loggingList',
+			'afterAjaxUpdate' : 'bindEvents',
+			'template' : '{items}{pager}',
+			'pager' : {
+					 'class' : 'toxus.extensions.infiniteScroll.IasPager', 
+					 'pageSize' : 20,
+					 'rowSelector' : '.art-row', 
+					 'listViewId'  : 'id-grid', 
+					 'header' : '',
+					 'loaderText' : '<img src="'~App.baseUrl~'/images/loading.gif'~'"/ >',
+					 'options' : {
+							'history' : false, 'triggerPageTreshold' : 10, 'trigger' :'Load more','thresholdMargin' : -200 
+					}		
+			 }
+		}, true) | raw }}			
+	</div>		
+		{{ this.onReady("
+	$.ias['defaults']['onRenderComplete'] =  function() {bindEvents();}
+	$('.sort-key').on('click', function() {
+		$('.id-sort').val($(this).data('sort'));
+		$('.id-search').submit();
+	})
+") }}	
+		
+<script type="text/javascript">
+  function bindEvents(id, result)
+	{
+		$('.menu-modal').on('click', function() {
+			{# copy of BaseController #}
+			div = $(this).data("div");
+			if (div) {
+				$(div + " .modal-content").html($("#id-wait-message").html());
+				$(div).modal("show"); 							
+				$(div + " .modal-content").load($(this).data("url"));
+			} else {
+				$("#id-modal-body").html($("#id-wait-message").html());
+				$("#id-modal").modal("show"); 							
+				$("#id-modal-body").load($(this).data("url"));							
+			}
+		});
+	}
+
+</script>	
+</div>		
+{% endblock %}
+

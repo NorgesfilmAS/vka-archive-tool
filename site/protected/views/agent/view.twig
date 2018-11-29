@@ -1,0 +1,116 @@
+{% extends this.viewPath('main') %}
+
+{% block pageTitle %}
+	{{ App.params.appName |raw }} - Artist {% if this.model %}- {{ this.model.name }}{% endif %}
+{% endblock %}
+
+
+{% block content %}
+<div class="pnek-view">	
+	
+	{% include this.viewPath('caption') %}
+	<div class="row tx-view">
+		{% if App.user.hasMenu('agent/general') %}
+		<div class="col-xs-12 col-sm-8 bg-hover">
+			<div class="panel panel-default a-url" data-url="{{ this.createUrl('agent/general', {'id': this.model.id})}}">
+				<div class="panel-heading">
+					<h3 class="panel-title">{{ Yii_t('app', 'General') }}</h3>
+				</div>	
+				<div class="panel-body">						
+					<dl class="dl-horizontal">						
+						<dt>{{ Yii_t('app','Name') }}</dt><dd>{{ this.model.name }}</dd>
+						{% if this.model.born %}
+							<dt>{{ Yii_t('app', 'Born')}}</dt><dd>{{ this.model.born}} </dd> 
+						{% endif %}	
+						<dt>{{ Yii_t('app', 'Gender')}}</dt><dd>{{ this.model.gender}} </dd> 
+						{% if App.user.hasMenu('agent/description') %}
+							<dt>{{ Yii_t('app', 'Address') }}</dt>
+							<dd>{{ this.model.address | e | replace({"\n" :'<br/>'}) }}</dd>						
+							<dt>{{ Yii_t('app', 'Telephone') }}</dt>
+							<dd>{{ this.model.telephone }}</dd>						
+							<dt>{{ Yii_t('app', 'Email') }}</dt>
+							<dd>{{ this.model.email }}</dd>						
+							<dt>{{ Yii_t('app', 'Url') }}</dt>
+							<dd>{% if this.model.url %}<a href="{{ this.model.url }}" target="_blank">{{ this.model.url }}</a></dd>{% endif %}													
+							<dt>{{ Yii_t('app', 'Contact information') }}</dt>
+							<dd>{{ this.model.contact_information | e | replace({"\n" :'<br/>'}) }}</dd>						
+							
+						{% endif %}	
+						{% if App.user.hasMenu('agent/biography') %}							
+							<dt>{{ Yii_t('app', 'Biography') }}</dt><dd>{{ this.model.biography | raw}}</dd>	
+						{% endif %}	
+					</dl>
+				</div>
+			</div>
+		</div>
+		{% endif %}
+	</div>
+	
+	{% if App.user.hasMenu('agent/works') %}
+	<div class="row tx-view">
+		<div class="col-xs-12 col-sm-8">
+			<div class="panel panel-default panel-top">
+				<div class="panel-heading">
+					<h3 class="panel-title">{{ Yii_t('app', 'Works') }}</h3>
+				</div>	
+				<div class="panel-body">
+					{% for work in this.model.works %}
+					<div class="row grid">
+						<div class="col-xs-2">
+							{% if work.isProcessing %}
+								<img id="img-art-{{work.id}}" width="100%" src="{{ App.baseUrl }}/images/processing.jpg" />			
+							{% else %}			
+								<img id="img-art-{{work.id}}"
+										 class="art-preview"
+										 width="100%" 
+										{% if work.tvRatioUrl %} 
+											class="menu-modal" 
+											data-compact="1"
+											data-url="{{ this.createUrl('art/preview', {'id' : work.id }) }}" 
+											src="{{ work.tvRatioUrl }}"{% else %}src="{{ App.baseUrl }}/images/no-preview-small.png"
+										{% endif %} 
+										data-missing-image="{{dataImagePath}}" />
+							{% endif %}									
+						</div>
+						<div class="col-xs-2">{{ work.year }}</div>
+						<div class="col-xs-8">
+							<a href="{{ this.createUrl('art/view', {'id': work.id }) }}">{{ work.title }}</a>
+						</div>
+					</div>	
+					{% endfor %}	
+				</div>
+			</div>
+		</div>	
+	</div>	
+	{% endif %}
+		
+	{% if App.user.hasMenu('agent/files') %}
+	<div class="row tx-view">
+		<div class="col-xs-12 col-sm-8 bg-hover">
+			<div class="panel panel-default panel-top a-url" data-url="{{ this.createUrl('agent/files', {'id': this.model.id})}}">
+				<div class="panel-heading">
+					<h3 class="panel-title">{{ Yii_t('app', 'Documents') }}</h3>
+				</div>	
+				<div class="panel-body">
+					<ul class="list-unstyled work-list">
+						{% for file in this.model.altFiles |slice(0,10)%}
+							<li>{{ file.name }}</li>
+						{% else %}
+							{{ Yii_t('app','There are no documents connected') }}
+						{% endfor %}	
+					</ul>		
+				</div>
+			</div>
+		</div>	
+	</div>	
+	{% endif %}		
+
+</div>
+		
+			
+{% endblock %}
+
+
+{% block onReady %}
+  $('.menu-view').addClass('active');	
+{% endblock %}

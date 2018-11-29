@@ -1,0 +1,50 @@
+
+{% if index % 3 == 0 %}
+<div class="row">
+{% endif  %}	
+
+<div class="art-row art-spacer col-sm-4 clearfix">	
+	<div class="tile-view">
+		<div class="preview-image">	
+		{# <img src="{% if file_exists(data.previewImagePath) %}{{ data.previewImageUrl }}{% else %}{{ this.createUrl('images/no.preview.jpg')}}{%endif%}" width="100%"/>	 #}
+		{% if data.isProcessing %}
+			<img id="img-art-{{data.id}}" width="100%" src="{{ App.baseUrl }}/images/processing.jpg" />			
+		{% else %}						
+			<img id="img-art-{{data.id}}" 
+					 width="100%" 
+					{% if data.tvRatioUrl %} 
+						class="menu-modal" 
+						data-url="{{ this.createUrl('art/preview', {'id' : data.id }) }}" 
+						src="{{ data.tvRatioUrl }}"
+						data-compact="1"
+					{%else %}
+						src="{{ App.baseUrl }}/images/no-preview.png"
+					{% endif %} 
+					data-missing-image="{{dataImagePath}}" />
+			{% if data.tvRatioUrl %}
+				<span class="play menu-modal" 
+							data-url="{{ this.createUrl('art/preview', {'id' : data.id }) }}"
+							data-compact="1">
+				</span>
+			{% endif %}
+		{% endif %}
+		</div>	
+		<div class="preview-data line-div">
+			<div class="art">
+				<a href="{{ this.createUrl('art/view', {'id': data.id} ) }}" >{{ data.title }}</a>&nbsp;				
+			</div>
+			<div class="artist line-div">
+				{% for  id, name in data.agents %}
+				<a href="{{ this.createUrl('agent/view', {'id': id}) }}">{{ name }}{% if not loop.last %}, {% endif %}</a>
+				{% endfor %}&nbsp;
+			</div>
+			<div class="line-div"><div class="data-label">Year</div><div class="data-info">{{ data.year }}</div></div>	
+			<div class="line-div"><div class="data-label">Org. format</div>{{ data.format }}</div>	
+			<div class="line-div"><div class="data-label">Length</div>{{ data.length }}</div>	
+		</div>	
+	</div>
+</div>
+
+{% if index % 3 == 2 %}
+</div>
+{% endif  %}	

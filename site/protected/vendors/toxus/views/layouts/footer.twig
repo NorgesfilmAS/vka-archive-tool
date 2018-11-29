@@ -1,0 +1,23 @@
+
+<div class="container">
+	<div class="row-fluid">
+		<div class="span4">
+			{% include this.viewPath('footerLeft') %}
+		</div>
+		<div class="span4">
+			{% include this.viewPath('footerMiddle') %}
+		</div>
+		<div class="span4">
+			{% include this.viewPath('footerRight') %}
+		</div>
+	</div>
+</div>
+<section class="footerCredits">
+	<div class="container">
+		<ul class="clearfix">
+			<li>{{ Yii_t('base','copyright')|raw }}</li>
+			<li>{{ html.link(Yii_t('base','Site map'), App.baseUrl ~'/sitemap') |raw }}</li>
+			<li>{{ html.link(Yii_t('base','Privacy'), App.baseUrl ~ '/privacy') | raw }}</li>
+		</ul>
+	</div>		
+</section>	
