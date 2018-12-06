@@ -141,12 +141,12 @@ return array(
 				'info' => 'The default name shown in the header of the application',
 			),
 			'upload_path'	=> array(
-				'value' => '/mnt/c/Users/Alexander Teinum/repos/archive-tool/dirs/0',
+				'value' => '/Users/Jaap/Sites/pnek/public_html/site/upload',
 				'label' => 'Upload path',
 				'info' => 'The path to the FTP upload directory',
 			),
 			'temp_storage_path' => array(
-				'value' => '/mnt/c/Users/Alexander Teinum/repos/archive-tool/dirs/1',
+				'value' => '/Users/Jaap/Sites/pnek/public_html/site/runtime/temp',
 				'label' => 'Temp storage path',
 				'info' => 'The path where the uploaded files are temporary stored for the processing queue',
 			),
@@ -328,7 +328,6 @@ return array(
 			),
 		),
 	),
-
 	'debug' => array(
 		'label' => 'System debug information',
 		'group' => 'debug',
@@ -365,19 +364,6 @@ return array(
 			)
 		),
 	),
-  /*
-	'PayPal' => array(
-		'label' => 'Getting the connection to PayPal',
-		'items' => array(
-			'apiPassword' => array(
-					'label' => 'API password',
-					'value' => 'thePayPalKey',
-					'bound' => true,			// if changed reset this
-			),
-		),
-	),
-   *
-   */
 	'menus' => array(
 		'label' => 'Access to the menus',
 		'isEditable' => false,
@@ -493,7 +479,6 @@ return array(
 				'type' => 'checkbox',
 				'value' => 1,
 			),
-
 			'agent/general' => array(
 				'label' => 'Artist - General',
 				'type' => 'checkbox',
@@ -534,7 +519,6 @@ return array(
 				'type' => 'checkbox',
 				'value' => 'agent/file/change',
 			),
-
 			'agent/files/alt' => array(											/* the menu to show the alternate files */
 				'label' => 'Artist - Files - Alternate files',
 				'type' => 'checkbox',
