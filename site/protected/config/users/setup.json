@@ -1,1 +1,25 @@
-{"db":{"connectionString":"mysql:host=localhost;dbname=rsvideokunstutf8","username":"rsvideokunstutf8","password":"ULjHarj3bCw73ZFK"},"fixedValues":{"upload_path":"\/var\/www\/public_ftp\/","temp_storage_path":"\/var\/www\/public_html\/site\/protected\/runtime\/temp\/","process_url":"http:\/\/localhost\/site\/index.php\/job\/run\/"},"mail":{"mailer":"MailPostmark","invite_message_html":"<p>Hi<\/p>\r\n<p>This is the invitation to use the Videokunstarkivet.<\/p>\r\n<p>You can login using the following information<\/p>\r\n<p>{signin}<\/p>\r\n<p>Regards<br \/>Per Platou<\/p>","invite_message":"Hi\r\n\r\nThis is the invitation to use the Videokunstarkivet.\r\nYou can login using the following information.\r\n\r\n{signin}\r\n\r\nRegards\r\nPer Platou\r\n","artist_invite_message":"Hi\r\n\r\nThis is the invitation to use the Videokunstarkivet.\r\nYou can login using the following information.\r\n\r\n{signin}\r\n\r\nRegards\r\nPer Platou\r\n","lost_password":"Hi\r\n\r\nYou have reset your password. Your password has NOT been changed yet.\r\nPlease use the link below to set the new password\r\n\r\n{signin}\r\n\r\nThe webmaster"},"postmark":{"apiKey":"95c94195-8069-49b6-a4fc-157158aee9af","from":"Webmaster","fromEmail":"pnek@toxus.nl"},"debug":{"fullError":"1"}}
+{
+  "db": {
+    "connectionString": "mysql:host=localhost;dbname=rsvideokunstutf8",
+    "username": "rsvideokunstutf8",
+    "password": "ULjHarj3bCw73ZFK"
+  },
+  "fixedValues": {
+    "upload_path": "/home/vka/ftp/",
+    "temp_storage_path": "/mnt/c/Users/Alexander Teinum/repos/archive-tool/dirs/5/",
+    "process_url": "http://localhost/site/index.php/job/run/"
+  },
+  "mail": {
+    "mailer": "MailPostmark",
+    "invite_message_html": "<p>Hi</p>\r\n<p>This is the invitation to use the Videokunstarkivet.</p>\r\n<p>You can login using the following information</p>\r\n<p>{signin}</p>\r\n<p>Regards<br />Per Platou</p>",
+    "invite_message": "Hi\r\n\r\nThis is the invitation to use the Videokunstarkivet.\r\nYou can login using the following information.\r\n\r\n{signin}\r\n\r\nRegards\r\nPer Platou\r\n",
+    "artist_invite_message": "Hi\r\n\r\nThis is the invitation to use the Videokunstarkivet.\r\nYou can login using the following information.\r\n\r\n{signin}\r\n\r\nRegards\r\nPer Platou\r\n",
+    "lost_password": "Hi\r\n\r\nYou have reset your password. Your password has NOT been changed yet.\r\nPlease use the link below to set the new password\r\n\r\n{signin}\r\n\r\nThe webmaster"
+  },
+  "postmark": {
+    "apiKey": "95c94195-8069-49b6-a4fc-157158aee9af",
+    "from": "Webmaster",
+    "fromEmail": "pnek@toxus.nl"
+  },
+  "debug": { "fullError": "1" }
+}
