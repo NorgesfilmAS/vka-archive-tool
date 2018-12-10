@@ -19,3 +19,312 @@
 2018/12/04 10:36:50 [info] [toxus.process.queue] Using connection: mysql:host=localhost;dbname=rsvideokunstutf8, userId:15
 2018/12/04 10:36:50 [info] [toxus.process.queue] Process is currently active. Process not restarted.
 2018/12/04 10:36:50 [info] [toxus.process.queue] Process is active. Exiting
+2018/12/04 11:40:15 [info] [toxus.ApplicationConfig.init] Using setup configuration /mnt/c/Users/Alexander Teinum/repos/archive-tool/site/protected/config/setup-local.php
+2018/12/04 11:40:15 [info] [toxus.process.queue] Using connection: mysql:host=localhost;dbname=rsvideokunstutf8, userId:15
+2018/12/04 11:40:15 [info] [toxus.process.queue] Process is currently active. Process not restarted.
+2018/12/04 11:40:15 [info] [toxus.process.queue] Process is active. Exiting
+2018/12/06 10:57:05 [info] [toxus.ApplicationConfig.init] Using setup configuration /mnt/c/Users/Alexander Teinum/repos/archive-tool/site/protected/config/setup-local.php
+2018/12/06 10:57:05 [info] [toxus.process.queue] Using connection: mysql:host=localhost;dbname=rsvideokunstutf8, userId:15
+2018/12/06 10:57:05 [info] [toxus.process.queue] Process is currently active. Process not restarted.
+2018/12/06 10:57:05 [info] [toxus.process.queue] Process is active. Exiting
+2018/12/06 10:57:14 [info] [toxus.ApplicationConfig.init] Using setup configuration /mnt/c/Users/Alexander Teinum/repos/archive-tool/site/protected/config/setup-local.php
+2018/12/06 10:57:14 [info] [toxus.process.queue] Using connection: mysql:host=localhost;dbname=rsvideokunstutf8, userId:15
+2018/12/06 10:57:14 [info] [toxus.process.queue] Process is currently active. Process not restarted.
+2018/12/06 10:57:14 [info] [toxus.process.queue] Process is active. Exiting
+2018/12/06 10:57:19 [info] [toxus.ApplicationConfig.init] Using setup configuration /mnt/c/Users/Alexander Teinum/repos/archive-tool/site/protected/config/setup-local.php
+2018/12/06 10:57:19 [info] [toxus.process.queue] Using connection: mysql:host=localhost;dbname=rsvideokunstutf8, userId:15
+2018/12/06 10:57:19 [info] [toxus.process.queue] Process is currently active. Process not restarted.
+2018/12/06 10:57:19 [info] [toxus.process.queue] Process is active. Exiting
+2018/12/06 10:57:22 [info] [toxus.ApplicationConfig.init] Using setup configuration /mnt/c/Users/Alexander Teinum/repos/archive-tool/site/protected/config/setup-local.php
+2018/12/06 10:57:22 [info] [toxus.process.queue] Using connection: mysql:host=localhost;dbname=rsvideokunstutf8, userId:15
+2018/12/06 10:57:23 [info] [toxus.process.queue] Using connection: mysql:host=localhost;dbname=rsvideokunstutf8, userId:15
+2018/12/06 10:57:58 [info] [toxus.ApplicationConfig.init] Using setup configuration /mnt/c/Users/Alexander Teinum/repos/archive-tool/site/protected/config/setup-local.php
+2018/12/06 10:57:58 [info] [toxus.process.queue] Using connection: mysql:host=localhost;dbname=rsvideokunstutf8, userId:15
+2018/12/06 10:57:58 [warning] [toxus.process.queue] Process has be reset
+2018/12/06 10:58:04 [info] [toxus.ApplicationConfig.init] Using setup configuration /mnt/c/Users/Alexander Teinum/repos/archive-tool/site/protected/config/setup-local.php
+2018/12/06 10:58:04 [info] [toxus.process.queue] Using connection: mysql:host=localhost;dbname=rsvideokunstutf8, userId:15
+2018/12/06 10:58:04 [info] [toxus.process.queue] Current session: QhF5MnOnrZCndIPRqQMbRKARsnA1IT, response time:1000 milliseconds
+2018/12/06 10:58:04 [info] [toxus.process.queue] Startup (version 1.01.00)
+2018/12/06 10:58:04 [info] [toxus.process.queue] Processing started
+2018/12/06 10:58:04 [info] [toxus.process.queue] There are 3 jobs in the queue.
+2018/12/06 10:58:04 [info] [toxus.process.queue] Session is Active
+2018/12/06 10:58:04 [info] [toxus.process.queue] Job found. id: 3545
+2018/12/06 10:58:04 [info] [toxus.process.queue] Starting job
+2018/12/06 10:58:04 [info] [toxus.process.queue] Job started (3545)
+2018/12/06 10:58:04 [info] [toxus.process.queue] Open job through: http://localhost/site/index.php/job/run/3545
+2018/12/06 10:58:04 [info] [toxus.process.queue] Job started by command: http://localhost/site/index.php/job/run/3545
+2018/12/06 10:58:04 [info] [toxus.process.queue] Process returned: ok
+2018/12/06 10:58:04 [info] [toxus.process.queue] Job ended without an error
+2018/12/06 10:58:04 [info] [toxus.process.queue] Job ended successfully.
+2018/12/06 10:58:04 [info] [toxus.process.queue] Waiting for new job
+2018/12/06 10:58:05 [info] [toxus.process.queue] Job processed. id3545
+2018/12/06 10:58:05 [info] [toxus.process.queue] Job 3545 processed
+2018/12/06 10:58:05 [info] [toxus.process.queue] Session is Active
+2018/12/06 10:58:05 [info] [toxus.process.queue] Job found. id: 3546
+2018/12/06 10:58:05 [info] [toxus.process.queue] Starting job
+2018/12/06 10:58:05 [info] [toxus.process.queue] Job started (3546)
+2018/12/06 10:58:05 [info] [toxus.process.queue] Open job through: http://localhost/site/index.php/job/run/3546
+2018/12/06 10:58:05 [info] [toxus.process.queue] Job started by command: http://localhost/site/index.php/job/run/3546
+2018/12/06 10:58:06 [info] [toxus.process.queue] Process returned: ok
+2018/12/06 10:58:06 [info] [toxus.process.queue] Job ended without an error
+2018/12/06 10:58:06 [info] [toxus.process.queue] Job ended successfully.
+2018/12/06 10:58:06 [info] [toxus.process.queue] Waiting for new job
+2018/12/06 10:58:07 [info] [toxus.process.queue] Job processed. id3546
+2018/12/06 10:58:07 [info] [toxus.process.queue] Job 3546 processed
+2018/12/06 10:58:07 [info] [toxus.process.queue] Session is Active
+2018/12/06 10:58:07 [info] [toxus.process.queue] Job found. id: 3547
+2018/12/06 10:58:07 [info] [toxus.process.queue] Starting job
+2018/12/06 10:58:07 [info] [toxus.process.queue] Job started (3547)
+2018/12/06 10:58:07 [info] [toxus.process.queue] Open job through: http://localhost/site/index.php/job/run/3547
+2018/12/06 10:58:07 [info] [toxus.process.queue] Job started by command: http://localhost/site/index.php/job/run/3547
+2018/12/06 10:58:07 [info] [toxus.process.queue] Process returned: ok
+2018/12/06 10:58:07 [info] [toxus.process.queue] Job ended without an error
+2018/12/06 10:58:07 [info] [toxus.process.queue] Job ended successfully.
+2018/12/06 10:58:07 [info] [toxus.process.queue] Waiting for new job
+2018/12/06 10:58:08 [info] [toxus.process.queue] Job processed. id3547
+2018/12/06 10:58:08 [info] [toxus.process.queue] Job 3547 processed
+2018/12/06 10:58:08 [info] [toxus.process.queue] Session is Active
+2018/12/06 10:58:08 [info] [toxus.process.queue] No job. no waiting. Exit process
+2018/12/06 10:58:08 [info] [toxus.process.queue] Processing done
+2018/12/06 10:58:25 [info] [toxus.ApplicationConfig.init] Using setup configuration /mnt/c/Users/Alexander Teinum/repos/archive-tool/site/protected/config/setup-local.php
+2018/12/06 10:58:25 [info] [toxus.process.queue] Using connection: mysql:host=localhost;dbname=rsvideokunstutf8, userId:15
+2018/12/06 10:58:25 [info] [toxus.process.queue] Current session: rn4QzWTWNT5IzP5D8Ns1Fj4S9zdgaM, response time:1000 milliseconds
+2018/12/06 10:58:25 [info] [toxus.process.queue] Startup (version 1.01.00)
+2018/12/06 10:58:25 [info] [toxus.process.queue] Processing started
+2018/12/06 10:58:25 [info] [toxus.process.queue] There are no jobs in the queue.
+2018/12/06 10:58:25 [info] [toxus.process.queue] Session is Active
+2018/12/06 10:58:25 [info] [toxus.process.queue] No job. no waiting. Exit process
+2018/12/06 10:58:25 [info] [toxus.process.queue] Processing done
+2018/12/06 11:18:55 [info] [toxus.ApplicationConfig.init] Using setup configuration /mnt/c/Users/Alexander Teinum/repos/archive-tool/site/protected/config/setup-local.php
+2018/12/06 11:18:55 [info] [toxus.process.queue] Using connection: mysql:host=localhost;dbname=rsvideokunstutf8, userId:15
+2018/12/06 11:18:55 [info] [toxus.process.queue] Current session: 68K2NJppwLeTyO44BEiBKmv32bqoRg, response time:1000 milliseconds
+2018/12/06 11:18:55 [info] [toxus.process.queue] Startup (version 1.01.00)
+2018/12/06 11:18:55 [info] [toxus.process.queue] Processing started
+2018/12/06 11:18:55 [info] [toxus.process.queue] There are 3 jobs in the queue.
+2018/12/06 11:18:55 [info] [toxus.process.queue] Session is Active
+2018/12/06 11:18:55 [info] [toxus.process.queue] Job found. id: 3548
+2018/12/06 11:18:55 [info] [toxus.process.queue] Starting job
+2018/12/06 11:18:55 [info] [toxus.process.queue] Job started (3548)
+2018/12/06 11:18:55 [info] [toxus.process.queue] Open job through: http://localhost/site/index.php/job/run/3548
+2018/12/06 11:18:55 [info] [toxus.process.queue] Job started by command: http://localhost/site/index.php/job/run/3548
+2018/12/06 11:18:55 [info] [toxus.process.queue] Process returned: ok
+2018/12/06 11:18:55 [info] [toxus.process.queue] Job ended without an error
+2018/12/06 11:18:55 [info] [toxus.process.queue] Job ended successfully.
+2018/12/06 11:18:55 [info] [toxus.process.queue] Waiting for new job
+2018/12/06 11:18:56 [info] [toxus.process.queue] Job processed. id3548
+2018/12/06 11:18:56 [info] [toxus.process.queue] Job 3548 processed
+2018/12/06 11:18:56 [info] [toxus.process.queue] Session is Active
+2018/12/06 11:18:57 [info] [toxus.process.queue] Job found. id: 3549
+2018/12/06 11:18:57 [info] [toxus.process.queue] Starting job
+2018/12/06 11:18:57 [info] [toxus.process.queue] Job started (3549)
+2018/12/06 11:18:57 [info] [toxus.process.queue] Open job through: http://localhost/site/index.php/job/run/3549
+2018/12/06 11:18:57 [info] [toxus.process.queue] Job started by command: http://localhost/site/index.php/job/run/3549
+2018/12/06 11:18:57 [info] [toxus.process.queue] Process returned: ok
+2018/12/06 11:18:57 [info] [toxus.process.queue] Job ended without an error
+2018/12/06 11:18:57 [info] [toxus.process.queue] Job ended successfully.
+2018/12/06 11:18:57 [info] [toxus.process.queue] Waiting for new job
+2018/12/06 11:18:58 [info] [toxus.process.queue] Job processed. id3549
+2018/12/06 11:18:58 [info] [toxus.process.queue] Job 3549 processed
+2018/12/06 11:18:58 [info] [toxus.process.queue] Session is Active
+2018/12/06 11:18:58 [info] [toxus.process.queue] Job found. id: 3550
+2018/12/06 11:18:58 [info] [toxus.process.queue] Starting job
+2018/12/06 11:18:58 [info] [toxus.process.queue] Job started (3550)
+2018/12/06 11:18:58 [info] [toxus.process.queue] Open job through: http://localhost/site/index.php/job/run/3550
+2018/12/06 11:18:58 [info] [toxus.process.queue] Job started by command: http://localhost/site/index.php/job/run/3550
+2018/12/06 11:18:58 [info] [toxus.process.queue] Process returned: ok
+2018/12/06 11:18:58 [info] [toxus.process.queue] Job ended without an error
+2018/12/06 11:18:58 [info] [toxus.process.queue] Job ended successfully.
+2018/12/06 11:18:58 [info] [toxus.process.queue] Waiting for new job
+2018/12/06 11:18:59 [info] [toxus.process.queue] Job processed. id3550
+2018/12/06 11:18:59 [info] [toxus.process.queue] Job 3550 processed
+2018/12/06 11:18:59 [info] [toxus.process.queue] Session is Active
+2018/12/06 11:18:59 [info] [toxus.process.queue] No job. no waiting. Exit process
+2018/12/06 11:18:59 [info] [toxus.process.queue] Processing done
+2018/12/06 11:20:34 [info] [toxus.ApplicationConfig.init] Using setup configuration /mnt/c/Users/Alexander Teinum/repos/archive-tool/site/protected/config/setup-local.php
+2018/12/06 11:20:34 [info] [toxus.process.queue] Using connection: mysql:host=localhost;dbname=rsvideokunstutf8, userId:15
+2018/12/06 11:20:34 [info] [toxus.process.queue] Current session: r8izqVC16HIoWou7Qvu1UmGyaW9TBY, response time:1000 milliseconds
+2018/12/06 11:20:34 [info] [toxus.process.queue] Startup (version 1.01.00)
+2018/12/06 11:20:34 [info] [toxus.process.queue] Processing started
+2018/12/06 11:20:34 [info] [toxus.process.queue] There are no jobs in the queue.
+2018/12/06 11:20:34 [info] [toxus.process.queue] Session is Active
+2018/12/06 11:20:34 [info] [toxus.process.queue] No job. no waiting. Exit process
+2018/12/06 11:20:34 [info] [toxus.process.queue] Processing done
+2018/12/06 11:20:37 [info] [toxus.ApplicationConfig.init] Using setup configuration /mnt/c/Users/Alexander Teinum/repos/archive-tool/site/protected/config/setup-local.php
+2018/12/06 11:20:37 [info] [toxus.process.queue] Using connection: mysql:host=localhost;dbname=rsvideokunstutf8, userId:15
+2018/12/06 11:20:38 [info] [toxus.process.queue] Using connection: mysql:host=localhost;dbname=rsvideokunstutf8, userId:15
+2018/12/06 12:25:39 [info] [toxus.ApplicationConfig.init] Using setup configuration /mnt/c/Users/Alexander Teinum/repos/archive-tool/site/protected/config/setup-local.php
+2018/12/06 12:25:39 [info] [toxus.process.queue] Using connection: mysql:host=localhost;dbname=rsvideokunstutf8, userId:15
+2018/12/06 12:25:39 [info] [toxus.process.queue] Using connection: mysql:host=localhost;dbname=rsvideokunstutf8, userId:15
+2018/12/06 12:25:41 [info] [toxus.ApplicationConfig.init] Using setup configuration /mnt/c/Users/Alexander Teinum/repos/archive-tool/site/protected/config/setup-local.php
+2018/12/06 12:25:41 [info] [toxus.process.queue] Using connection: mysql:host=localhost;dbname=rsvideokunstutf8, userId:15
+2018/12/06 12:25:42 [info] [toxus.process.queue] Current session: 6obWVS5ARd5Xi2MQ6f9KK8ZkknTrcO, response time:1000 milliseconds
+2018/12/06 12:25:42 [info] [toxus.process.queue] Startup (version 1.01.00)
+2018/12/06 12:25:42 [info] [toxus.process.queue] Processing started
+2018/12/06 12:25:42 [info] [toxus.process.queue] There are 3 jobs in the queue.
+2018/12/06 12:25:42 [info] [toxus.process.queue] Session is Active
+2018/12/06 12:25:42 [info] [toxus.process.queue] Job found. id: 3551
+2018/12/06 12:25:42 [info] [toxus.process.queue] Starting job
+2018/12/06 12:25:42 [info] [toxus.process.queue] Job started (3551)
+2018/12/06 12:25:42 [info] [toxus.process.queue] Open job through: http://localhost/site/index.php/job/run/3551
+2018/12/06 12:25:42 [info] [toxus.process.queue] Job started by command: http://localhost/site/index.php/job/run/3551
+2018/12/06 12:25:42 [info] [toxus.process.queue] Process returned: ok
+2018/12/06 12:25:42 [info] [toxus.process.queue] Job ended without an error
+2018/12/06 12:25:42 [info] [toxus.process.queue] Job ended successfully.
+2018/12/06 12:25:42 [info] [toxus.process.queue] Waiting for new job
+2018/12/06 12:25:43 [info] [toxus.process.queue] Job processed. id3551
+2018/12/06 12:25:43 [info] [toxus.process.queue] Job 3551 processed
+2018/12/06 12:25:43 [info] [toxus.process.queue] Session is Active
+2018/12/06 12:25:43 [info] [toxus.process.queue] Job found. id: 3552
+2018/12/06 12:25:43 [info] [toxus.process.queue] Starting job
+2018/12/06 12:25:43 [info] [toxus.process.queue] Job started (3552)
+2018/12/06 12:25:43 [info] [toxus.process.queue] Open job through: http://localhost/site/index.php/job/run/3552
+2018/12/06 12:25:43 [info] [toxus.process.queue] Job started by command: http://localhost/site/index.php/job/run/3552
+2018/12/06 12:26:00 [info] [toxus.process.queue] Process returned: ok
+2018/12/06 12:26:00 [info] [toxus.process.queue] Job ended without an error
+2018/12/06 12:26:00 [info] [toxus.process.queue] Job ended successfully.
+2018/12/06 12:26:00 [info] [toxus.process.queue] Waiting for new job
+2018/12/06 12:26:01 [info] [toxus.process.queue] Job processed. id3552
+2018/12/06 12:26:01 [info] [toxus.process.queue] Job 3552 processed
+2018/12/06 12:26:01 [info] [toxus.process.queue] Session is Active
+2018/12/06 12:26:01 [info] [toxus.process.queue] Job found. id: 3553
+2018/12/06 12:26:01 [info] [toxus.process.queue] Starting job
+2018/12/06 12:26:01 [info] [toxus.process.queue] Job started (3553)
+2018/12/06 12:26:01 [info] [toxus.process.queue] Open job through: http://localhost/site/index.php/job/run/3553
+2018/12/06 12:26:01 [info] [toxus.process.queue] Job started by command: http://localhost/site/index.php/job/run/3553
+2018/12/06 12:26:01 [info] [toxus.process.queue] Process returned: ok
+2018/12/06 12:26:01 [info] [toxus.process.queue] Job ended without an error
+2018/12/06 12:26:01 [info] [toxus.process.queue] Job ended successfully.
+2018/12/06 12:26:01 [info] [toxus.process.queue] Waiting for new job
+2018/12/06 12:26:02 [info] [toxus.process.queue] Job processed. id3553
+2018/12/06 12:26:02 [info] [toxus.process.queue] Job 3553 processed
+2018/12/06 12:26:02 [info] [toxus.process.queue] Session is Active
+2018/12/06 12:26:02 [info] [toxus.process.queue] No job. no waiting. Exit process
+2018/12/06 12:26:02 [info] [toxus.process.queue] Processing done
+2018/12/06 12:27:23 [info] [toxus.ApplicationConfig.init] Using setup configuration /mnt/c/Users/Alexander Teinum/repos/archive-tool/site/protected/config/setup-local.php
+2018/12/06 12:27:23 [info] [toxus.process.queue] Using connection: mysql:host=localhost;dbname=rsvideokunstutf8, userId:15
+2018/12/06 12:27:23 [info] [toxus.process.queue] Current session: IsAVPYJIVy1fuuomgFODwhc2vaaxyb, response time:1000 milliseconds
+2018/12/06 12:27:23 [info] [toxus.process.queue] Startup (version 1.01.00)
+2018/12/06 12:27:23 [info] [toxus.process.queue] Processing started
+2018/12/06 12:27:23 [info] [toxus.process.queue] There are no jobs in the queue.
+2018/12/06 12:27:23 [info] [toxus.process.queue] Session is Active
+2018/12/06 12:27:23 [info] [toxus.process.queue] No job. no waiting. Exit process
+2018/12/06 12:27:23 [info] [toxus.process.queue] Processing done
+2018/12/06 12:31:45 [info] [toxus.ApplicationConfig.init] Using setup configuration /mnt/c/Users/Alexander Teinum/repos/archive-tool/site/protected/config/setup-local.php
+2018/12/06 12:31:46 [info] [toxus.process.queue] Using connection: mysql:host=localhost;dbname=rsvideokunstutf8, userId:15
+2018/12/06 12:31:46 [info] [toxus.process.queue] Current session: 1RwSBvdMLcXY8ibJPZSuFNKzFTz34j, response time:1000 milliseconds
+2018/12/06 12:31:46 [info] [toxus.process.queue] Startup (version 1.01.00)
+2018/12/06 12:31:46 [info] [toxus.process.queue] Processing started
+2018/12/06 12:31:46 [info] [toxus.process.queue] There is 1 job in the queue.
+2018/12/06 12:31:46 [info] [toxus.process.queue] Session is Active
+2018/12/06 12:31:46 [info] [toxus.process.queue] Job found. id: 3554
+2018/12/06 12:31:46 [info] [toxus.process.queue] Starting job
+2018/12/06 12:31:46 [info] [toxus.process.queue] Job started (3554)
+2018/12/06 12:31:46 [info] [toxus.process.queue] Open job through: http://localhost/site/index.php/job/run/3554
+2018/12/06 12:31:46 [info] [toxus.process.queue] Job started by command: http://localhost/site/index.php/job/run/3554
+2018/12/06 12:32:03 [info] [toxus.process.queue] Process returned: ok
+2018/12/06 12:32:03 [info] [toxus.process.queue] Job ended without an error
+2018/12/06 12:32:03 [info] [toxus.process.queue] Job ended successfully.
+2018/12/06 12:32:03 [info] [toxus.process.queue] Waiting for new job
+2018/12/06 12:32:04 [info] [toxus.process.queue] Job processed. id3554
+2018/12/06 12:32:04 [info] [toxus.process.queue] Job 3554 processed
+2018/12/06 12:32:04 [info] [toxus.process.queue] Session is Active
+2018/12/06 12:32:04 [info] [toxus.process.queue] No job. no waiting. Exit process
+2018/12/06 12:32:04 [info] [toxus.process.queue] Processing done
+2018/12/06 12:35:21 [info] [toxus.ApplicationConfig.init] Using setup configuration /mnt/c/Users/Alexander Teinum/repos/archive-tool/site/protected/config/setup-local.php
+2018/12/06 12:35:21 [info] [toxus.process.queue] Using connection: mysql:host=localhost;dbname=rsvideokunstutf8, userId:15
+2018/12/06 12:35:21 [info] [toxus.process.queue] Current session: 1i3bVaXHH49UMmrcc3VEXtFYvSvDDL, response time:1000 milliseconds
+2018/12/06 12:35:21 [info] [toxus.process.queue] Startup (version 1.01.00)
+2018/12/06 12:35:21 [info] [toxus.process.queue] Processing started
+2018/12/06 12:35:21 [info] [toxus.process.queue] There is 1 job in the queue.
+2018/12/06 12:35:21 [info] [toxus.process.queue] Session is Active
+2018/12/06 12:35:21 [info] [toxus.process.queue] Job found. id: 3555
+2018/12/06 12:35:21 [info] [toxus.process.queue] Starting job
+2018/12/06 12:35:21 [info] [toxus.process.queue] Job started (3555)
+2018/12/06 12:35:21 [info] [toxus.process.queue] Open job through: http://localhost/site/index.php/job/run/3555
+2018/12/06 12:35:21 [info] [toxus.process.queue] Job started by command: http://localhost/site/index.php/job/run/3555
+2018/12/06 12:35:23 [info] [toxus.process.queue] Process returned: ok
+2018/12/06 12:35:23 [info] [toxus.process.queue] Job ended without an error
+2018/12/06 12:35:23 [info] [toxus.process.queue] Job ended successfully.
+2018/12/06 12:35:23 [info] [toxus.process.queue] Waiting for new job
+2018/12/06 12:35:24 [info] [toxus.process.queue] Job processed. id3555
+2018/12/06 12:35:24 [info] [toxus.process.queue] Job 3555 processed
+2018/12/06 12:35:24 [info] [toxus.process.queue] Session is Active
+2018/12/06 12:35:24 [info] [toxus.process.queue] No job. no waiting. Exit process
+2018/12/06 12:35:24 [info] [toxus.process.queue] Processing done
+2018/12/06 13:11:23 [info] [toxus.ApplicationConfig.init] Using setup configuration /mnt/c/Users/Alexander Teinum/repos/archive-tool/site/protected/config/setup-local.php
+2018/12/06 13:11:23 [info] [toxus.process.queue] Using connection: mysql:host=localhost;dbname=rsvideokunstutf8, userId:15
+2018/12/06 13:11:23 [info] [toxus.process.queue] Process is currently active. Process not restarted.
+2018/12/06 13:11:23 [info] [toxus.process.queue] Process is active. Exiting
+2018/12/06 13:11:29 [info] [toxus.ApplicationConfig.init] Using setup configuration /mnt/c/Users/Alexander Teinum/repos/archive-tool/site/protected/config/setup-local.php
+2018/12/06 13:11:33 [info] [toxus.ApplicationConfig.init] Using setup configuration /mnt/c/Users/Alexander Teinum/repos/archive-tool/site/protected/config/setup-local.php
+2018/12/06 13:11:33 [info] [toxus.process.queue] Using connection: mysql:host=localhost;dbname=rsvideokunstutf8, userId:15
+2018/12/06 13:11:34 [warning] [toxus.process.queue] Process has be reset
+2018/12/06 13:11:36 [info] [toxus.ApplicationConfig.init] Using setup configuration /mnt/c/Users/Alexander Teinum/repos/archive-tool/site/protected/config/setup-local.php
+2018/12/06 13:11:36 [info] [toxus.process.queue] Using connection: mysql:host=localhost;dbname=rsvideokunstutf8, userId:15
+2018/12/06 13:11:36 [info] [toxus.process.queue] Current session: gT3ZUhJrcexY2pTr2WZnrgRsBZNR2V, response time:1000 milliseconds
+2018/12/06 13:11:36 [info] [toxus.process.queue] Startup (version 1.01.00)
+2018/12/06 13:11:36 [info] [toxus.process.queue] Processing started
+2018/12/06 13:11:36 [info] [toxus.process.queue] There are no jobs in the queue.
+2018/12/06 13:11:36 [info] [toxus.process.queue] Session is Active
+2018/12/06 13:11:36 [info] [toxus.process.queue] No job. no waiting. Exit process
+2018/12/06 13:11:36 [info] [toxus.process.queue] Processing done
+2018/12/06 13:13:24 [info] [toxus.ApplicationConfig.init] Using setup configuration /mnt/c/Users/Alexander Teinum/repos/archive-tool/site/protected/config/setup-local.php
+2018/12/06 13:13:24 [info] [toxus.process.queue] Using connection: mysql:host=localhost;dbname=rsvideokunstutf8, userId:15
+2018/12/06 13:13:24 [info] [toxus.process.queue] Current session: m5LFQ1SRp5Rg1og1HceGwsYzqSyztg, response time:1000 milliseconds
+2018/12/06 13:13:24 [info] [toxus.process.queue] Startup (version 1.01.00)
+2018/12/06 13:13:24 [info] [toxus.process.queue] Processing started
+2018/12/06 13:13:24 [info] [toxus.process.queue] There is 1 job in the queue.
+2018/12/06 13:13:24 [info] [toxus.process.queue] Session is Active
+2018/12/06 13:13:24 [info] [toxus.process.queue] Job found. id: 3557
+2018/12/06 13:13:24 [info] [toxus.process.queue] Starting job
+2018/12/06 13:13:24 [info] [toxus.process.queue] Job started (3557)
+2018/12/06 13:13:24 [info] [toxus.process.queue] Open job through: http://localhost/site/index.php/job/run/3557
+2018/12/06 13:13:24 [info] [toxus.process.queue] Job started by command: http://localhost/site/index.php/job/run/3557
+2018/12/06 13:13:29 [info] [toxus.process.queue] Process returned: ok
+2018/12/06 13:13:29 [info] [toxus.process.queue] Job ended without an error
+2018/12/06 13:13:29 [info] [toxus.process.queue] Job ended successfully.
+2018/12/06 13:13:29 [info] [toxus.process.queue] Waiting for new job
+2018/12/06 13:13:30 [info] [toxus.process.queue] Job processed. id3557
+2018/12/06 13:13:30 [info] [toxus.process.queue] Job 3557 processed
+2018/12/06 13:13:30 [info] [toxus.process.queue] Session is Active
+2018/12/06 13:13:30 [info] [toxus.process.queue] No job. no waiting. Exit process
+2018/12/06 13:13:30 [info] [toxus.process.queue] Processing done
+2018/12/06 13:33:37 [info] [toxus.ApplicationConfig.init] Using setup configuration /mnt/c/Users/Alexander Teinum/repos/archive-tool/site/protected/config/setup-local.php
+2018/12/06 13:33:37 [info] [toxus.process.queue] Using connection: mysql:host=localhost;dbname=rsvideokunstutf8, userId:15
+2018/12/06 13:33:37 [info] [toxus.process.queue] Current session: FgX4ympVlK5bu8uZTzyMppGKp2AFQi, response time:1000 milliseconds
+2018/12/06 13:33:37 [info] [toxus.process.queue] Startup (version 1.01.00)
+2018/12/06 13:33:37 [info] [toxus.process.queue] Processing started
+2018/12/06 13:33:37 [info] [toxus.process.queue] There are no jobs in the queue.
+2018/12/06 13:33:37 [info] [toxus.process.queue] Session is Active
+2018/12/06 13:33:37 [info] [toxus.process.queue] No job. no waiting. Exit process
+2018/12/06 13:33:37 [info] [toxus.process.queue] Processing done
+2018/12/06 13:33:39 [info] [toxus.ApplicationConfig.init] Using setup configuration /mnt/c/Users/Alexander Teinum/repos/archive-tool/site/protected/config/setup-local.php
+2018/12/06 13:33:39 [info] [toxus.process.queue] Using connection: mysql:host=localhost;dbname=rsvideokunstutf8, userId:15
+2018/12/06 13:33:40 [info] [toxus.process.queue] Current session: 2ueWRw3WcS8XvhGcSjjny91dObro7E, response time:1000 milliseconds
+2018/12/06 13:33:40 [info] [toxus.process.queue] Startup (version 1.01.00)
+2018/12/06 13:33:40 [info] [toxus.process.queue] Processing started
+2018/12/06 13:33:40 [info] [toxus.process.queue] There are no jobs in the queue.
+2018/12/06 13:33:40 [info] [toxus.process.queue] Session is Active
+2018/12/06 13:33:40 [info] [toxus.process.queue] No job. no waiting. Exit process
+2018/12/06 13:33:40 [info] [toxus.process.queue] Processing done
+2018/12/06 14:11:57 [info] [toxus.ApplicationConfig.init] Using setup configuration /mnt/c/Users/Alexander Teinum/repos/archive-tool/site/protected/config/setup-local.php
+2018/12/06 14:11:58 [info] [toxus.process.queue] Using connection: mysql:host=localhost;dbname=rsvideokunstutf8, userId:15
+2018/12/06 14:11:58 [info] [toxus.process.queue] Current session: kvkYKs7wvgilj0SNMXm2PrYDUtZZWk, response time:1000 milliseconds
+2018/12/06 14:11:58 [info] [toxus.process.queue] Startup (version 1.01.00)
+2018/12/06 14:11:58 [info] [toxus.process.queue] Processing started
+2018/12/06 14:11:58 [info] [toxus.process.queue] There is 1 job in the queue.
+2018/12/06 14:11:58 [info] [toxus.process.queue] Session is Active
+2018/12/06 14:11:58 [info] [toxus.process.queue] Job found. id: 3558
+2018/12/06 14:11:58 [info] [toxus.process.queue] Starting job
+2018/12/06 14:11:58 [info] [toxus.process.queue] Job started (3558)
+2018/12/06 14:11:58 [info] [toxus.process.queue] Open job through: http://localhost/site/index.php/job/run/3558
+2018/12/06 14:11:58 [info] [toxus.process.queue] Job started by command: http://localhost/site/index.php/job/run/3558
+2018/12/06 16:50:58 [info] [toxus.process.queue] Process returned: ok
+2018/12/06 16:50:58 [info] [toxus.process.queue] Job ended without an error
+2018/12/06 16:50:58 [info] [toxus.process.queue] Job ended successfully.
+2018/12/06 16:50:58 [info] [toxus.process.queue] Waiting for new job
+2018/12/06 16:50:59 [info] [toxus.process.queue] Job processed. id3558
+2018/12/06 16:50:59 [info] [toxus.process.queue] Job 3558 processed
+2018/12/06 16:51:00 [info] [toxus.process.queue] Session is Active
+2018/12/06 16:51:00 [info] [toxus.process.queue] No job. no waiting. Exit process
+2018/12/06 16:51:00 [info] [toxus.process.queue] Processing done
