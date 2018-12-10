@@ -20,9 +20,13 @@ This document attempts to document the architecture of Archive Tool. This is an 
   - `resourcespace7/include/config.php`
 - Yii
   - `site/protected/config/main.php`
-- Toxus
-  - Yii
-  - Some custom
+- Cron, transcoding, …
+  - `site/protected/config/setup-local.php`
+    - This seems to be used by some processing code, but database credentials specified here are probably not used
+
+## Logs
+
+`site/protected/runtime/toxus.process.log`
 
 ## The meat of the application
 
@@ -91,3 +95,16 @@ resourcespace7,extensions,\*.json,messages,migrations,assetsBase,yii,setup
 
 - Twig
   - View template?
+
+## Overview
+
+- Cron job
+  - `*/10 * * * * php /mnt/c/Users/YOUR_USERNAME/repos/archive-tool/site/protected/yiic process --wait=1 --silent=1`
+- Some Yii command line something
+  - `site/protected/yiic.php`
+  - Configuration for that one
+    - `site/protected/config/console.php` - Database credentials are probably (hopefully as they go against another host) not used
+- Command line script starting point
+  - `yii/framework/yiic.php`
+- … something …
+- `site/protected/commands/ProcessCommand.php`
