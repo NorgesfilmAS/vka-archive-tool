@@ -30,14 +30,14 @@ $ffmpeg_min_width=32;
 $ffmpeg_min_height=18;
 $ffmpeg_max_width=480;
 $ffmepg_max_height=270;
-$ffmpeg_preview_options = "-threads 2 -vcodec libx264 -preset veryfast -vprofile main -pix_fmt yuv420p -crf 22 -x264opts threads=2 -acodec libfdk_aac -ab 128k";
+$ffmpeg_preview_options = "-threads 2 -vcodec libx264 -preset veryfast -vprofile main -pix_fmt yuv420p -crf 22 -x264opts threads=2 -acodec aac -ab 128k";
 $ffmpeg_snapshot_fraction=0.2;
 
 $ffmpeg_alternatives[0]["name"] = "X264_HQ";
 $ffmpeg_alternatives[0]["alt_type"] = "system";
 $ffmpeg_alternatives[0]["filename"] = "X264_HQ";
 $ffmpeg_alternatives[0]["extension"] = "mp4";
-$ffmpeg_alternatives[0]["params"] = "-threads 1 -vcodec libx264 -preset fast -vprofile main -pix_fmt yuv420p -vf yadif -crf 22 -x264opts threads=1 -acodec libfdk_aac -ac 2 -ab 128k";
+$ffmpeg_alternatives[0]["params"] = "-threads 1 -vcodec libx264 -preset fast -vprofile main -pix_fmt yuv420p -vf yadif -crf 22 -x264opts threads=1 -acodec aac -ac 2 -ab 128k";
 $ffmpeg_alternatives[0]["lines_min"] = 48;
 
 $ffmpeg_alternatives[1]["name"] = "webm_HQ";
@@ -51,7 +51,7 @@ $ffmpeg_alternatives[2]["name"] = "x264_LQ";
 $ffmpeg_alternatives[2]["alt_type"] = "system";
 $ffmpeg_alternatives[2]["filename"] = "x264_LQ";
 $ffmpeg_alternatives[2]["extension"] = "mp4";
-$ffmpeg_alternatives[2]["params"] = "-threads 1 -b:v 300k  -level 13 -vcodec libx264 -preset fast -vprofile baseline -pix_fmt yuv420p -vf scale=iw*.5:ih*.5 -crf 20 -x264opts threads=1 -acodec libfdk_aac -ac 2 -ab 64k -ar 22050";
+$ffmpeg_alternatives[2]["params"] = "-threads 1 -b:v 300k  -level 13 -vcodec libx264 -preset fast -vprofile baseline -pix_fmt yuv420p -vf scale=iw*.5:ih*.5 -crf 20 -x264opts threads=1 -acodec aac -ac 2 -ab 64k -ar 22050";
 $ffmpeg_alternatives[2]["lines_min"] = 144;
 
 $ffmpeg_alternatives[3]["name"] = "webm_LQ";
@@ -65,7 +65,7 @@ $ffmpeg_alternatives[4]["name"] = "Mezzanine";
 $ffmpeg_alternatives[4]["alt_type"] = "system";
 $ffmpeg_alternatives[4]["filename"] = "Mezzanine";
 $ffmpeg_alternatives[4]["extension"] = "mp4";
-$ffmpeg_alternatives[4]["params"] = "-threads 2 -c:v libx264 -c:a libfdk_aac -b:a 192k -crf 17 -maxrate 20000k -bufsize 40000k -profile:v high422 -preset medium";
+$ffmpeg_alternatives[4]["params"] = "-threads 2 -c:v libx264 -c:a aac -b:a 192k -crf 17 -maxrate 20000k -bufsize 40000k -profile:v high422 -preset medium";
 
 $imagemagick_path = '/usr/bin';
 $ghostscript_path = '/usr/bin';
