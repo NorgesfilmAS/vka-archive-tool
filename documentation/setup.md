@@ -248,6 +248,11 @@ _Make symbolic link from `resourcespace7/filestore` to where files are located._
 
     sudo chown -R www-data:www-data site/protected/runtime/temp
 
+### Set up `upload` directory
+
+    mkdir web-upload
+    sudo chown -R www-data:www-data web-upload
+
 ## Set up transcoding dependencies
 
 ### Set up ImageMagick
@@ -299,6 +304,7 @@ The FTP upload path is set in `site/protected/config/users/setup.json` under `fi
 
 - Uncomment `write_enable=YES`
 - Uncomment `chroot_local_user=YES`
+- Uncomment `local_umask=022`
 - If setup on production server, an inbound firewall rule might be needed to set up.
 
 ### Set up users and directories
@@ -308,3 +314,9 @@ sudo passwd vka
 sudo mkdir /home/vka/ftp
 sudo chown vka: /home/vka/ftp
 sudo chmod -w /home/vka
+
+## How to start everything after reboot
+
+    sudo mysql
+    set global sql_mode='STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION';
+    set session sql_mode='STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION';
