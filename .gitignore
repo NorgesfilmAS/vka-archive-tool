@@ -2,3 +2,4 @@ site/assets
 site/protected/runtime
 resourcespace/filestore
 resourcespace7/filestore
+.favorites.json
