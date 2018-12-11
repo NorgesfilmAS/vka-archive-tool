@@ -1,1 +1,0 @@
-(4, NULL, 3, 1, 0, 45, 45, '2012-10-09 13:45:23', NULL, NULL, NULL, NULL, NULL, 'mp4', 'jpg', 600, 697, 333, 150, 100, 0, 0, 'KEWNB', 4, NULL, '2012-10-09 17:44:09', '', 0, 0, '0|1', NULL, NULL, NULL, 262144, '2012-12-20 15:18:37', NULL, 'Fade in', NULL, 135168, NULL, '1981', ',Kjell BjÃ¸rgeengen'),

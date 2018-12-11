@@ -1,80 +1,0 @@
-10
-
-dir
-5188
-http://svn.resourcespace.org/svn/resourcespace/plugins/news
-http://svn.resourcespace.org/svn/resourcespace
-
-
-
-2013-11-15T11:42:19.016128Z
-5094
-hfrizen
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-c08608d7-6e46-0410-86ca-f2a6f1370df5
-
-css
-dir
-
-inc
-dir
-
-dbstruct
-dir
-
-news.yaml
-file
-
-
-
-
-2013-02-20T10:35:51.949817Z
-f3c3bf87a616c390be115700bbf6155e
-2012-11-16T13:28:00.534255Z
-4014
-hfrizen
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-80
-
-pages
-dir
-
-hooks
-dir
-
-languages
-dir
-
