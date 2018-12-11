@@ -248,10 +248,16 @@ _Make symbolic link from `resourcespace7/filestore` to where files are located._
 
     sudo chown -R www-data:www-data site/protected/runtime/temp
 
-### Set up `upload` directory
+### Set up `web-upload` directory
 
     mkdir web-upload
-    sudo chown -R www-data:www-data web-upload
+    sudo chown www-data: web-upload
+
+### Set up `assets` directory
+
+    mkdir site/assets
+    sudo chmod 755 site/assets
+    sudo chown www-data: site/assets
 
 ## Set up transcoding dependencies
 
@@ -311,8 +317,8 @@ The FTP upload path is set in `site/protected/config/users/setup.json` under `fi
 
 sudo useradd -m vka
 sudo passwd vka
-sudo mkdir /home/vka/ftp
-sudo chown vka: /home/vka/ftp
+sudo mkdir /home/vka/ftp-upload
+sudo chown vka: /home/vka/ftp-upload
 sudo chmod -w /home/vka
 
 ## How to start everything after reboot
