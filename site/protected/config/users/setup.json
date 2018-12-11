@@ -5,8 +5,8 @@
     "password": "ULjHarj3bCw73ZFK"
   },
   "fixedValues": {
-    "upload_path": "/home/vka/ftp/",
-    "temp_storage_path": "/mnt/c/Users/Alexander Teinum/repos/archive-tool/dirs/5/",
+    "upload_path": "/home/vka/ftp-upload/",
+    "temp_storage_path": "/mnt/c/Users/Alexander Teinum/repos/archive-tool/web-upload/",
     "process_url": "http://localhost/site/index.php/job/run/"
   },
   "mail": {
