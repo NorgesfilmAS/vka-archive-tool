@@ -19,7 +19,7 @@ class Art extends ArtBase {
 	
 //	private $_trashbinName = null;
 	
-	private $_searchOrder = 'title';
+	private $_searchOrder = 'creation';
 
 	protected $_downloadUrl = 'download/';
   /**
@@ -89,7 +89,7 @@ class Art extends ArtBase {
 	public function afterConstruct() {
 		$this->production_country = Yii::app()->config->defaultProductionCountry;
 		parent::afterConstruct();
-		$this->searchOrder = 'title';
+		$this->searchOrder = 'creation';
 	}
 	public function afterFind()
 	{
