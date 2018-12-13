@@ -166,7 +166,7 @@ return array(
 	),
   	'params'=>array(
 		'adminEmail'=>'pnek.eu',
-		'appName' => 'PNEK',
+		'appName' => 'VKA Archive Tool',
 		'company-server' => $_SERVER['SERVER_NAME'],
 		'company' => 'Toxus',
 		'companyAddress' => 'Lange Herenvest 20, 2011 BS Haarlem, NL',
