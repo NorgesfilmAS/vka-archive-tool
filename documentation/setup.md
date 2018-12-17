@@ -2,31 +2,7 @@
 
 This document describes how to set up Archive Tool in Ubuntu 18.04.
 
-## Server locations
-
-| Name                                     | Path                                          | Description                                                                                          | Permissions                                                  |
-| ---------------------------------------- | --------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ------------------------------------------------------------ |
-| `apacheDocuments`                        | `/var/www/html`                               | Document root of the Apache server                                                                   | Deployment/FTP: Read, write, ?                               |
-| `publicAccess`                           | ?                                             | Location of uploaded files                                                                           | Public/FTP: Read, write, create directory, Cron: Read, write |
-| `fileStore` (`filestore`, `fileStorage`) | ?                                             | Virtual directory mapped to network share where AT and RS will look for video files after processing | Developer/FTP: ?, Cron: Read, write                          |
-| `tempStorage`                            | ?                                             | Where FFMPEG stores its temporary files                                                              | Cron: Read, write, FFMPEG: Read, write                       |
-| `runtimeStorage`                         | `var/www/html/assets`, `var/www/html/runtime` | Temporary storage used by the Apache and PHP cron job                                                | Apache: Read, write, create directory - Cron: Read, write    |
-
-Directories set by the deployment server – ???
-/resourcespace
-/filestore
-
-Directories set by the ResourceSpace setup - ???
-
-## Cron
-
-- Pipeline
-  - Process files (how?)
-  - Move files (to where?)
-  - Recompress videos using FFMPEG
-- Run PHP-scripts (which?)
-
-## Setup Ubuntu locally using WSL
+## Setup Ubuntu
 
 This section describes how to setup:
 
@@ -36,6 +12,8 @@ This section describes how to setup:
   - Cron
   - FFMPEG
   - SSH access
+
+For Ubuntu on Azure; consider using SSH for authentication. Add inbound rule giving your developer machine access to all ports.
 
 ### Install LAMP stack
 
@@ -66,8 +44,8 @@ PHP 7.2 is the latest version (when this was written). However, Archive Tool and
 
 The following is based on https://askubuntu.com/questions/761713/how-can-i-downgrade-from-php-7-to-php-5-6-on-ubuntu-16-04
 
-    sudo apt install php5.6 php5.6-mysql libapache2-mod-php5.6
-    sudo a2enmod php5.6
+    sudo add-apt-repository ppa:ondrej/php
+    sudo apt install php5.6 php5.6-mysql libapache2-mod-php5.6 php5.6-mbstring
     sudo update-alternatives --set php /usr/bin/php5.6
 
 ##### Move `index.php` to first position
@@ -84,6 +62,11 @@ The following is based on https://askubuntu.com/questions/761713/how-can-i-downg
     sudo cp /etc/php/5.6/apache2/php.ini /etc/php/5.6/apache2/php.ini.orig
     sudo cp /usr/lib/php/5.6/php.ini-development /etc/php/5.6/apache2/php.ini
 
+##### Use `php.ini-production` (production only)
+
+    sudo cp /etc/php/5.6/apache2/php.ini /etc/php/5.6/apache2/php.ini.orig
+    sudo cp /usr/lib/php/5.6/php.ini-production /etc/php/5.6/apache2/php.ini
+
 ##### Make changes to `php.ini`
 
     sudo vi /etc/php/5.6/apache2/php.ini
@@ -97,15 +80,11 @@ The following is based on https://askubuntu.com/questions/761713/how-can-i-downg
 Enable extensions:
 
 - `php_curl.dll`
-- `php_gd.dll`
+- `php_gd2.dll`
 
 Restart Apache
 
     sudo service apache2 restart
-
-## Setup Ubuntu on Azure
-
-Same steps as above. Consider using SSH for authentication. Add inbound rule giving your developer machine access to all ports.
 
 ## Set up database
 
@@ -178,7 +157,9 @@ Windows file system needs to be mounted with option `metadata` in order to set f
     sudo chown -R YOUR_WSL_USERNAME:www-data archive-tool
     sudo service apache2 restart
 
-#### Edit `/etc/apache2/sites-enabled/000-default.conf`
+#### Edit Apache configuration
+
+    sudo vi /etc/apache2/sites-enabled/000-default.conf
 
 Set `DocumentRoot` to `"/mnt/c/Users/Alexander Teinum/repos/archive-tool"`.
 
@@ -198,9 +179,13 @@ Add `Directory` directive to allow access to `archive-tool`:
     sudo mv public_html_copy/public_html archive-tool
     sudo chown -R www-data: archive-tool
 
-#### Edit `/etc/apache2/sites-enabled/000-default.conf`
+#### Edit Apache configuration
 
-Set `DocumentRoot` to `/var/www/archive-tool`.
+    sudo vi /etc/apache2/sites-enabled/000-default.conf
+
+Set `DocumentRoot` to `/var/www/archive-tool`. Then restart Apache:
+
+    sudo service apache2 restart
 
 ### Twig cache permissions
 
@@ -236,13 +221,13 @@ In `resourcespace7/include/config.php`, set `$baseurl` to `http://NEW_SERVER_URL
 
 #### Set up `filestore` directory
 
-    rm -r resourcespace7/filestore # TODO: We might remove this symbolic link from Git
+    sudo rm -r resourcespace7/filestore # TODO: We might remove this symbolic link from Git
 
 _Make symbolic link from `resourcespace7/filestore` to where files are located._
 
 ### Set up `temp` directory
 
-    mkdir site/protected/runtime/temp
+    sudo mkdir site/protected/runtime/temp
 
     # TODO: Unsure about permissions for following:
 
@@ -250,12 +235,12 @@ _Make symbolic link from `resourcespace7/filestore` to where files are located._
 
 ### Set up `web-upload` directory
 
-    mkdir web-upload
+    sudo mkdir web-upload
     sudo chown www-data: web-upload
 
 ### Set up `assets` directory
 
-    mkdir site/assets
+    sudo mkdir site/assets
     sudo chmod 755 site/assets
     sudo chown www-data: site/assets
 
@@ -274,7 +259,7 @@ _Make symbolic link from `resourcespace7/filestore` to where files are located._
 
 ### Option 1 – Local development
 
-- Run `crontab -e`
+- Run `sudo crontab -e`
 - Add the following (without the backtics characters at the beginning and at the end):
 
   `*/10 * * * * php /mnt/c/Users/YOUR_USERNAME/repos/archive-tool/site/protected/yiic process --wait=1 --silent=1`
@@ -283,7 +268,7 @@ _Make symbolic link from `resourcespace7/filestore` to where files are located._
 
 ### Option 2 – Production server
 
-- Run `crontab -e`
+- Run `sudo crontab -e`
 - Add the following (without the backtics characters at the beginning and at the end):
 
   `*/10 * * * * php /var/www/archive-tool/site/protected/yiic process --wait=1 --silent=1`
@@ -299,18 +284,17 @@ The FTP upload path is set in `site/protected/config/users/setup.json` under `fi
     sudo apt install vsftpd
     sudo service vsftpd start
 
-    sudo useradd -m ftpuser
-    sudo passwd ftpuser
-
     sudo cp /etc/vsftpd.conf /etc/vsftpd.orig
 
 ### In `/etc/vsftpd.conf`
 
+    sudo vim /etc/vsftpd.conf
+
 (Based on https://www.digitalocean.com/community/tutorials/how-to-set-up-vsftpd-for-a-user-s-directory-on-ubuntu-18-04)
 
 - Uncomment `write_enable=YES`
-- Uncomment `chroot_local_user=YES`
 - Uncomment `local_umask=022`
+- Uncomment `chroot_local_user=YES`
 - If setup on production server, an inbound firewall rule might be needed to set up.
 
 ### Set up users and directories
