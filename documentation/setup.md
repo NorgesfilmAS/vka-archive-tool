@@ -57,6 +57,11 @@ The following is based on https://askubuntu.com/questions/761713/how-can-i-downg
     sudo apt install php5.6-curl
     sudo apt install php5.6-gd
 
+    # Not sure if running the following are needed
+
+    sudo phpenmod -v ALL curl
+    sudo phpenmod -v ALL gd
+
 ##### Use `php.ini-development` (local development only)
 
     sudo cp /etc/php/5.6/apache2/php.ini /etc/php/5.6/apache2/php.ini.orig
@@ -76,11 +81,6 @@ The following is based on https://askubuntu.com/questions/761713/how-can-i-downg
 | `memory_limit`        | `1024M` |
 | `post_max_size`       | `6000M` |
 | `upload_max_filesize` | `6000M` |
-
-Enable extensions:
-
-- `php_curl.dll`
-- `php_gd2.dll`
 
 Restart Apache
 
@@ -221,8 +221,6 @@ In `resourcespace7/include/config.php`, set `$baseurl` to `http://NEW_SERVER_URL
 
 #### Set up `filestore` directory
 
-    sudo rm -r resourcespace7/filestore # TODO: We might remove this symbolic link from Git
-
 _Make symbolic link from `resourcespace7/filestore` to where files are located._
 
 ### Set up `temp` directory
@@ -234,6 +232,8 @@ _Make symbolic link from `resourcespace7/filestore` to where files are located._
     sudo chown -R www-data:www-data site/protected/runtime/temp
 
 ### Set up `web-upload` directory
+
+Update web upload path in `site/protected/config/users/setup.json` under `temp_storage_path` to "/var/www/archive-tool/web-upload".
 
     sudo mkdir web-upload
     sudo chown www-data: web-upload
@@ -277,7 +277,7 @@ _Make symbolic link from `resourcespace7/filestore` to where files are located._
 
 ## Set up FTP
 
-The FTP upload path is set in `site/protected/config/users/setup.json` under `fixedValues.upload_path`.
+Update FTP upload in `site/protected/config/users/setup.json` under `fixedValues.upload_path` to "/home/vka/ftp-upload/".
 
 (Based on https://www.techrepublic.com/article/how-to-quickly-setup-an-ftp-server-on-ubuntu-18-04/)
 
@@ -307,6 +307,14 @@ sudo chmod -w /home/vka
 
 ## How to start everything after reboot
 
+    sudo service apache2 start
+    sudo service vsftpd start
+    sudo service mysql start
+
     sudo mysql
     set global sql_mode='STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION';
     set session sql_mode='STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION';
+
+## A few notes
+
+- The output of `ffmpeg` can be seen by running `tail -f /var/log/apache2/error.log` while a video is transcoded
