@@ -237,7 +237,7 @@ class __TwigTemplate_935cbaea1ca3286e5a99185bbfd3d331 extends Twig_Template
 \t\t\t";
         // line 167
         $this->displayBlock('bootstrap3Footer', $context, $blocks);
-        // line 232
+        // line 229
         echo "\t
 \t\t</div>\t\t
 \t\t<div class=\"modal fade\" id=\"id-modal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"myModalLabel\" aria-hidden=\"true\" >
@@ -245,7 +245,7 @@ class __TwigTemplate_935cbaea1ca3286e5a99185bbfd3d331 extends Twig_Template
 \t\t\t\t<div class=\"modal-dialog\">
 \t\t\t\t\t<div id=\"id-modal-body\" class=\"modal-content\">
 \t\t\t\t\t";
-        // line 238
+        // line 235
         echo twig_escape_filter($this->env, YiiTranslate("base", "LOADING INFORMATION ...."), "html", null, true);
         echo "
 \t\t\t\t\t</div><!-- /.modal-content -->
@@ -253,14 +253,14 @@ class __TwigTemplate_935cbaea1ca3286e5a99185bbfd3d331 extends Twig_Template
 \t\t\t</div>
 \t\t</div>
 ";
-        // line 246
+        // line 243
         echo "\t\t
 \t\t<div class=\"modal fade modal-preview\" id=\"id-preview\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"myModalLabel\" aria-hidden=\"true\" >
 \t\t\t<div class=\"modal-body\">
 \t\t\t\t<div class=\"modal-dialog\">
 \t\t\t\t\t<div class=\"modal-content\">
 \t\t\t\t\t";
-        // line 251
+        // line 248
         echo twig_escape_filter($this->env, YiiTranslate("base", "LOADING INFORMATION ...."), "html", null, true);
         echo "
 \t\t\t\t\t</div><!-- /.modal-content -->
@@ -272,11 +272,11 @@ class __TwigTemplate_935cbaea1ca3286e5a99185bbfd3d331 extends Twig_Template
 \t\t\t<div class=\"row id-wait\">
 \t\t\t\t<div class=\"col-offset-1 col-lg-10\">
 \t\t\t\t\t<h2 style=\"text-align: center\" class=\"wait-message\">";
-        // line 260
+        // line 257
         echo twig_escape_filter($this->env, YiiTranslate("base", "Processing ....."), "html", null, true);
         echo "</h2>
 \t\t\t\t\t<div class=\"wait-icon\"><img class=\"wait-icon\" src=\"";
-        // line 261
+        // line 258
         echo twig_escape_filter($this->env, $this->getAttribute((isset($context["this"]) ? $context["this"] : null), "getPackageBaseUrl", array(0 => "core"), "method"), "html", null, true);
         echo "/images/progress.gif\"/></div>
 \t\t\t\t</div>
@@ -284,20 +284,20 @@ class __TwigTemplate_935cbaea1ca3286e5a99185bbfd3d331 extends Twig_Template
 \t\t</div>\t
 \t\t\t
 \t\t";
-        // line 266
+        // line 263
         $this->displayBlock('contentBody', $context, $blocks);
-        // line 268
+        // line 265
         echo "\t\t<script\ttype=\"text/javascript\">
 \t\t\t\$().ready(function() {
 \t\t\t\t";
-        // line 270
+        // line 267
         $this->displayBlock('onReady', $context, $blocks);
-        // line 271
+        // line 268
         echo "\t\t\t\t\$('.a-url').on('click', function() {
 \t\t\t\t\twindow.location = \$(this).data('url');
 \t\t\t\t});
 \t\t\t\t";
-        // line 274
+        // line 271
         echo $this->getAttribute((isset($context["this"]) ? $context["this"] : null), "scriptOnReady", array(), "method");
         echo "
 \t\t\t});
@@ -538,30 +538,30 @@ class __TwigTemplate_935cbaea1ca3286e5a99185bbfd3d331 extends Twig_Template
 \t\t\t\t\t\t";
         // line 171
         $this->displayBlock('footerLeft', $context, $blocks);
-        // line 188
+        // line 185
         echo "\t\t\t\t\t\t\t\t\t\t\t\t\t
 \t\t\t\t\t</div>
 \t\t\t\t\t<div class=\"col-sm-4\">
 \t\t\t\t\t\t";
-        // line 191
+        // line 188
         $this->displayBlock('footerMiddle', $context, $blocks);
-        // line 199
+        // line 196
         echo "\t
 \t\t\t\t\t</div>
 \t\t\t\t\t<div class=\"col-sm-4\">
 \t\t\t\t\t\t";
-        // line 202
+        // line 199
         $this->displayBlock('footerRight', $context, $blocks);
-        // line 216
+        // line 213
         echo "\t
 \t\t\t\t\t</div>
 \t\t\t\t</div>
 \t\t\t</div>
 \t\t\t<div class=\"footerCredits\">
 \t\t\t\t";
-        // line 221
+        // line 218
         $this->displayBlock('footerCredits', $context, $blocks);
-        // line 230
+        // line 227
         echo "\t
 \t\t\t</div>\t
 \t\t ";
@@ -577,19 +577,16 @@ class __TwigTemplate_935cbaea1ca3286e5a99185bbfd3d331 extends Twig_Template
         echo twig_escape_filter($this->env, YiiTranslate("base", "Contact us"), "html", null, true);
         echo "</h4>
 \t\t\t\t\t\t\t<p>
+\t\t\t\t\t\t\t\tContact person for <a href=\"http://www.videokunstarkivet.org/\">Videokunstarkivet</a>: Per Platou
+\t\t\t\t\t\t\t</p>
+\t\t\t\t\t\t\t<p>
 \t\t\t\t\t\t\t\tMobile: <a href=\"tel:93069406\">93069406</a>
 \t\t\t\t\t\t\t</p>
 \t\t\t\t\t\t\t<p>
 \t\t\t\t\t\t\t\tEmail: <a href=\"mailto:mail@videokunstarkivet.org\">mail@videokunstarkivet.org</a>
 \t\t\t\t\t\t\t</p>
-\t\t\t\t\t\t\t<p>
-\t\t\t\t\t\t\t\tContact person for Videokunstarkivet: Per Platou
-\t\t\t\t\t\t\t</p>
-\t\t\t\t\t\t\t<p>
-\t\t\t\t\t\t\t\tContact person for Norsk kulturråd: Birgit Bærøe
-\t\t\t\t\t\t\t</p>
 \t\t\t\t\t\t\t";
-        // line 186
+        // line 183
         $this->displayBlock('footerLeftExtra', $context, $blocks);
         echo "\t\t\t\t\t\t\t
 \t\t\t\t\t\t</section>
@@ -600,34 +597,34 @@ class __TwigTemplate_935cbaea1ca3286e5a99185bbfd3d331 extends Twig_Template
     {
     }
 
-    // line 191
+    // line 188
     public function block_footerMiddle($context, array $blocks = array())
     {
-        // line 192
+        // line 189
         echo "\t\t\t\t\t\t<section>
 \t\t\t\t\t\t\t<h4>";
-        // line 193
+        // line 190
         echo twig_escape_filter($this->env, YiiTranslate("base", "stay updated"), "html", null, true);
         echo "</h4>
 \t\t\t\t\t\t\t<p>";
-        // line 194
+        // line 191
         echo twig_escape_filter($this->env, YiiTranslate("base", "sign up for our newsletter. We won't share your email address."), "html", null, true);
         echo "</p>
 \t\t\t\t\t\t\t";
-        // line 195
+        // line 192
         $template = $this->env->resolveTemplate($this->getAttribute((isset($context["this"]) ? $context["this"] : null), "viewPath", array(0 => "newsletter"), "method"));
         $template->display($context);
-        // line 196
+        // line 193
         echo "\t\t\t\t\t\t\t\t<!--close input-append-->
 \t\t\t\t\t\t\t</form>
 \t\t\t\t\t\t</section>\t\t\t\t\t\t\t
 \t\t\t\t\t\t";
     }
 
-    // line 202
+    // line 199
     public function block_footerRight($context, array $blocks = array())
     {
-        // line 203
+        // line 200
         echo "            ";
         $context['_parent'] = (array) $context;
         $context['_seq'] = twig_ensure_traversable($this->getAttribute((isset($context["this"]) ? $context["this"] : null), "footerArticles"));
@@ -645,32 +642,32 @@ class __TwigTemplate_935cbaea1ca3286e5a99185bbfd3d331 extends Twig_Template
             $context['loop']['last'] = 1 === $length;
         }
         foreach ($context['_seq'] as $context["_key"] => $context["article"]) {
-            // line 204
+            // line 201
             echo "              ";
             if ($this->getAttribute((isset($context["loop"]) ? $context["loop"] : null), "first")) {
-                // line 205
+                // line 202
                 echo "            <section>
               <h4>Instruction and Help</h4>
               <ul class=\"footerPosts list-unstyled\">
               ";
             }
-            // line 208
+            // line 205
             echo "  
                 <li><a href=\"";
-            // line 209
+            // line 206
             echo twig_escape_filter($this->env, $this->getAttribute((isset($context["this"]) ? $context["this"] : null), "createUrl", array(0 => "article/index", 1 => array($this->getAttribute((isset($context["article"]) ? $context["article"] : null), "key") => "")), "method"), "html", null, true);
             echo "\">";
             echo twig_escape_filter($this->env, $this->getAttribute((isset($context["article"]) ? $context["article"] : null), "title"), "html", null, true);
             echo "</a></li>
               ";
-            // line 210
+            // line 207
             if ($this->getAttribute((isset($context["loop"]) ? $context["loop"] : null), "last")) {
                 echo "    
               </ul>
             </section>\t
               ";
             }
-            // line 214
+            // line 211
             echo "           ";
             ++$context['loop']['index0'];
             ++$context['loop']['index'];
@@ -684,36 +681,36 @@ class __TwigTemplate_935cbaea1ca3286e5a99185bbfd3d331 extends Twig_Template
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['article'], $context['_parent'], $context['loop']);
         $context = array_merge($_parent, array_intersect_key($context, $_parent));
-        // line 215
+        // line 212
         echo "              
 \t\t\t\t\t\t";
     }
 
-    // line 221
+    // line 218
     public function block_footerCredits($context, array $blocks = array())
     {
-        // line 222
+        // line 219
         echo "\t\t\t\t<div class=\"container\">
 \t\t\t\t\t<ul class=\"footer-links text-center\">
 \t\t\t\t\t\t";
-        // line 224
+        // line 221
         $this->displayBlock('copyright', $context, $blocks);
-        // line 225
+        // line 222
         echo "\t\t\t\t\t\t";
         $this->displayBlock('sitemap', $context, $blocks);
-        // line 226
+        // line 223
         echo "\t\t\t\t\t\t";
         $this->displayBlock('privacy', $context, $blocks);
-        // line 227
+        // line 224
         echo "\t\t\t\t\t\t";
         $this->displayBlock('versionInfo', $context, $blocks);
-        // line 228
+        // line 225
         echo "\t\t\t\t\t</ul>
 \t\t\t\t</div>\t\t
 \t\t\t\t";
     }
 
-    // line 224
+    // line 221
     public function block_copyright($context, array $blocks = array())
     {
         echo "<li><a href=\"";
@@ -721,7 +718,7 @@ class __TwigTemplate_935cbaea1ca3286e5a99185bbfd3d331 extends Twig_Template
         echo "\"> &copy; 2013 - 2015 Toxus</a> | </li>";
     }
 
-    // line 225
+    // line 222
     public function block_sitemap($context, array $blocks = array())
     {
         echo "<li><a href=\"";
@@ -731,7 +728,7 @@ class __TwigTemplate_935cbaea1ca3286e5a99185bbfd3d331 extends Twig_Template
         echo "</a> | </li>";
     }
 
-    // line 226
+    // line 223
     public function block_privacy($context, array $blocks = array())
     {
         echo "<li><a href=\"";
@@ -741,7 +738,7 @@ class __TwigTemplate_935cbaea1ca3286e5a99185bbfd3d331 extends Twig_Template
         echo "</a></li>";
     }
 
-    // line 227
+    // line 224
     public function block_versionInfo($context, array $blocks = array())
     {
         echo "<li class=\"version\">";
@@ -757,14 +754,14 @@ class __TwigTemplate_935cbaea1ca3286e5a99185bbfd3d331 extends Twig_Template
         echo "3";
     }
 
-    // line 266
+    // line 263
     public function block_contentBody($context, array $blocks = array())
     {
-        // line 267
+        // line 264
         echo "\t\t";
     }
 
-    // line 270
+    // line 267
     public function block_onReady($context, array $blocks = array())
     {
     }
@@ -781,6 +778,6 @@ class __TwigTemplate_935cbaea1ca3286e5a99185bbfd3d331 extends Twig_Template
 
     public function getDebugInfo()
     {
-        return array (  768 => 270,  764 => 267,  761 => 266,  745 => 227,  735 => 226,  725 => 225,  717 => 224,  711 => 228,  708 => 227,  705 => 226,  702 => 225,  700 => 224,  696 => 222,  693 => 221,  688 => 215,  674 => 214,  667 => 210,  661 => 209,  658 => 208,  652 => 205,  649 => 204,  631 => 203,  628 => 202,  621 => 196,  618 => 195,  614 => 194,  610 => 193,  607 => 192,  604 => 191,  593 => 186,  577 => 173,  574 => 172,  571 => 171,  565 => 230,  563 => 221,  556 => 216,  554 => 202,  549 => 199,  547 => 191,  542 => 188,  540 => 171,  535 => 168,  532 => 167,  527 => 143,  522 => 139,  516 => 130,  511 => 116,  504 => 98,  501 => 97,  495 => 91,  489 => 90,  486 => 89,  480 => 100,  478 => 97,  474 => 95,  471 => 93,  469 => 89,  464 => 87,  461 => 86,  456 => 84,  448 => 77,  444 => 75,  441 => 74,  435 => 68,  426 => 61,  423 => 60,  418 => 81,  416 => 74,  408 => 69,  404 => 68,  399 => 66,  394 => 63,  391 => 60,  385 => 56,  383 => 55,  374 => 48,  371 => 47,  366 => 43,  359 => 41,  356 => 40,  351 => 38,  348 => 37,  345 => 36,  342 => 35,  335 => 43,  332 => 40,  329 => 35,  326 => 34,  321 => 28,  316 => 19,  310 => 9,  301 => 274,  296 => 271,  294 => 270,  290 => 268,  288 => 266,  280 => 261,  276 => 260,  264 => 251,  257 => 246,  249 => 238,  241 => 232,  239 => 167,  234 => 164,  228 => 145,  224 => 144,  222 => 143,  218 => 142,  214 => 141,  209 => 139,  206 => 138,  202 => 137,  197 => 136,  194 => 135,  189 => 133,  184 => 131,  182 => 130,  179 => 129,  177 => 128,  174 => 127,  167 => 124,  160 => 121,  156 => 119,  154 => 118,  149 => 116,  146 => 115,  143 => 105,  139 => 103,  137 => 86,  132 => 84,  129 => 83,  127 => 47,  121 => 45,  118 => 34,  116 => 33,  113 => 32,  109 => 28,  103 => 25,  99 => 24,  95 => 23,  91 => 22,  88 => 21,  85 => 20,  81 => 19,  77 => 18,  73 => 17,  69 => 16,  65 => 15,  56 => 9,  51 => 6,);
+        return array (  765 => 267,  761 => 264,  758 => 263,  742 => 224,  732 => 223,  722 => 222,  714 => 221,  708 => 225,  705 => 224,  702 => 223,  699 => 222,  697 => 221,  693 => 219,  690 => 218,  685 => 212,  671 => 211,  664 => 207,  658 => 206,  655 => 205,  649 => 202,  646 => 201,  628 => 200,  625 => 199,  618 => 193,  615 => 192,  611 => 191,  607 => 190,  604 => 189,  601 => 188,  590 => 183,  577 => 173,  574 => 172,  571 => 171,  565 => 227,  563 => 218,  556 => 213,  554 => 199,  549 => 196,  547 => 188,  542 => 185,  540 => 171,  535 => 168,  532 => 167,  527 => 143,  522 => 139,  516 => 130,  511 => 116,  504 => 98,  501 => 97,  495 => 91,  489 => 90,  486 => 89,  480 => 100,  478 => 97,  474 => 95,  471 => 93,  469 => 89,  464 => 87,  461 => 86,  456 => 84,  448 => 77,  444 => 75,  441 => 74,  435 => 68,  426 => 61,  423 => 60,  418 => 81,  416 => 74,  408 => 69,  404 => 68,  399 => 66,  394 => 63,  391 => 60,  385 => 56,  383 => 55,  374 => 48,  371 => 47,  366 => 43,  359 => 41,  356 => 40,  351 => 38,  348 => 37,  345 => 36,  342 => 35,  335 => 43,  332 => 40,  329 => 35,  326 => 34,  321 => 28,  316 => 19,  310 => 9,  301 => 271,  296 => 268,  294 => 267,  290 => 265,  288 => 263,  280 => 258,  276 => 257,  264 => 248,  257 => 243,  249 => 235,  241 => 229,  239 => 167,  234 => 164,  228 => 145,  224 => 144,  222 => 143,  218 => 142,  214 => 141,  209 => 139,  206 => 138,  202 => 137,  197 => 136,  194 => 135,  189 => 133,  184 => 131,  182 => 130,  179 => 129,  177 => 128,  174 => 127,  167 => 124,  160 => 121,  156 => 119,  154 => 118,  149 => 116,  146 => 115,  143 => 105,  139 => 103,  137 => 86,  132 => 84,  129 => 83,  127 => 47,  121 => 45,  118 => 34,  116 => 33,  113 => 32,  109 => 28,  103 => 25,  99 => 24,  95 => 23,  91 => 22,  88 => 21,  85 => 20,  81 => 19,  77 => 18,  73 => 17,  69 => 16,  65 => 15,  56 => 9,  51 => 6,);
     }
 }
