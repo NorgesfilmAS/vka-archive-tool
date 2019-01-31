@@ -175,7 +175,7 @@ class __TwigTemplate_be08fb0dc1f7ceaf8a633f6abaa785a7 extends Twig_Template
     {
         echo "<li><a href=\"";
         echo twig_escape_filter($this->env, $this->getAttribute((isset($context["this"]) ? $context["this"] : null), "createUrl", array(0 => "article/index", 1 => array("copyright" => "")), "method"), "html", null, true);
-        echo "\"> &copy; 2013–2019 Archive Tool</a> | </li>
+        echo "\"> &copy; 2013–2019 Archive Tool</a>&nbsp; | </li>
 ";
     }
 
