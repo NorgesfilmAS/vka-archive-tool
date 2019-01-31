@@ -107,20 +107,12 @@ class __TwigTemplate_be08fb0dc1f7ceaf8a633f6abaa785a7 extends Twig_Template
     // line 38
     public function block_footerLeftExtra($context, array $blocks = array())
     {
-        // line 39
-        echo " \t<p>
-\t\t";
-        // line 40
-        echo twig_escape_filter($this->env, YiiTranslate("app", "telephone"), "html", null, true);
-        echo ":+31 6108 105 47
-\t</p>
-";
     }
 
-    // line 44
+    // line 41
     public function block_footerMiddle($context, array $blocks = array())
     {
-        // line 45
+        // line 42
         echo "<script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -135,19 +127,19 @@ class __TwigTemplate_be08fb0dc1f7ceaf8a633f6abaa785a7 extends Twig_Template
 ";
     }
 
-    // line 58
+    // line 55
     public function block_footerRight($context, array $blocks = array())
     {
-        // line 59
+        // line 56
         echo "\t<section>
 \t\t<h4>Instruction and Help</h4>
 \t\t<ul class=\"footerPosts list-unstyled\">
 \t\t\t";
-        // line 62
+        // line 59
         $context['_parent'] = (array) $context;
         $context['_seq'] = twig_ensure_traversable($this->getAttribute((isset($context["this"]) ? $context["this"] : null), "footerArticles"));
         foreach ($context['_seq'] as $context["_key"] => $context["article"]) {
-            // line 63
+            // line 60
             echo "\t\t\t\t<li><a href=\"";
             echo twig_escape_filter($this->env, $this->getAttribute((isset($context["this"]) ? $context["this"] : null), "createUrl", array(0 => "article/index", 1 => array($this->getAttribute((isset($context["article"]) ? $context["article"] : null), "key") => "")), "method"), "html", null, true);
             echo "\">";
@@ -155,15 +147,15 @@ class __TwigTemplate_be08fb0dc1f7ceaf8a633f6abaa785a7 extends Twig_Template
             echo "</a></li>
 <!--\t\t\t
 \t\t\t<li><a href=\"";
-            // line 65
+            // line 62
             echo twig_escape_filter($this->env, $this->getAttribute((isset($context["this"]) ? $context["this"] : null), "createUrl", array(0 => "article/index", 1 => array("search_box" => "")), "method"), "html", null, true);
             echo "\">Understanding the search box</a></li>
 \t\t\t<li><a href=\"";
-            // line 66
+            // line 63
             echo twig_escape_filter($this->env, $this->getAttribute((isset($context["this"]) ? $context["this"] : null), "createUrl", array(0 => "article/index", 1 => array("file_upload" => "")), "method"), "html", null, true);
             echo "\">Adding files to an Artwork</a></li>
 \t\t\t<li><a href=\"";
-            // line 67
+            // line 64
             echo twig_escape_filter($this->env, $this->getAttribute((isset($context["this"]) ? $context["this"] : null), "createUrl", array(0 => "article/index", 1 => array("multi_channel" => "")), "method"), "html", null, true);
             echo "\">Multi Channel installations</a></li>
 -->
@@ -172,13 +164,13 @@ class __TwigTemplate_be08fb0dc1f7ceaf8a633f6abaa785a7 extends Twig_Template
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['article'], $context['_parent'], $context['loop']);
         $context = array_merge($_parent, array_intersect_key($context, $_parent));
-        // line 70
+        // line 67
         echo "\t\t</ul>
 \t</section>\t
 ";
     }
 
-    // line 74
+    // line 71
     public function block_copyright($context, array $blocks = array())
     {
         echo "<li><a href=\"";
@@ -187,21 +179,21 @@ class __TwigTemplate_be08fb0dc1f7ceaf8a633f6abaa785a7 extends Twig_Template
 ";
     }
 
-    // line 77
+    // line 74
     public function block_sitemap($context, array $blocks = array())
     {
     }
 
-    // line 78
+    // line 75
     public function block_privacy($context, array $blocks = array())
     {
         echo " ";
     }
 
-    // line 80
+    // line 77
     public function block_version($context, array $blocks = array())
     {
-        // line 81
+        // line 78
         echo "\t<a href=\"";
         echo twig_escape_filter($this->env, $this->getAttribute((isset($context["this"]) ? $context["this"] : null), "createUrl", array(0 => "article/index", 1 => array("revisions" => "")), "method"), "html", null, true);
         echo "\" title=\"framework version: ";
@@ -212,19 +204,19 @@ class __TwigTemplate_be08fb0dc1f7ceaf8a633f6abaa785a7 extends Twig_Template
 ";
     }
 
-    // line 84
+    // line 81
     public function block_onReady($context, array $blocks = array())
     {
-        // line 85
+        // line 82
         echo "  ";
         if ((isset($context["menuItem"]) ? $context["menuItem"] : null)) {
-            // line 86
+            // line 83
             echo "\t\t\$('";
             echo twig_escape_filter($this->env, (isset($context["menuItem"]) ? $context["menuItem"] : null), "html", null, true);
             echo "').addClass('active');
 \t";
         }
-        // line 87
+        // line 84
         echo "\t
 \tfunction bindEvents(id, result)
 \t{
@@ -232,7 +224,7 @@ class __TwigTemplate_be08fb0dc1f7ceaf8a633f6abaa785a7 extends Twig_Template
 \t\t\twindow.location = \$(this).data('url');
 \t\t});
 \t\t";
-        // line 93
+        // line 90
         echo $this->getAttribute((isset($context["this"]) ? $context["this"] : null), "getReady", array(0 => "modal-dialog"), "method");
         echo "
 \t}
@@ -248,7 +240,7 @@ class __TwigTemplate_be08fb0dc1f7ceaf8a633f6abaa785a7 extends Twig_Template
 \t\t\tconsole.log('Changed:' + val);
 \t\t\tvar layout = \$('.active').data('layout');
 \t\t\t\$('.pnek').load(\"";
-        // line 106
+        // line 103
         echo twig_escape_filter($this->env, $this->getAttribute((isset($context["this"]) ? $context["this"] : null), "createUrl", array(0 => "site/quickSearch"), "method"), "html", null, true);
         echo " #id-body\",\t{ quickSearch : val, layout: layout }, function() {
 \t\t\t\tif (setMenuAffix) {
@@ -276,7 +268,7 @@ class __TwigTemplate_be08fb0dc1f7ceaf8a633f6abaa785a7 extends Twig_Template
 \t});
 \t
 \t";
-        // line 131
+        // line 128
         $this->displayParentBlock("onReady", $context, $blocks);
         echo "
 
@@ -295,6 +287,6 @@ class __TwigTemplate_be08fb0dc1f7ceaf8a633f6abaa785a7 extends Twig_Template
 
     public function getDebugInfo()
     {
-        return array (  280 => 131,  252 => 106,  236 => 93,  228 => 87,  222 => 86,  219 => 85,  216 => 84,  205 => 81,  202 => 80,  196 => 78,  191 => 77,  182 => 74,  176 => 70,  167 => 67,  163 => 66,  159 => 65,  151 => 63,  147 => 62,  142 => 59,  139 => 58,  124 => 45,  121 => 44,  114 => 40,  111 => 39,  108 => 38,  96 => 29,  92 => 27,  89 => 26,  86 => 25,  78 => 22,  75 => 21,  67 => 17,  64 => 16,  48 => 11,  109 => 23,  103 => 14,  94 => 12,  83 => 23,  80 => 22,  77 => 21,  74 => 20,  71 => 19,  68 => 18,  66 => 17,  60 => 15,  57 => 14,  54 => 13,  51 => 13,  47 => 12,  41 => 8,  38 => 7,  35 => 7,  30 => 4,);
+        return array (  272 => 128,  244 => 103,  228 => 90,  220 => 84,  214 => 83,  211 => 82,  208 => 81,  197 => 78,  194 => 77,  188 => 75,  183 => 74,  174 => 71,  168 => 67,  159 => 64,  155 => 63,  151 => 62,  143 => 60,  139 => 59,  134 => 56,  131 => 55,  116 => 42,  113 => 41,  108 => 38,  96 => 29,  92 => 27,  89 => 26,  86 => 25,  78 => 22,  75 => 21,  67 => 17,  64 => 16,  60 => 15,  57 => 14,  54 => 13,  48 => 11,  41 => 8,  38 => 7,);
     }
 }

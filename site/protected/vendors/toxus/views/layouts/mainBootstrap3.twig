@@ -170,12 +170,18 @@
 					<div class="col-sm-4">
 						{% block footerLeft %}
 						<section>
-							<h4>{{ Yii_t('base','contact us') }}</h4>
-							<p>{{ App.params.company}}<br>
-								{{ App.params.companyAddress |raw }}<br/>
+							<h4>{{ Yii_t('base','Contact us') }}</h4>
+							<p>
+								Mobile: <a href="tel:93069406">93069406</a>
 							</p>
 							<p>
-								<strong>{{ Yii_t('base','email')}}:</strong> <a href="mailto:{{ App.params.companyEmail |default('info@toxus.nl') }}">{{ App.params.companyEmail |default('info@toxus.nl') }}</a> 
+								Email: <a href="mailto:mail@videokunstarkivet.org">mail@videokunstarkivet.org</a>
+							</p>
+							<p>
+								Contact person for Videokunstarkivet: Per Platou
+							</p>
+							<p>
+								Contact person for Norsk kulturråd: Birgit Bærøe
 							</p>
 							{% block footerLeftExtra %}{% endblock %}							
 						</section>
