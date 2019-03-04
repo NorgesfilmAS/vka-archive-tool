@@ -605,6 +605,7 @@ version 1.5 New layout 2015
 	text-overflow: ellipsis;
 }
 .preview-image {
+	position: relative;
 }
 .preview-data .line-div {
 	border-bottom: 1px #eee solid;
@@ -627,13 +628,14 @@ version 1.5 New layout 2015
  	margin-bottom: 35px; 
 }
 span.play {
-    background: url("../images/play.png") no-repeat scroll 50% 50% rgba(0, 0, 0, 0);    
-    height: 50%;
-    left: 0;
-    opacity: 0.6;
-    position: absolute;
-    top: 5%;
-    width: 100%;
+	background: url("../images/play.png");
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	width: 55px;
+	height: 55px;
+	opacity: 0.6;
 }
 .pnek .panelXXX {
 	border : none;
