@@ -94,12 +94,12 @@ params:
   			  {{ Yii_t('app', 'The master file does not exist.') }}
     		{% endif %}
 
-				{# check which alt files are available #}
+				{# check which alt files are available
 				<dt>preview webm</dt>
 				<dd>
 					HQ <span class="glyphicon {% if this.model.previewExists('webm', false) %}glyphicon-ok text-success{% else %}glyphicon-remove text-danger{% endif %}"></span>
 					LQ <span class="glyphicon {% if this.model.previewExists('webm', true) %}glyphicon-ok text-success{% else %}glyphicon-remove text-danger{% endif %}"></span>
-				</dd>
+				</dd> #}
 				<dt>preview mp4</dt>
 				<dd>
 					HQ <span class="glyphicon {% if this.model.previewExists('mp4', false) %}glyphicon-ok text-success{% else %}glyphicon-remove text-danger{% endif %}"></span>
