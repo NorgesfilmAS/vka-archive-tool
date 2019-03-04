@@ -203,7 +203,7 @@ class SiteController extends BaseSiteController
      * 
      */
     // beter solution is to use the processing queue for the lastest video uploaded
-    $pq = Yii::app()->db->createCommand('SELECT resource_id as id FROM processing_job pb WHERE pb.is_finished = 1 AND error is null AND alternate_id is null AND resource_id > 0 ORDER BY ended_date DESC LIMIT 6')
+    $pq = Yii::app()->db->createCommand('SELECT DISTINCT resource_id as id FROM processing_job pb WHERE pb.is_finished = 1 AND error is null AND alternate_id is null AND resource_id > 0 ORDER BY ended_date DESC LIMIT 6')
         ->queryAll();
     
     $isDigitized = array();
