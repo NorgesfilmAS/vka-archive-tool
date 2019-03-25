@@ -659,7 +659,7 @@ class Art extends ArtBase {
 	 */
 	public function searchLastDigitized() 
 	{
-		$sql = 'SELECT d.resource as id FROM resource_data d WHERE d.`resource_type_field` = 132 and not isnull(d.value) ORDER BY str_to_date(d.value, "%d-%m-%Y" ) DESC';
+		$sql = 'SELECT DISTINCT pb.resource_id as id FROM processing_job pb LEFT JOIN resource r ON r.ref = pb.resource_id WHERE pb.is_finished = 1 AND ERROR IS NULL AND alternate_id IS NULL AND resource_id > 0 AND r.ref IS NOT NULL ORDER BY ended_date DESC';
 		
 		return new RSSqlDataProvider('Art', $sql, array(
 				'pagination'=> array('pageSize'=>500)					

@@ -193,40 +193,26 @@ class SiteController extends BaseSiteController
 			$params['moreFiles'] = Yii::app()->uploadFileList->moreFiles;
 			
 		}
-		// the digitization
-    /**
-		$isDigitized = Art::model()->findAll(array(
-						'condition' => 'not digitization_date is null',
-						'order' => 'str_to_date(digitization_date, "%d-%m-%Y") DESC',
-						'limit' => 6,
-				));
-     * 
-     */
-    // beter solution is to use the processing queue for the lastest video uploaded
-    $pq = Yii::app()->db->createCommand('SELECT DISTINCT resource_id as id FROM processing_job pb WHERE pb.is_finished = 1 AND error is null AND alternate_id is null AND resource_id > 0 ORDER BY ended_date DESC LIMIT 6')
+
+    $pq = Yii::app()->db->createCommand('SELECT DISTINCT pb.resource_id as id FROM processing_job pb LEFT JOIN resource r ON r.ref = pb.resource_id WHERE pb.is_finished = 1 AND ERROR IS NULL AND alternate_id IS NULL AND resource_id > 0 AND r.ref IS NOT NULL ORDER BY ended_date DESC LIMIT 6')
         ->queryAll();
     
-    $isDigitized = array();
+		$isDigitized = array();
+		
     foreach ($pq as $rec) {
-      $art = Art::model()->findByPk($rec['id']);
-      if (!empty($art)) {
+			$art = Art::model()->findByPk($rec['id']);
+			
+      // if (!empty($art)) {
         $isDigitized[] = $art;
-      }
-    }
+      // }
+		}
+		
 		$params['digitized'] = array();		
+		
 		if ($isDigitized) {
 			$params['digitized']['done'] = $isDigitized;
 		}
-		/*		
-		$received = Art::model()->findAll(array(
-						'condition' => 'not received_date is null',
-						'order' => 'received_date DESC',
-						'limit' => 5,
-				));
-		if ($received) {
-			$params['digitized']['received'] = $received;
-		}
-		*/
+
 		$this->render('index', $params);		
 	}
 	
